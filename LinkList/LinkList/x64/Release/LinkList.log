@@ -1,0 +1,11 @@
+﻿  main.cpp
+c:\users\lyw\source\repos\linklist\linklist\mypolynomiallinklist.h(156): error C2228: “.coef”的左边必须有类/结构/联合
+  c:\users\lyw\source\repos\linklist\linklist\mypolynomiallinklist.h(156): note: 类型是“ElemType”
+          with
+          [
+              ElemType=int
+          ]
+  c:\users\lyw\source\repos\linklist\linklist\mypolynomiallinklist.h(134): note: 编译 类 模板 成员函数 "void MyPolynomialLinkList<int>::randomInitialFill(int)" 时
+  c:\users\lyw\source\repos\linklist\linklist\test3_2_1.h(432): note: 参见对正在编译的函数 模板 实例化“void MyPolynomialLinkList<int>::randomInitialFill(int)”的引用
+  c:\users\lyw\source\repos\linklist\linklist\test3_2_1.h(346): note: 参见对正在编译的函数 模板 实例化“void ex3_2_16_6<int>(MyPolynomialLinkList<int> &,char &)”的引用
+  c:\users\lyw\source\repos\linklist\linklist\main.cpp(104): note: 参见对正在编译的函数 模板 实例化“void ex3_2_16<int>(MyPolynomialLinkList<int> &,char &)”的引用
