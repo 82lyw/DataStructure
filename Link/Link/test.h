@@ -299,17 +299,17 @@ void ex3_1_15(MyStudent<ElemType> & rec, char & continueYesNo)
 		cout << endl;
 
 		cout << "\t 1.在第i个学生之前插入一个学生" << endl;
-		cout << "\t 2.判断学生表是否为空：" << endl;
-		cout << "\t 3.求学生表中学生的人数：" << endl;
-		cout << "\t 4.返回学生表中第i个学生：" << endl;
-		cout << "\t 5.返回某姓名学生的前驱：" << endl;
-		cout << "\t 6.返回某姓名学生的后继：" << endl;
-		cout << "\t 7.删除学生表的第i个学生：" << endl;
-		cout << "\t 8.把一个学生表赋值给另一个学生表：" << endl;
-		cout << "\t 9.设置学生表为空表：" << endl;
-		cout << "\t 10.随机生成学生表：" << endl;
-		cout << "\t 11.用已有的学生表初始化另一个学生表：" << endl;
-		cout << "\t 12.输入学生表：" << endl;
+		cout << "\t 2.判断学生表是否为空" << endl;
+		cout << "\t 3.求学生表中学生的人数" << endl;
+		cout << "\t 4.返回学生表中第i个学生" << endl;
+		cout << "\t 5.返回某姓名学生的前驱" << endl;
+		cout << "\t 6.返回某姓名学生的后继" << endl;
+		cout << "\t 7.删除学生表的第i个学生" << endl;
+		cout << "\t 8.把一个学生表赋值给另一个学生表" << endl;
+		cout << "\t 9.设置学生表为空表" << endl;
+		cout << "\t 10.随机生成学生表" << endl;
+		cout << "\t 11.用已有的学生表初始化另一个学生表" << endl;
+		cout << "\t 12.输入学生表" << endl;
 
 		cout << "其他.结束" << endl << endl;
 
@@ -321,15 +321,15 @@ void ex3_1_15(MyStudent<ElemType> & rec, char & continueYesNo)
 
 		cin >> select;
 
-		if (select > 0 && select < 9)
+		if (select > 0 && select < 12)
 		{
 			system("cls");
-			//displayPolynomial(list1);
+			rec.displayS();
 		}
 
 		switch (select)
 		{
-			/*case 1:ex3_1_15_1(rec, continueSelect);
+			case 1:ex3_1_15_1(rec, continueSelect);
 			break;
 		case 2:ex3_1_15_2(rec, continueSelect);
 			break;
@@ -341,8 +341,17 @@ void ex3_1_15(MyStudent<ElemType> & rec, char & continueYesNo)
 			break;
 		case 6:ex3_1_15_6(rec, continueSelect);
 			break;
-		;*/
-		case 6:ex3_1_15_12(rec, continueSelect);
+		case 7:ex3_1_15_7(rec, continueSelect);
+			break;
+		case 8:ex3_1_15_8(rec, continueSelect);
+			break;
+		case 9:ex3_1_15_9(rec, continueSelect);
+			break;
+		case 10:ex3_1_15_10(rec, continueSelect);
+			break;
+		case 11:ex3_1_15_11(rec, continueSelect);
+			break;
+		case 12:ex3_1_15_12(rec, continueSelect);
 			break;
 		default:cout << "\n 你选择了结束。" << endl << endl;
 			return;
@@ -356,14 +365,275 @@ void ex3_1_15(MyStudent<ElemType> & rec, char & continueYesNo)
 	cin >> continueYesNo;
 }
 
-template <typename ElemType>
-void ex3_1_15_12(MyStudent<ElemType> & rec, char & continueYesNo)
-{
-	cout << "**********************输入学生表************************" << endl << endl;
 
-	cin >> rec;
+template <typename ElemType>
+void ex3_1_15_1(MyStudent<ElemType> & rec, char & continueSelect)
+{
+	cout << "**********************在第i个学生之前插入一个学生************************" << endl << endl;
+
+	int i;
+	cout << "请输入你要在第几个学生之前插入新学生：";
+	cin >> i;
+
+	typename MyStudent<ElemType>::studentNode s;
+	cout << "\t学号：";
+	cin >> s.student_id;
+	cout << "\t姓名：";
+	cin >> s.name;
+	cout << "\t语文：";
+	cin >> s.Chinese;
+	cout << "\t英语：";
+	cin >> s.English;
+	cout << "\t数学：";
+	cin >> s.Math;
+
+	s.Total = s.Chinese + s.Math + s.English;
+	s.average = s.Total / 3;
+
+	cout << "你要在第" << i << "个学生前插入新学生" << endl;
+	cout << "学号\t" << "姓名\t" << "语文\t" << "英语\t" << "数学\t" << "平均分\t" << "总分" << endl;
+	cout << s.student_id << "\t" << s.name << "\t" << 
+		s.Chinese << "\t" << s.English << "\t" << s.Math 
+		<< "\t" << s.average << "\t" << s.Total << endl<<endl;
+
+	if (rec.insertS(i, s))
+	{
+		cout << "插入后的学生表如下" << endl ;
+		rec.displayS();
+	}
+	else
+	{
+		cout << "插入序号小于零了，或越界";
+	}
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";
-	cin >> continueYesNo;
+	cin >> continueSelect;
+}
+
+template <typename ElemType>
+void ex3_1_15_2(MyStudent<ElemType> & rec, char & continueSelect)
+{
+	cout << "**********************判断学生表是否为空************************" << endl << endl;
+
+	if (rec.isEmpty())
+	{
+		cout << "当前学生表为空！"<<endl;
+	}
+	else
+	{
+		cout << "当前学生表不为空！"<<endl;
+	}
+
+	cout << "***********************************************************" << endl << endl;
+	cout << "还继续吗（Y.继续\tN.结束）？";
+	cin >> continueSelect;
+}
+
+template <typename ElemType>
+void ex3_1_15_3(MyStudent<ElemType> & rec, char & continueSelect)
+{
+	cout << "**********************求学生表中学生的人数************************" << endl << endl;
+
+	int n;
+	n = rec.getLength();
+	cout << "当前学生表中学生的人数为:" << n << endl<<endl;
+	
+
+	cout << "***********************************************************" << endl << endl;
+	cout << "还继续吗（Y.继续\tN.结束）？";
+	cin >> continueSelect;
+}
+
+template <typename ElemType>
+void ex3_1_15_4(MyStudent<ElemType> & rec, char & continueSelect)
+{
+	cout << "**********************返回学生表中第i个学生************************" << endl << endl;
+
+	int i;
+	typename MyStudent<ElemType>::studentNode s;
+	cout << "请输入你想要的学生的序号（1-" << rec.getLength() << "）：" ;
+	cin >> i;
+
+	rec.getStu(i, s);
+	if (rec.getStu(i, s))
+	{
+		cout << "你想要的第" << i << "个学生的信息为：" << endl;
+		cout << "学号\t" << "姓名\t" << "语文\t" << "英语\t" << "数学\t" << "平均分\t" << "总分" << endl;
+		cout << s.student_id << "\t" << s.name << "\t" <<
+			s.Chinese << "\t" << s.English << "\t" << s.Math
+			<< "\t" << s.average << "\t" << s.Total << endl;
+	}
+	else
+	{
+		cout << "该序号越界";
+	}
+
+
+	cout << "***********************************************************" << endl << endl;
+	cout << "还继续吗（Y.继续\tN.结束）？";
+	cin >> continueSelect;
+}
+
+template <typename ElemType>
+void ex3_1_15_5(MyStudent<ElemType> & rec, char & continueSelect)
+{
+	cout << "**********************返回某姓名学生的前驱************************" << endl << endl;
+
+	string stu_name;
+	typename MyStudent<ElemType>::studentNode prior_s;
+	typename MyStudent<ElemType>::studentNode s;
+
+	cout << "请输入你想要查找其前驱学生的姓名：";
+	cin >> stu_name;
+
+	cout << "你想要查找姓名为" << stu_name << "的学生前驱为：" << endl << endl;
+
+	rec.priorStu(stu_name, prior_s);
+	if (rec.priorStu(stu_name, prior_s))
+	{
+		cout << "学号\t" << "姓名\t" << "语文\t" << "英语\t" << "数学\t" << "平均分\t" << "总分" << endl;
+		cout << prior_s.student_id << "\t" << prior_s.name << "\t" <<
+			prior_s.Chinese << "\t" << prior_s.English << "\t" << prior_s.Math
+			<< "\t" << prior_s.average << "\t" << prior_s.Total << endl;
+	}
+	else
+	{
+		cout<<"该同学的前驱不存在！"<<endl << endl;
+	}
+
+
+	cout << "***********************************************************" << endl << endl;
+	cout << "还继续吗（Y.继续\tN.结束）？";
+	cin >> continueSelect;
+}
+
+template <typename ElemType>
+void ex3_1_15_6(MyStudent<ElemType> & rec, char & continueSelect)
+{
+	cout << "**********************返回某姓名学生的后继************************" << endl << endl;
+
+	string stu_name;
+	typename MyStudent<ElemType>::studentNode next_s;
+	typename MyStudent<ElemType>::studentNode s;
+
+	cout << "请输入你想要查找其后继学生的姓名：";
+	cin >> stu_name;
+
+	cout << "你想要查找姓名为" << stu_name << "的学生后继为：" << endl << endl;
+
+	rec.nextStu(stu_name, next_s);
+
+	if (rec.nextStu(stu_name, next_s))
+	{
+		cout << "学号\t" << "姓名\t" << "语文\t" << "英语\t" << "数学\t" << "平均分\t" << "总分" << endl;
+		cout << next_s.student_id << "\t" << next_s.name << "\t" <<
+			next_s.Chinese << "\t" << next_s.English << "\t" << next_s.Math
+			<< "\t" << next_s.average << "\t" << next_s.Total << endl;
+	}
+	else
+	{
+		cout << "该同学的后继不存在！" << endl << endl;
+	}
+
+	cout << "***********************************************************" << endl << endl;
+	cout << "还继续吗（Y.继续\tN.结束）？";
+	cin >> continueSelect;
+}
+
+template <typename ElemType>
+void ex3_1_15_7(MyStudent<ElemType> & rec, char & continueSelect)
+{
+	cout << "**********************删除学生表的第i个学生************************" << endl << endl;
+
+	int i;
+	typename MyStudent<ElemType>::studentNode s;
+	cout << "请输入你想删除学生的序号（1-" << rec.getLength() << "):";
+	cin >> i;
+
+	if (rec.deleteStu(i, s))
+	{
+		cout << "你想删除的第" << i << "个学生的信息为：" << endl;
+		cout << "学号\t" << "姓名\t" << "语文\t" << "英语\t" << "数学\t" << "平均分\t" << "总分" << endl;
+		cout << s.student_id << "\t" << s.name << "\t" <<
+			s.Chinese << "\t" << s.English << "\t" << s.Math
+			<< "\t" << s.average << "\t" << s.Total << endl << endl;
+
+		cout << "删除后的学生表如下：" << endl;
+		rec.displayS();
+	}
+	else
+	{
+		cout << "该序号越界" << endl << endl;
+	}
+
+	cout << "***********************************************************" << endl << endl;
+	cout << "还继续吗（Y.继续\tN.结束）？";
+	cin >> continueSelect;
+}
+
+template <typename ElemType>
+void ex3_1_15_8(MyStudent<ElemType> & rec, char & continueSelect)
+{
+	cout << "**********************把一个学生表赋值给另一个学生表************************" << endl << endl;
+
+	MyStudent<ElemType> stu2;
+	stu2.readS();
+
+	cout << "另一个学生表赋值给当前学生表：";
+	rec = stu2;
+	rec.displayS();
+
+	cout << "***********************************************************" << endl << endl;
+	cout << "还继续吗（Y.继续\tN.结束）？";
+	cin >> continueSelect;
+}
+
+template <typename ElemType>
+void ex3_1_15_9(MyStudent<ElemType> & rec, char & continueSelect)
+{
+	cout << "**********************设置学生表为空表************************" << endl << endl;
+
+	rec.clear();
+	cout << "当前的学生表置空后，学生人数为" << rec.getLength() << endl << endl;
+
+	cout << "***********************************************************" << endl << endl;
+	cout << "还继续吗（Y.继续\tN.结束）？";
+	cin >> continueSelect;
+}
+
+template <typename ElemType>
+void ex3_1_15_10(MyStudent<ElemType> & rec, char & continueSelect)
+{
+	cout << "**********************随机生成学生表************************" << endl << endl;
+
+
+	cout << "***********************************************************" << endl << endl;
+	cout << "还继续吗（Y.继续\tN.结束）？";
+	cin >> continueSelect;
+}
+
+template <typename ElemType>
+void ex3_1_15_11(MyStudent<ElemType> & rec, char & continueSelect)
+{
+	cout << "**********************用已有的学生表初始化另一个学生表************************" << endl << endl;
+
+	MyStudent<ElemType> stu2(rec);
+	stu2.displayS();
+
+	cout << "***********************************************************" << endl << endl;
+	cout << "还继续吗（Y.继续\tN.结束）？";
+	cin >> continueSelect;
+}
+
+template <typename ElemType>
+void ex3_1_15_12(MyStudent<ElemType> & rec, char & continueSelect)
+{
+	cout << "**********************输入学生表************************" << endl << endl;
+
+	rec.readS();
+
+	cout << "***********************************************************" << endl << endl;
+	cout << "还继续吗（Y.继续\tN.结束）？";
+	cin >> continueSelect;
 }
