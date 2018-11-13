@@ -319,7 +319,8 @@ void ex3_2_16(MyPolynomialLinkList<ElemType> & list1, char & continueYesNo)
 		cout << "其他.结束" << endl << endl;
 
 		cout << "///////////////////////////////////////////////////////////////////////////////" << endl;
-		//displayPolynomial(list1);
+		cout << list1;
+		cout << endl;
 		cout << "///////////////////////////////////////////////////////////////////////////////" << endl << endl;
 
 		cout << "请选择你要操作的代码（1-8）号码：";
@@ -328,7 +329,8 @@ void ex3_2_16(MyPolynomialLinkList<ElemType> & list1, char & continueYesNo)
 		if (select > 0 && select < 9)
 		{
 			system("cls");
-			//displayPolynomial(list1);
+			cout << list1;
+			cout << endl;
 		}
 
 		switch (select)
@@ -345,10 +347,10 @@ void ex3_2_16(MyPolynomialLinkList<ElemType> & list1, char & continueYesNo)
 			break;
 		case 6:ex3_2_16_6(list1, continueSelect);
 			break;
-		/*case 7:ex3_2_16_7(list1, continueSelect);
+		case 7:ex3_2_16_7(list1, continueSelect);
 			break;
 		case 8:ex3_2_16_8(list1, continueSelect);
-			break;*/
+			break;
 		default:cout << "\n 你选择了结束。" << endl << endl;
 			return;
 		}
@@ -382,6 +384,11 @@ void ex3_2_16_2(MyPolynomialLinkList<ElemType> & rec, char & continueSelect)
 {
 	cout << "*********************把一个多项式赋值给另一个多项式*************************" << endl << endl;
 
+	MyPolynomialLinkList<MyTerm> list2;
+	list2.randomInitialFill();
+	rec = list2;
+	cout << "另一个多项式赋值给当前多项式为：" << endl;
+	cout << rec;
 
 
 	cout << "***********************************************************" << endl << endl;
@@ -394,9 +401,14 @@ void ex3_2_16_3(MyPolynomialLinkList<ElemType> & rec, char & continueSelect)
 {
 	cout << "*********************两个多项式的加法*************************" << endl << endl;
 
+	MyPolynomialLinkList<MyTerm> list2;
+	list2.randomInitialFill();
+	cout << "另一个多项式为：" << endl;
+	cout << list2;
 
-
-
+	cout <<endl<< "以上两个多项式相加，和为：" << endl;
+	cout << (rec + list2);
+	cout << endl;
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";
@@ -408,7 +420,14 @@ void ex3_2_16_4(MyPolynomialLinkList<ElemType> & rec, char & continueSelect)
 {
 	cout << "*********************两个多项式的减法*************************" << endl << endl;
 
+	MyPolynomialLinkList<MyTerm> list2;
+	list2.randomInitialFill();
+	cout << "另一个多项式为：" << endl;
+	cout << list2;
 
+	cout << endl << "以上两个多项式相减，差为：" << endl;
+	cout << (rec - list2);
+	cout << endl;
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";
@@ -420,6 +439,8 @@ void ex3_2_16_5(MyPolynomialLinkList<ElemType> & rec, char & continueSelect)
 {
 	cout << "*********************设置多项式为空多项式*************************" << endl << endl;
 
+	rec.clear();
+	cout << "当前多项式已置空！" << endl;
 
 
 	cout << "***********************************************************" << endl << endl;
@@ -433,6 +454,36 @@ void ex3_2_16_6(MyPolynomialLinkList<ElemType> & rec, char & continueSelect)
 	cout << "*********************随机生成多项式*************************" << endl << endl;
 
 	rec.randomInitialFill();
+	cout << endl << "随机生成多项式（采用非循环单链表存储）为：" << endl;
+	cout << rec;
+
+	cout << "***********************************************************" << endl << endl;
+	cout << "还继续吗（Y.继续\tN.结束）？";
+	cin >> continueSelect;
+}
+
+template <typename ElemType>
+void ex3_2_16_7(MyPolynomialLinkList<ElemType> & rec, char & continueSelect)
+{
+	cout << "*********************用已有的多项式初始化另一个多项式*************************" << endl << endl;
+
+	MyPolynomialLinkList<MyTerm> list2(rec);
+	cout << "用当前多项式初始化另一个多项式为：" << endl;
+	cout << list2;
+
+	cout << "***********************************************************" << endl << endl;
+	cout << "还继续吗（Y.继续\tN.结束）？";
+	cin >> continueSelect;
+}
+
+template <typename ElemType>
+void ex3_2_16_8(MyPolynomialLinkList<ElemType> & rec, char & continueSelect)
+{
+	cout << "*********************输入多项式*************************" << endl << endl;
+
+	cin >> rec;
+	cout <<endl<< "当前多项式（采用非循环单链表存储）为：" << endl;
+	cout << rec;
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";

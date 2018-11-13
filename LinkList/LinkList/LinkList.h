@@ -3,7 +3,7 @@
 //myhead.h
 #ifndef MYHEAD_H
 #define MYHEAD_H
-#include "C:\Users\lyw\Desktop\lyw\data\head.h"
+#include "C:\Users\lyw\Desktop\lyw\DataStructure\head.h"
 #endif
 
 #define random(a,b) (rand()%(b-a+1)+a)

@@ -1,3 +1,4 @@
+
 #ifndef LINKLIST_H
 #define LINKLIST_H
 #include "LinkList.h"
@@ -21,9 +22,6 @@ public:
 
 		//输出多项式（采用非循环单链表存储）
 		void display(ostream & out) const;
-public:
-	float coef;
-	int expn;
 };
 
 template <typename ElemType>
@@ -167,7 +165,7 @@ void MyPolynomialLinkList<ElemType>::randomInitialFill(int display)
 				p = p->next;
 			}
 
-			if (p&&data.expn == p->data.expn)
+			if (p&&s->data.expn == p->data.expn)
 				continue;
 			else
 				break;
@@ -180,7 +178,12 @@ void MyPolynomialLinkList<ElemType>::randomInitialFill(int display)
 		s->next = p;
 
 		if (display)
-			cout << s->data << "  ";
+		{
+			if (s->data.coef != 1)
+				cout << s->data.coef;
+			if (s->data.expn)
+				cout << "x" << s->data.expn<<"  ";
+		}
 	}
 
 	if (display)
@@ -257,7 +260,10 @@ void MyPolynomialLinkList<ElemType>::display(ostream & out) const
 	{
 		if (p != this->head && p->data.coef > 0)
 			out << "+";
-		out << p->data;
+		if (p->data.coef != 1)
+			out << p->data.coef;
+		if (p->data.expn)
+			out << "x" << p->data.expn;
 
 		p = p->next;
 	}

@@ -29,5 +29,8 @@
     <ClInclude Include="MyPolynomialLinkList.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="MyTerm.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

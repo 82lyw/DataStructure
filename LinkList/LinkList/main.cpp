@@ -12,9 +12,9 @@ using namespace std;
 #include "MyPolynomialLinkList.h"
 #endif
 
-#ifndef LINKLIST_H
-#define LINKLIST_H
-#include "LinkList.h"
+#ifndef MYTERM_H
+#define MYTERM_H
+#include "MyTerm.h"
 #endif
 
 //测试需要的一些操作
@@ -26,7 +26,7 @@ using namespace std;
 int main()
 {
 	MyLinkList<int> list1;
-	MyPolynomialLinkList<int> list2;
+	MyPolynomialLinkList<MyTerm> list2;
 
 	int choose;
 	char continueYesNo = 'N';
