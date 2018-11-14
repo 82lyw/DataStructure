@@ -1,0 +1,2 @@
+﻿  main.cpp
+LINK : fatal error LNK1168: 无法打开 C:\Users\lyw\Desktop\project\DataStructure\c++\CircularLinkList\Debug\CircularLinkList.exe 进行写入
