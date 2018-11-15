@@ -53,7 +53,7 @@ void ex3_3_3(MyCircularLinkList<ElemType> & rec, char & continueYesNo)
 	cin >> i;
 	rec.deleteElem(i, e);
 	cout << endl << "删除第4个结点" << e << "后，循环单链表为：";
-	//cout << rec;
+	cout << rec;
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";
@@ -66,10 +66,10 @@ void ex3_3_4(MyCircularLinkList<ElemType> & rec, char & continueYesNo)
 	cout << "*********************把一个循环单链表赋值给另一个循环单链表*************************" << endl << endl;
 
 	MyCircularLinkList<ElemType> list2;
-	//cin >> list2;
+	cin >> list2;
 	rec = list2;
 	cout << "另一个循环单链表赋值赋值给当前循环单链表：" << endl;
-	//cout << rec;
+	cout << rec;
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";
@@ -115,7 +115,7 @@ void ex3_3_7(MyCircularLinkList<ElemType> & rec, char & continueYesNo)
 
 	MyCircularLinkList<ElemType> list2(rec);
 	cout << "当前循环单链表初始化另一个循环单链表为：" << endl;
-	//cout << list2;
+	cout << list2;
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";
@@ -128,7 +128,7 @@ void ex3_3_8(MyCircularLinkList<ElemType> & rec, char & continueYesNo)
 	cout << "*********************输入循环单链表*************************" << endl << endl;
 
 	cin >> rec;
-	//cout << rec;
+	cout << rec;
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";

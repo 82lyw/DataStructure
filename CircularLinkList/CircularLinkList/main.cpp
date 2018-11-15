@@ -1,4 +1,6 @@
 #include <iostream>
+#include <iomanip>
+#include <string>
 using namespace std;
 
 //MyCircularLinkList.h循环单链表数据结构C++类声明和实现（派生类）
