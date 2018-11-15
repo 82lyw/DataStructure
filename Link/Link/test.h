@@ -607,6 +607,8 @@ void ex3_1_15_10(MyStudent<ElemType> & rec, char & continueSelect)
 {
 	cout << "**********************随机生成学生表************************" << endl << endl;
 
+	rec.RandomStudents();
+	rec.displayS();
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";

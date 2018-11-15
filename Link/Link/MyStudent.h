@@ -157,6 +157,7 @@ void MyStudent<ElemType>::displayS()
 	{
 		cout << "当前学生表为空";
 	}
+	cout << endl << endl;
 }
 
 template<typename ElemType>
@@ -270,24 +271,16 @@ bool MyStudent<ElemType>::isEmpty()
 	return length ? false : true;
 }
 
-//template<typename ElemType>
-//int MyStudent<ElemType>::locateStu(string s_name, Status(*compare)(string, string))
-//{
-//	int i;
-//	for (i = 1; i <= length && !(*compare)(studentElem[i - 1].name, s_name); ++i);
-//	if (i <= length)
-//		return i;
-//	else
-//		return 0;
-//}
-
 template<typename ElemType>
 int MyStudent<ElemType>::locateStu(string s_name)
 {
 	int i;
-	for (i = 1; studentElem[i-1].name == s_name; i++);
+	for (i = 1; (studentElem[i-1].name == s_name)!=1; i++);
 	if (i <= length)
+	{
+		cout << i;
 		return i;
+	}
 	else
 		return 0;
 }
