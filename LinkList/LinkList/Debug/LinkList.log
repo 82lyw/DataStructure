@@ -1,2 +1,1 @@
-﻿  main.cpp
-LINK : fatal error LNK1168: 无法打开 C:\Users\lyw\source\repos\LinkList\Debug\LinkList.exe 进行写入
+﻿LINK : fatal error LNK1168: 无法打开 C:\Users\lyw\Desktop\lyw\DataStructure\LinkList\Debug\LinkList.exe 进行写入

@@ -41,7 +41,7 @@ int main()
 		cout << "其他.结束" << endl << endl;
 
 		cout << "///////////////////////////////////////////////////////////////////////////////" << endl;
-		//displayCurrentObject(list);
+		displayCurrentObject(list);
 		cout << "///////////////////////////////////////////////////////////////////////////////" << endl << endl;
 
 		cout << "请选择你要操作的代码（1-9）号码：";
@@ -50,7 +50,7 @@ int main()
 		if (choose > 0 && choose < 9)
 		{
 			system("cls");
-			//displayCurrentObject(list);
+			displayCurrentObject(list);
 		}
 
 		switch (choose)

@@ -12,7 +12,7 @@ public:
 		MyPolynomialLinkList<ElemType> operator +(MyPolynomialLinkList<ElemType> L2);
 
 		//重载减法运算符的定义
-		MyPolynomialLinkList<ElemType> operator -(MyPolynomialLinkList<ElemType> L);
+		MyPolynomialLinkList<ElemType> operator -(MyPolynomialLinkList<ElemType> L2);
 
 		//重新随机生成多项式
 		void randomInitialFill(int display = 0);
@@ -258,7 +258,7 @@ void MyPolynomialLinkList<ElemType>::display(ostream & out) const
 	out << "     ";
 	while (p)
 	{
-		if (p != this->head && p->data.coef > 0)
+		if (p != this->head && p->data.coef >0)
 			out << "+";
 		if (p->data.coef != 1)
 			out << p->data.coef;

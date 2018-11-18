@@ -15,7 +15,7 @@ using namespace std;
 
 int main()
 {
-	DoubleLinkList<int> list1;
+	MyDoubleLinkList<int> list1;
 
 	int choose;
 	char continueYesNo = 'N';

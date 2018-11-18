@@ -1,3 +1,9 @@
 ﻿  main.cpp
-c:\users\lyw\desktop\project\datastructure\c++\doublelinklist\doublelinklist\doublelinklist.h(279): warning C4715: “DoubleLinkList<int>::priorElem”: 不是所有的控件路径都返回值
-  DoubleLinkList.vcxproj -> C:\Users\lyw\Desktop\project\DataStructure\c++\DoubleLinkList\Debug\DoubleLinkList.exe
+c:\users\lyw\desktop\lyw\datastructure\doublelinklist\doublelinklist\doublelinklist.h(408): error C2228: “.getLength”的左边必须有类/结构/联合
+  c:\users\lyw\desktop\lyw\datastructure\doublelinklist\doublelinklist\doublelinklist.h(408): note: 类型是“const MyDoubleLinkList<int> *”
+  c:\users\lyw\desktop\lyw\datastructure\doublelinklist\doublelinklist\doublelinklist.h(408): note: 是否改用“->”?
+  c:\users\lyw\desktop\lyw\datastructure\doublelinklist\doublelinklist\doublelinklist.h(396): note: 编译 类 模板 成员函数 "void MyDoubleLinkList<int>::display(std::ostream &) const" 时
+  c:\users\lyw\desktop\lyw\datastructure\doublelinklist\doublelinklist\doublelinklist.h(423): note: 参见对正在编译的函数 模板 实例化“void MyDoubleLinkList<int>::display(std::ostream &) const”的引用
+  c:\users\lyw\desktop\lyw\datastructure\doublelinklist\doublelinklist\doublelinklist.h(429): note: 编译 类 模板 成员函数 "void MyDoubleLinkList<int>::Randborn(void)" 时
+  c:\users\lyw\desktop\lyw\datastructure\doublelinklist\doublelinklist\test3_4.h(210): note: 参见对正在编译的函数 模板 实例化“void MyDoubleLinkList<int>::Randborn(void)”的引用
+  c:\users\lyw\desktop\lyw\datastructure\doublelinklist\doublelinklist\main.cpp(46): note: 参见对正在编译的函数 模板 实例化“void displayCurrentObject<int>(MyDoubleLinkList<int>)”的引用

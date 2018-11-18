@@ -298,11 +298,13 @@ LinkList<ElemType>::LinkList(const LinkList & otherL)
 	NodePointer op = otherL.head;
 	NodePointer s;
 	head = p = NULL;
+	if (op == NULL)
+		return;
 	while (op)
 	{
 		s = new LinkNode;
 		assert(s != 0);
-		s->data = op->data;
+		s->data= op->data;
 		if (!head)
 			head = s;
 		else

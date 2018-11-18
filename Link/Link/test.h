@@ -403,7 +403,7 @@ void ex3_1_15_1(MyStudent<ElemType> & rec, char & continueSelect)
 	}
 	else
 	{
-		cout << "插入序号小于零了，或越界";
+		cout << "插入序号小于零了，或越界"<<endl;
 	}
 
 	cout << "***********************************************************" << endl << endl;
@@ -466,7 +466,7 @@ void ex3_1_15_4(MyStudent<ElemType> & rec, char & continueSelect)
 	}
 	else
 	{
-		cout << "该序号越界";
+		cout << "该序号越界"<<endl;
 	}
 
 
@@ -487,11 +487,10 @@ void ex3_1_15_5(MyStudent<ElemType> & rec, char & continueSelect)
 	cout << "请输入你想要查找其前驱学生的姓名：";
 	cin >> stu_name;
 
-	cout << "你想要查找姓名为" << stu_name << "的学生前驱为：" << endl << endl;
-
 	rec.priorStu(stu_name, prior_s);
 	if (rec.priorStu(stu_name, prior_s))
 	{
+		cout << "你想要查找姓名为" << stu_name << "的学生前驱为：" << endl << endl;
 		cout << "学号\t" << "姓名\t" << "语文\t" << "英语\t" << "数学\t" << "平均分\t" << "总分" << endl;
 		cout << prior_s.student_id << "\t" << prior_s.name << "\t" <<
 			prior_s.Chinese << "\t" << prior_s.English << "\t" << prior_s.Math
@@ -520,12 +519,11 @@ void ex3_1_15_6(MyStudent<ElemType> & rec, char & continueSelect)
 	cout << "请输入你想要查找其后继学生的姓名：";
 	cin >> stu_name;
 
-	cout << "你想要查找姓名为" << stu_name << "的学生后继为：" << endl << endl;
-
 	rec.nextStu(stu_name, next_s);
 
 	if (rec.nextStu(stu_name, next_s))
 	{
+		cout << "你想要查找姓名为" << stu_name << "的学生后继为：" << endl << endl;
 		cout << "学号\t" << "姓名\t" << "语文\t" << "英语\t" << "数学\t" << "平均分\t" << "总分" << endl;
 		cout << next_s.student_id << "\t" << next_s.name << "\t" <<
 			next_s.Chinese << "\t" << next_s.English << "\t" << next_s.Math

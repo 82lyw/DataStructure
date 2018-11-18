@@ -1,12 +1,12 @@
 template <typename ElemType>
-void displayCurrentObject(DoubleLinkList<ElemType> rec)
+void displayCurrentObject(MyDoubleLinkList<ElemType> rec)
 {
 	cout << endl;
-	//cout << rec;
+	cout << rec;
 }
 
 template <typename ElemType>
-void ex3_4_1(DoubleLinkList<ElemType> & rec, char & continueYesNo)
+void ex3_4_1(MyDoubleLinkList<ElemType> & rec, char & continueYesNo)
 {
 	cout << "*********************取循环双链表第i个结点的数据域*************************" << endl << endl;
 	int i;
@@ -32,7 +32,7 @@ void ex3_4_1(DoubleLinkList<ElemType> & rec, char & continueYesNo)
 }
 
 template <typename ElemType>
-void ex3_4_2(DoubleLinkList<ElemType> & rec, char & continueYesNo)
+void ex3_4_2(MyDoubleLinkList<ElemType> & rec, char & continueYesNo)
 {
 	cout << "*********************在第i个结点之前插入一个数据域为e的结点*************************" << endl << endl;
 	int i;
@@ -63,7 +63,7 @@ void ex3_4_2(DoubleLinkList<ElemType> & rec, char & continueYesNo)
 }
 
 template <typename ElemType>
-void ex3_4_3(DoubleLinkList<ElemType> & rec, char & continueYesNo)
+void ex3_4_3(MyDoubleLinkList<ElemType> & rec, char & continueYesNo)
 {
 	cout << "*********************判断循环双链表是否为空*************************" << endl << endl;
 
@@ -78,7 +78,7 @@ void ex3_4_3(DoubleLinkList<ElemType> & rec, char & continueYesNo)
 }
 
 template <typename ElemType>
-void ex3_4_4(DoubleLinkList<ElemType> & rec, char & continueYesNo)
+void ex3_4_4(MyDoubleLinkList<ElemType> & rec, char & continueYesNo)
 {
 	cout << "*********************求循环双链表中结点的个数*************************" << endl << endl;
 
@@ -91,7 +91,7 @@ void ex3_4_4(DoubleLinkList<ElemType> & rec, char & continueYesNo)
 }
 
 template <typename ElemType>
-void ex3_4_5(DoubleLinkList<ElemType> & rec, char & continueYesNo)
+void ex3_4_5(MyDoubleLinkList<ElemType> & rec, char & continueYesNo)
 {
 	cout << "*********************返回循环双链表中数据域为e的第一个结点的指针*************************" << endl << endl;
 
@@ -118,7 +118,7 @@ void ex3_4_5(DoubleLinkList<ElemType> & rec, char & continueYesNo)
 }
 
 template <typename ElemType>
-void ex3_4_6(DoubleLinkList<ElemType> & rec, char & continueYesNo)
+void ex3_4_6(MyDoubleLinkList<ElemType> & rec, char & continueYesNo)
 {
 	cout << "*********************返回某结点的前驱的数据域*************************" << endl << endl;
 
@@ -134,7 +134,7 @@ void ex3_4_6(DoubleLinkList<ElemType> & rec, char & continueYesNo)
 }
 
 template <typename ElemType>
-void ex3_4_7(DoubleLinkList<ElemType> & rec, char & continueYesNo)
+void ex3_4_7(MyDoubleLinkList<ElemType> & rec, char & continueYesNo)
 {
 	cout << "*********************返回某结点的后继的数据域*************************" << endl << endl;
 
@@ -151,7 +151,7 @@ void ex3_4_7(DoubleLinkList<ElemType> & rec, char & continueYesNo)
 }
 
 template <typename ElemType>
-void ex3_4_8(DoubleLinkList<ElemType> & rec, char & continueYesNo)
+void ex3_4_8(MyDoubleLinkList<ElemType> & rec, char & continueYesNo)
 {
 	cout << "*********************删除循环双链表中数据域为e的第一个结点*************************" << endl << endl;
 
@@ -175,7 +175,7 @@ void ex3_4_8(DoubleLinkList<ElemType> & rec, char & continueYesNo)
 }
 
 template <typename ElemType>
-void ex3_4_9(DoubleLinkList<ElemType> & rec, char & continueYesNo)
+void ex3_4_9(MyDoubleLinkList<ElemType> & rec, char & continueYesNo)
 {
 	cout << "*********************把一个循环双链表赋值给另一个循环双链表*************************" << endl << endl;
 
@@ -190,7 +190,7 @@ void ex3_4_9(DoubleLinkList<ElemType> & rec, char & continueYesNo)
 }
 
 template <typename ElemType>
-void ex3_4_10(DoubleLinkList<ElemType> & rec, char & continueYesNo)
+void ex3_4_10(MyDoubleLinkList<ElemType> & rec, char & continueYesNo)
 {
 	cout << "*********************把循环双链表置空*************************" << endl << endl;
 
@@ -203,13 +203,11 @@ void ex3_4_10(DoubleLinkList<ElemType> & rec, char & continueYesNo)
 }
 
 template <typename ElemType>
-void ex3_4_11(DoubleLinkList<ElemType> & rec, char & continueYesNo)
+void ex3_4_11(MyDoubleLinkList<ElemType> & rec, char & continueYesNo)
 {
 	cout << "*********************随机生成循环双链表*************************" << endl << endl;
 
-	DoubleLinkList<ElemType> list2;
-	cout << "当前循环双链表初始化另一个循环双链表" << endl;
-	//list2 = rec;
+	rec.Randborn();
 	//cout << list2;
 
 	cout << "***********************************************************" << endl << endl;
@@ -218,7 +216,7 @@ void ex3_4_11(DoubleLinkList<ElemType> & rec, char & continueYesNo)
 }
 
 template <typename ElemType>
-void ex3_4_12(DoubleLinkList<ElemType> & rec, char & continueYesNo)
+void ex3_4_12(MyDoubleLinkList<ElemType> & rec, char & continueYesNo)
 {
 	cout << "*********************用已有的循环双链表初始化另一个循环双链表*************************" << endl << endl;
 
@@ -230,7 +228,7 @@ void ex3_4_12(DoubleLinkList<ElemType> & rec, char & continueYesNo)
 }
 
 template <typename ElemType>
-void ex3_4_13(DoubleLinkList<ElemType> & rec, char & continueYesNo)
+void ex3_4_13(MyDoubleLinkList<ElemType> & rec, char & continueYesNo)
 {
 	cout << "*********************输入循环双链表*************************" << endl << endl;
 

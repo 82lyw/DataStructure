@@ -63,8 +63,10 @@ public:
 template <typename ElemType>
 void CircularLinkList<ElemType>::clear()
 {
+	if (head == NULL)
+		return;
+	
 	NodePointer p;
-
 	while (head != head->next);
 	{
 		p = head->next;

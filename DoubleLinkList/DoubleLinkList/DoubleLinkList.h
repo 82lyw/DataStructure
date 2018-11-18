@@ -400,12 +400,12 @@ void MyDoubleLinkList<ElemType>::display(ostream& out) const
 
 	if (!p)
 	{
-		cout << "当前非循环单链表为空" << endl << endl;
+		cout << "当前循环双链表为空" << endl << endl;
 	}
 	else
 	{
-		cout << "当前的循环单链表为：" << endl;
-		for (int i = 1; i <= this->n; i++)
+		cout << "当前的循环双链表为：" << endl;
+		for (int i = 1; i <= this.getLength(); i++)
 			cout << "[ " << i << "] \t";
 		cout << endl;
 		while (p->next != this->head)
@@ -428,14 +428,13 @@ template<typename ElemType>
 void MyDoubleLinkList<ElemType>::Randborn()
 {
 	typename DoubleLinkList<ElemType>::clear();
-	//int n, i;
-	int i;
+	int n, i;
 	typename DoubleLinkList<ElemType>::NodePointer p, s;
 	p = this->head;
-	this->n = random(2, 8);
+	n = random(2, 8);
 	cout << "用如下随机数生成循环双链表：" << endl;
 
-	for (i = 0; i < this->n; i++)
+	for (i = 0; i < n; i++)
 	{
 		s = new typename DoubleLinkList<ElemType>::LinkNode;
 		assert(s != 0);

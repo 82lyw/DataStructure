@@ -68,43 +68,40 @@ void MyCircularLinkList<ElemType>::display(ostream& out) const
 	if (!p)
 	{
 		cout << "当前循环单链表为空" << endl << endl;
+		return;
 	}
 	else
 	{
 		cout << "当前的循环单链表为：" << endl;
 		for (int i = 1; i <= this->n; i++)
 		{
-			std::cout << std::setiosflags(std::ios::left)<<std::setfill(' ') << std::setw(10);
-			std::cout << "[ " << i << "] " << std::endl;
+			std::cout << std::setiosflags(std::ios::left)<<std::setfill(' ') << std::setw(4)<< "[" << i << "]  " ;
 		}
 		cout << endl;
 		while (p->next != this->head)
 		{
-			std::cout << std::setiosflags(std::ios::left) << std::setfill(' ') << std::setw(10);
-			std::cout << " " << p->data << "->" << std::endl;
+			std::cout << std::setiosflags(std::ios::right) << std::setfill(' ') << std::setw(4)<< " " << p->data << "->" ;
 			p = p->next;
 		}
-		std::cout << std::setiosflags(std::ios::left) << std::setfill(' ') << std::setw(10);
-		std::cout << " " << p->data << std::endl;
-	}
-	for (int i = 0; i < this->n; i++)
-	{
-		if (i == 0)
+		std::cout << std::setiosflags(std::ios::right) << std::setfill(' ') << std::setw(4)<< " " << p->data << std::endl;
+		for (int i = 0; i < this->n; i++)
 		{
-			std::cout << std::setiosflags(std::ios::left) << std::setfill('_') << std::setw(10);
-			std::cout <<"  ↑" << std::endl;
-		}
-		else if(i==this->n-1)
-		{
-			std::cout << std::setiosflags(std::ios::right) << std::setfill('_') << std::setw(10);
-			std::cout << "|" << std::endl;
-		}
-		else
-		{
-			std::cout << std::setiosflags(std::ios::left) << std::setfill('_') << std::setw(10);
-			std::cout << " __" << std::endl;
+			if (i == 0)
+			{
+				std::cout << std::setiosflags(std::ios::right) << "     ↑____";
+			}
+			else if (i == this->n - 1)
+			{
+				std::cout << std::setiosflags(std::ios::right) << std::setfill('_') << std::setw(10);
+				std::cout << "|";
+			}
+			else
+			{
+				std::cout << std::setiosflags(std::ios::left) << std::setfill('_') << std::setw(7) << "__";
+			}
 		}
 	}
+	cout << endl << endl;
 }
 
 template <typename ElemType>
@@ -130,7 +127,7 @@ void MyCircularLinkList<ElemType>::Randborn()
 		s = new typename CircularLinkList<ElemType>::LinkNode;
 		assert(s != 0);
 		s->data = random(1, 99);
-		cout << s->data;
+		cout << s->data<<"  ";
 		if (!this->head)
 			this->head = s;
 		else
@@ -140,4 +137,5 @@ void MyCircularLinkList<ElemType>::Randborn()
 			p->next = NULL;
 	}
 	p->next = this->head;
+	cout << endl;
 }
