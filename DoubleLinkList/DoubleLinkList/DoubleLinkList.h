@@ -37,7 +37,7 @@ public:
 	NodePointer getHead();
 
 	//求循环双链表中结点的个数
-	int getLength();
+	int getLength() const;
 
 	//在第i个结点之前插入一个数据域为e的结点
 	Status insert(int i, ElemType e);
@@ -91,17 +91,17 @@ template <typename ElemType>
 Status DoubleLinkList<ElemType>::deleteElem(ElemType e)
 {
 	NodePointer p;
-
 	if (!locateElem(e, p))
 		return ERROR;
-
 	if (head->next == head)
+	{
+		delete head;
 		head = NULL;
+	}
 	else
 	{
 		if (p == head)
 			head = p->next;
-
 		p->prior->next = p->next;
 		p->next->prior = p->prior;
 	}
@@ -137,7 +137,7 @@ typename DoubleLinkList<ElemType>::NodePointer DoubleLinkList<ElemType>::getHead
 }
 
 template<typename ElemType>
-int DoubleLinkList<ElemType>::getLength()
+int DoubleLinkList<ElemType>::getLength() const
 {
 	int length = 0;
 	NodePointer p = head;
@@ -405,7 +405,7 @@ void MyDoubleLinkList<ElemType>::display(ostream& out) const
 	else
 	{
 		cout << "当前的循环双链表为：" << endl;
-		for (int i = 1; i <= this.getLength(); i++)
+		for (int i = 1; i <= this->getLength(); i++)
 			cout << "[ " << i << "] \t";
 		cout << endl;
 		while (p->next != this->head)
@@ -439,7 +439,7 @@ void MyDoubleLinkList<ElemType>::Randborn()
 		s = new typename DoubleLinkList<ElemType>::LinkNode;
 		assert(s != 0);
 		s->data = random(1, 99);
-		cout << s->data;
+		cout << s->data<<"  ";
 		if (!this->head)
 		{
 			this->head = s;
@@ -456,4 +456,5 @@ void MyDoubleLinkList<ElemType>::Randborn()
 	}
 	p->next = this->head;
 	this->head->prior = p;
+	cout << endl << endl;
 }
