@@ -30,7 +30,7 @@ int order(char m)
 	}
 }
 
-int precede(char op1, char op2)
+int pstack1ede(char op1, char op2)
 {
 	int inCmOut[7][7] = { {1,1,-1,-1,-1,1,1},
 									{1,1,-1,-1,-1,1,1},
@@ -81,7 +81,7 @@ void transform(char *midS,char *suffixS)
 			default:
 				while (S.getTop(op))
 				{
-					if (precede(op, ch) == 1 || precede(op, ch) == 0)
+					if (pstack1ede(op, ch) == 1 || pstack1ede(op, ch) == 0)
 					{
 						suffixS[i++] = op;
 						suffixS[i++] = ' ';

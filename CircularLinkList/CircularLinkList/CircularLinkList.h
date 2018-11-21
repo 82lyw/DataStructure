@@ -213,7 +213,7 @@ CircularLinkList<ElemType>::CircularLinkList(const CircularLinkList<ElemType> & 
 
 	while (op)
 	{
-		s = new(LinkNode);
+		s = new LinkNode [10];
 		assert(s != 0);
 
 		s->data = op->data;

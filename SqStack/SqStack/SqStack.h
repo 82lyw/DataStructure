@@ -168,14 +168,88 @@ SqStack<ElemType>::SqStack( SqStack & otherS)
 }
 
 
-template <typename ElemType>
-class MySqStack :public SqStack<ElemType>
+//顺序栈派生类 MySqStack.h
+template<typename ElemType>
+class MySqStack : public SqStack<ElemType>
 {
 public:
-	void read();
+	MySqStack(ElemType *p, int nsize);
+	MySqStack() {}
 	void display();
+	//void read();
+	//void randStack();
 };
+	                                                                             
+template<typename ElemType>
+void MySqStack<ElemType>::display()
+{
+	if (typename SqStack<ElemType>::isEmpty())
+		cout << "空" << endl;
+	else
+	{
+		int i;
+		int length = typename SqStack<ElemType>::getLength();
+		for (i = 0; i < length; i++)
+			cout << "  " << *(this->base + i) << "  ";
+		cout << endl;
+		for (i = 0; i <= length; ++i)
+		{
+			if (i == 0)
+				cout << "  ↑";
+			else
+				if (i == length)
+					cout << "  ↑" << endl;
+				else
+					cout << "      ";
+		}
+		for (i = 0; i <= length; ++i)
+		{
+			if (i == 0)
+				cout << "base";
+			else if (i == length)
+				cout << " top";
+			else
+				cout << "      ";
+		}
+		cout << endl;
+	}
+}
 
+template<typename ElemType>
+MySqStack<ElemType>::MySqStack(ElemType *p, int nsize)
+{
+	int *next = new ElemType[100];
+	assert(next != 0);
+	int n = nsize;
+	if (n < 0)  n = 0;
+	for (int i = 0; i < n; i++)
+	{
+		next[i] = p[i];
+	}
+	for (int j = 0; j < n; ++j)
+		*(this->base + j) = next[j];
+	this->top = this->base + n;
+}
+
+/*
+template<typename ElemType>
+void MySqStack<ElemType>::randStack()
+{
+	int a = random(2, 6);
+	ElemType *elemS;
+	cout << "随机生成顺序栈中的一些元素如下：" << endl;
+	for (int i = 0; i < a; i++)
+	{
+		elemS[i] = random(1, 100);
+		cout << elemS[i] << "  ";
+	}
+	for (int i = 0; i < a; i++)
+	{
+		push(elemS[i]);
+	}
+	cout << "随机生成的顺序栈（采用顺序存储）如下：" << endl;
+}
+*/
 
 
 

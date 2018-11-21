@@ -17,7 +17,7 @@ using std::cin;
 
 int main()
 {
-	MySqStack<char> list_1;
+	MySqStack<char> stack1;
 
 	int choose;
 	char continueYesNo = 'N';
@@ -43,7 +43,7 @@ int main()
 		cout << "其他.结束" << endl << endl;
 
 		cout << "///////////////////////////////////////////////////////////////////////////////" << endl;
-		displayCurrentObject(list_1);
+		displayCurrentObject(stack1);
 		cout << "///////////////////////////////////////////////////////////////////////////////" << endl << endl;
 
 		cout << "请选择你要操作的代码（1-15）号码：";
@@ -52,32 +52,32 @@ int main()
 		if (choose > 0 && choose < 13)
 		{
 			system("cls");
-			displayCurrentObject(list_1);
+			displayCurrentObject(stack1);
 		}
 
 		switch (choose)
 		{
-		case 1:ex4_1_1(list_1, continueYesNo);
+		case 1:ex4_1_1(stack1, continueYesNo);
 			break;
-		case 2:ex4_1_2(list_1, continueYesNo);
+		case 2:ex4_1_2(stack1, continueYesNo);
 			break;
-		case 3:ex4_1_3(list_1, continueYesNo);
+		case 3:ex4_1_3(stack1, continueYesNo);
 			break;
-		case 4:ex4_1_4(list_1, continueYesNo);
+		case 4:ex4_1_4(stack1, continueYesNo);
 			break;
-		case 5:ex4_1_5(list_1, continueYesNo);
+		case 5:ex4_1_5(stack1, continueYesNo);
 			break;
-		case 6:ex4_1_6(list_1, continueYesNo);
+		case 6:ex4_1_6(stack1, continueYesNo);
 			break;
-		case 7:ex4_1_7(list_1, continueYesNo);
+		case 7:ex4_1_7(stack1, continueYesNo);
 			break;
-		case 8:ex4_1_8(list_1, continueYesNo);
+		case 8:ex4_1_8(stack1, continueYesNo);
 			break;
-		case 9:ex4_1_9(list_1, continueYesNo);
+		case 9:ex4_1_9(stack1, continueYesNo);
 			break;
-		case 10:ex4_1_10(list_1, continueYesNo);
+		case 10:ex4_1_10(stack1, continueYesNo);
 			break;
-		case 11:ex4_1_11(list_1, continueYesNo);
+		case 11:ex4_1_11(stack1, continueYesNo);
 			break;
 		default:cout << "\n 你选择了结束。" << endl << endl;
 			return 0;
