@@ -346,24 +346,18 @@ template <typename ElemType>
 void MyDoubleLinkList<ElemType>::read(istream& in)
 {
 	typename DoubleLinkList<ElemType>::clear();
-	int i;
 	typename DoubleLinkList<ElemType>::NodePointer p, s;
-	ElemType *elem;
 	p = this->head;
 	cout << "请输入循环双链表中结点的个数：";
-	in >> this->n;
-	elem = new ElemType[this->n];
+	int n;
+	in >> n;
 	cout << "请输入循环双链表中的每个结点数据域的值：";
-	for (i = 0; i < this->n; i++)
-	{
-		in > elem[i];
-	}
-
-	for (i = 0; i < this->n; i++)
+	
+	for (int i = 0; i <n; i++)
 	{
 		s = new typename DoubleLinkList<ElemType>::LinkNode;
 		assert(s != 0);
-		s->data=elem[i];
+		in >> s->data;
 		if (!this->head)
 		{
 			this->head = s;
@@ -380,6 +374,9 @@ void MyDoubleLinkList<ElemType>::read(istream& in)
 	}
 	p->next = this->head;
 	this->head->prior = p;
+
+	cout << "\n\t已经在当前循环双链表输入了" << n << "个结点" << endl << endl;
+	cout << "输入的循环双链表如下:" << endl;
 }
 
 //功能：重载输入运算符的定义
@@ -395,7 +392,7 @@ template <typename ElemType>
 void MyDoubleLinkList<ElemType>::display(ostream& out) const
 {
 	//输出操作
-	typename DoubleLinkList<ElemType>::NodePointer p = this->head;
+	/*typename DoubleLinkList<ElemType>::NodePointer p = this->head;
 
 
 	if (!p)
@@ -414,7 +411,59 @@ void MyDoubleLinkList<ElemType>::display(ostream& out) const
 			p = p->next;
 		}
 		cout << " " << p->data << endl;
+	}*/
+
+	out << "    ";
+	int n = DoubleLinkList<ElemType>::getLength();
+
+	for (int i = 0; i < n; i++)
+		cout << "\t[" << i + 1 << "]";
+	cout << endl;
+
+	if (!n)
+	{
+		out << "当前循环双链表为空！" << endl << endl;
+		return;
 	}
+	for (int i = 1; i <= n; i++)
+		if (i == 1)
+			cout << "\t --";
+		else
+			out << "--------";
+	out << endl;
+	for (int i = 1; i <= n; i++)
+		if (i == 1)
+			cout << "\t↑     ";
+		else if (i == n)
+			out << "  ↓";
+		else
+			out << "        ";
+	out << "\40" << endl;
+	typename DoubleLinkList<ElemType>::NodePointer p = this->head;
+	//cout << " \t- ";
+	while (p)
+	{
+		//out << setw(2) << p->data << "-> ";
+		out << "\t"<< p->data << "-> ";
+		p = p->next;
+		if (p == this->head)
+			break;
+	}
+	out << endl << "\t↑";
+	for (int i = 1; i < n; i++)
+	{
+		out << "↑_____|";
+		if (i == n - 1)
+			out << " |" << endl;
+	}
+	for (int i = 1; i <= n; i++)
+		if (i == 1)
+			cout << "\t|____";
+		else if (i == n)
+			out << "______|";
+		else
+			out << "________";
+	cout << endl << endl;
 }
 
 template <typename ElemType>
@@ -427,10 +476,12 @@ ostream & operator <<(ostream &out, const MyDoubleLinkList<ElemType>&oD)
 template<typename ElemType>
 void MyDoubleLinkList<ElemType>::Randborn()
 {
-	typename DoubleLinkList<ElemType>::clear();
+	if(this->head)
+		typename DoubleLinkList<ElemType>::clear();
 	int n, i;
 	typename DoubleLinkList<ElemType>::NodePointer p, s;
-	p = this->head;
+	p = NULL;
+	s = NULL;
 	n = random(2, 8);
 	cout << "用如下随机数生成循环双链表：" << endl;
 

@@ -1,4 +1,6 @@
 #include <iostream>
+#include <iomanip>
+#include <string>
 using namespace std;
 
 
@@ -11,7 +13,7 @@ using namespace std;
 #ifndef TEST_H
 #define TEST_H
 #include "test3_4.h"
-#endif
+#endif                            
 
 int main()
 {

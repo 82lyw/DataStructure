@@ -1,0 +1,4 @@
+﻿  main.cpp
+c:\users\lyw\desktop\lyw\datastructure\doublelinklist\doublelinklist\test3_4.h(134): error C2760: 语法错误: 意外的令牌“}”，预期的令牌为“;”
+c:\users\lyw\desktop\lyw\datastructure\doublelinklist\doublelinklist\test3_4.h(233): error C3861: “MyDoubleLink”: 找不到标识符
+c:\users\lyw\desktop\lyw\datastructure\doublelinklist\doublelinklist\test3_4.h(235): error C3861: “list2”: 找不到标识符

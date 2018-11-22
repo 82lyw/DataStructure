@@ -1,4 +1,1 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\IDE\VC\VCTargets\Microsoft.CppClean.targets(76,5): warning : 对路径“c:\users\lyw\desktop\lyw\datastructure\doublelinklist\x64\debug\doublelinklist.exe”的访问被拒绝。
-  main.cpp
-c:\users\lyw\desktop\lyw\datastructure\doublelinklist\doublelinklist\doublelinklist.h(279): warning C4715: “DoubleLinkList<int>::priorElem”: 不是所有的控件路径都返回值
-LINK : fatal error LNK1104: 无法打开文件“C:\Users\lyw\Desktop\lyw\DataStructure\DoubleLinkList\x64\Debug\DoubleLinkList.exe”
+﻿LINK : fatal error LNK1168: 无法打开 C:\Users\lyw\Desktop\lyw\DataStructure\DoubleLinkList\x64\Debug\DoubleLinkList.exe 进行写入

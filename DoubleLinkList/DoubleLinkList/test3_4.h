@@ -16,14 +16,14 @@ void ex3_4_1(MyDoubleLinkList<ElemType> & rec, char & continueYesNo)
 	rec.getElem(i, e);
 	if (rec.getElem(i, e))
 	{
-		cout << "你要取循环双链表的第" << i << "个结点的数据域为" << e << endl;
+		cout << "你要取循环双链表的第" << i << "个结点的数据域为：" << e << endl;
 	}
 	else
 	{
 		if (i <= 0)
-			cout << "i应为大于0的整数" << endl;
+			cout << "i应为大于0的整数！" << endl;
 		if (i > rec.getLength())
-			cout << "i已越界，无法取到该结点的数据域" << endl;
+			cout << "i已越界，无法取到该结点的数据域！" << endl;
 	}
 
 	cout << "***********************************************************" << endl << endl;
@@ -43,18 +43,17 @@ void ex3_4_2(MyDoubleLinkList<ElemType> & rec, char & continueYesNo)
 	cin >> e;
 	cout << endl;
 
-	rec.insert(i, e);
 	if (rec.insert(i, e))
 	{
 		cout << "你已经在第" << i << "个结点之前插入数据域为" << e << "的结点" << endl;
-		//cout << rec;
+		cout << rec;
 	}
 	else
 	{
 		if (rec.isEmpty())
-			cout << "循环双链表为空" << endl;
+			cout << "循环双链表为空！" << endl;
 		else
-			cout << "待插的范围越界" << endl;
+			cout << "待插的范围越界！" << endl;
 	}
 
 	cout << "***********************************************************" << endl << endl;
@@ -68,9 +67,9 @@ void ex3_4_3(MyDoubleLinkList<ElemType> & rec, char & continueYesNo)
 	cout << "*********************判断循环双链表是否为空*************************" << endl << endl;
 
 	if (rec.isEmpty())
-		cout << "当前循环双链表为空" << endl;
+		cout << "当前循环双链表为空！" << endl;
 	else
-		cout << "当前循环双链表不为空" << endl;
+		cout << "当前循环双链表不为空！" << endl;
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";
@@ -125,8 +124,14 @@ void ex3_4_6(MyDoubleLinkList<ElemType> & rec, char & continueYesNo)
 	ElemType e, prior_e;
 	cout << "请输入你想要查找结点的数据域：";
 	cin >> e;
-	rec.priorElem(e, prior_e);
-	cout << "你想查找" << e << "前驱的数据域为" << prior_e << endl;
+	if (rec.priorElem(e, prior_e))
+	{
+		cout << "你想查找" << e << "前驱的数据域为" << prior_e << endl;
+	}
+	else
+	{
+			cout<<"该节点不存在！"
+	}
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";
@@ -141,9 +146,14 @@ void ex3_4_7(MyDoubleLinkList<ElemType> & rec, char & continueYesNo)
 	ElemType e, next_e;
 	cout << "请输入你想要查找结点的数据域：";
 	cin >> e;
-	rec.nextElem(e, next_e);
-	cout << "你想查找" << e << "后继的数据域为" << next_e << endl;
-
+	if (rec.nextElem(e, next_e))
+	{
+		cout << "你想查找" << e << "后继的数据域为" << next_e << endl;
+	}
+	else
+	{
+		cout << "找不到该元素！";
+	}
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";
@@ -160,14 +170,13 @@ void ex3_4_8(MyDoubleLinkList<ElemType> & rec, char & continueYesNo)
 	cin >> e;
 	if (rec.deleteElem(e))
 	{
-		cout << "删除后的循环双链表为" << endl;
-		//cout << rec;
+		cout << "删除后的循环双链表为：" << endl;
+		cout << rec;
 	}
 	else
 	{
-		cout << "该元素不存在" << endl;
+		cout << "该元素不存在！" << endl;
 	}
-
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";
@@ -181,8 +190,9 @@ void ex3_4_9(MyDoubleLinkList<ElemType> & rec, char & continueYesNo)
 
 	DoubleLinkList<ElemType> list2;
 	cout << "另一个循环双链表赋值给当前循环双链表为：" << endl;
-	//
-	//cout<<rec;
+	list2.Randomborn();
+	rec = list2;
+	cout<<rec;
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";
@@ -208,7 +218,7 @@ void ex3_4_11(MyDoubleLinkList<ElemType> & rec, char & continueYesNo)
 	cout << "*********************随机生成循环双链表*************************" << endl << endl;
 
 	rec.Randborn();
-	//cout << list2;
+	cout << rec;
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";
@@ -220,7 +230,9 @@ void ex3_4_12(MyDoubleLinkList<ElemType> & rec, char & continueYesNo)
 {
 	cout << "*********************用已有的循环双链表初始化另一个循环双链表*************************" << endl << endl;
 
-	
+	MyDoubleLink<ElemType> list2(rec);
+	cout << "当前循环双链表初始化另一个循环双链表：" << endl;
+	cout << list2;
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";
@@ -232,11 +244,9 @@ void ex3_4_13(MyDoubleLinkList<ElemType> & rec, char & continueYesNo)
 {
 	cout << "*********************输入循环双链表*************************" << endl << endl;
 
-	//cin >> rec;
-
+	cin >> rec;
 	cout << "新输入的循环双链表如下：" << endl;
-	//cout<<rec
-	
+	cout << rec;
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";
