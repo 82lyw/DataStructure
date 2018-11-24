@@ -130,7 +130,7 @@ void ex3_4_6(MyDoubleLinkList<ElemType> & rec, char & continueYesNo)
 	}
 	else
 	{
-			cout<<"该节点不存在！"
+		cout << "该节点不存在！";
 	}
 
 	cout << "***********************************************************" << endl << endl;
@@ -188,9 +188,9 @@ void ex3_4_9(MyDoubleLinkList<ElemType> & rec, char & continueYesNo)
 {
 	cout << "*********************把一个循环双链表赋值给另一个循环双链表*************************" << endl << endl;
 
-	DoubleLinkList<ElemType> list2;
+	MyDoubleLinkList<ElemType> list2;
 	cout << "另一个循环双链表赋值给当前循环双链表为：" << endl;
-	list2.Randomborn();
+	list2.Randborn();
 	rec = list2;
 	cout<<rec;
 
@@ -230,7 +230,7 @@ void ex3_4_12(MyDoubleLinkList<ElemType> & rec, char & continueYesNo)
 {
 	cout << "*********************用已有的循环双链表初始化另一个循环双链表*************************" << endl << endl;
 
-	MyDoubleLink<ElemType> list2(rec);
+	MyDoubleLinkList<ElemType> list2(rec);
 	cout << "当前循环双链表初始化另一个循环双链表：" << endl;
 	cout << list2;
 

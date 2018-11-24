@@ -1,8 +1,8 @@
 template <typename ElemType>
-void displayCurrentObject(MySqStack<ElemType> stack1)
+void displayCurrentObject(MySqStack<ElemType> &stack1)
 {
 	cout << endl;
-	/*cout << stack1;*/
+	cout << stack1;
 }
 
 template <typename ElemType>
@@ -15,7 +15,7 @@ void ex4_1_1(MySqStack<ElemType> & stack1, char & continueYesNo)
 	cin >> e;
 	stack1.push(e);
 	cout << "压入元素" << e << "后，新顺序栈如下所示：" << endl;
-	//cout << stack1;
+	cout << stack1;
 	
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";
@@ -31,8 +31,8 @@ void ex4_1_2(MySqStack<ElemType> & stack1, char & continueYesNo)
 	if (stack1.pop(e))
 	{
 		cout << "弹出的栈顶元素为：" << e << endl << endl;
-		cout << "弹出后顺序栈中的元素为：";
-		//cout << stack1;
+		cout << "弹出后顺序栈中的元素为："<<endl;
+		cout << stack1;
 	}
 	else
 	{
@@ -53,8 +53,8 @@ void ex4_1_3(MySqStack<ElemType> & stack1, char & continueYesNo)
 	if (stack1.getTop(e))
 	{
 		cout << "读栈顶元素为：" << e << endl << endl;
-		cout << "读栈顶元素后，顺序栈中的元素为：";
-		//cout << stack1;
+		cout << "读栈顶元素后，顺序栈中的元素为："<<endl;
+		cout << stack1;
 	}
 	else
 	{
@@ -100,10 +100,10 @@ void ex4_1_6(MySqStack<ElemType> & stack1, char & continueYesNo)
 	cout << "*********************把一个顺序栈赋值给另一个顺序栈*************************" << endl << endl;
 
 	MySqStack<ElemType> stack2;
-	//stack2.
+	stack2.randStack();
 	//stack1 = stack2;
 	cout << "另一个顺序栈赋值给当前顺序栈：" << endl;
-	//cout << stack1;
+	//stack1.display();
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";
@@ -132,7 +132,8 @@ void ex4_1_8(MySqStack<ElemType> & stack1, char & continueYesNo)
 {
 	cout << "*********************随机生成顺序栈*************************" << endl << endl;
 
-
+	stack1.randStack();
+	cout << stack1;
 
 
 	cout << "***********************************************************" << endl << endl;
@@ -147,7 +148,7 @@ void ex4_1_9(MySqStack<ElemType> & stack1, char & continueYesNo)
 
 	MySqStack<ElemType> stack2(stack1);
 	cout << "当前顺序栈初始化另一个顺序栈为：" << endl;
-	//cout << stack1;
+	cout << stack1;
 
 
 	cout << "***********************************************************" << endl << endl;

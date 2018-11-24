@@ -54,6 +54,12 @@ int SqStack<ElemType>::getLength()
 	return top - base;
 }
 
+template <typename ElemType>
+int SqStack<ElemType>::getStackSize()
+{
+	return StackSize;
+}
+
 template<typename ElemType>
 int SqStack<ElemType>::getTop(ElemType& e)
 {
@@ -175,44 +181,51 @@ class MySqStack : public SqStack<ElemType>
 public:
 	MySqStack(ElemType *p, int nsize);
 	MySqStack() {}
-	void display();
+	void display(ostream & out);
 	//void read();
-	//void randStack();
+	void randStack();
 };
 	                                                                             
 template<typename ElemType>
-void MySqStack<ElemType>::display()
+void MySqStack<ElemType>::display(ostream & out)
 {
 	if (typename SqStack<ElemType>::isEmpty())
-		cout << "空" << endl;
+		cout << "当前顺序栈为空" << endl;
 	else
 	{
 		int i;
 		int length = typename SqStack<ElemType>::getLength();
 		for (i = 0; i < length; i++)
-			cout << "  " << *(this->base + i) << "  ";
+			cout << " \t" << *(this->base + i) ;
 		cout << endl;
 		for (i = 0; i <= length; ++i)
 		{
 			if (i == 0)
-				cout << "  ↑";
+				cout << "\t↑";
 			else
 				if (i == length)
-					cout << "  ↑" << endl;
+					cout << "\t↑" << endl;
 				else
-					cout << "      ";
+					cout << "\t";
 		}
 		for (i = 0; i <= length; ++i)
 		{
 			if (i == 0)
-				cout << "base";
+				cout << "\t base";
 			else if (i == length)
-				cout << " top";
+				cout << "\t top";
 			else
-				cout << "      ";
+				cout << "\t";
 		}
 		cout << endl;
 	}
+}
+
+template<typename ElemType>
+ostream & operator <<(ostream & out, MySqStack<ElemType> & s)
+{
+	s.display(out);
+	return out;
 }
 
 template<typename ElemType>
@@ -231,25 +244,22 @@ MySqStack<ElemType>::MySqStack(ElemType *p, int nsize)
 	this->top = this->base + n;
 }
 
-/*
+
 template<typename ElemType>
 void MySqStack<ElemType>::randStack()
 {
 	int a = random(2, 6);
-	ElemType *elemS;
+	ElemType e;
 	cout << "随机生成顺序栈中的一些元素如下：" << endl;
 	for (int i = 0; i < a; i++)
 	{
-		elemS[i] = random(1, 100);
-		cout << elemS[i] << "  ";
+		e= random(1, 100);
+		typename SqStack<ElemType>::push(e);
+		cout << e << "  ";
 	}
-	for (int i = 0; i < a; i++)
-	{
-		push(elemS[i]);
-	}
+	cout << endl;
 	cout << "随机生成的顺序栈（采用顺序存储）如下：" << endl;
 }
-*/
 
 
 

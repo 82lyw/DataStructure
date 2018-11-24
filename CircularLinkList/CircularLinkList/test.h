@@ -1,5 +1,5 @@
 template <typename ElemType>
-void displayCurrentObject(MyCircularLinkList<ElemType> rec)
+void displayCurrentObject(MyCircularLinkList<ElemType> & rec)
 {
 	cout << endl;
 	cout << rec;
@@ -51,9 +51,15 @@ void ex3_3_3(MyCircularLinkList<ElemType> & rec, char & continueYesNo)
 	ElemType e;
 	cout << "请输入欲删除的结点序号：";
 	cin >> i;
-	rec.deleteElem(i, e);
-	cout << endl << "删除第4个结点" << e << "后，循环单链表为：";
-	cout << rec;
+	if (rec.deleteElem(i, e))
+	{
+		cout << endl << "删除第"<<i<<"个结点" << e << "后，循环单链表为：";
+		cout << rec;
+	}
+	else
+	{
+		cout << "找不到当前结点！" << endl;
+	}
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";
@@ -66,7 +72,7 @@ void ex3_3_4(MyCircularLinkList<ElemType> & rec, char & continueYesNo)
 	cout << "*********************把一个循环单链表赋值给另一个循环单链表*************************" << endl << endl;
 
 	MyCircularLinkList<ElemType> list2;
-	cin >> list2;
+	list2.Randborn();
 	rec = list2;
 	cout << "另一个循环单链表赋值赋值给当前循环单链表：" << endl;
 	cout << rec;
@@ -128,7 +134,7 @@ void ex3_3_8(MyCircularLinkList<ElemType> & rec, char & continueYesNo)
 	cout << "*********************输入循环单链表*************************" << endl << endl;
 
 	cin >> rec;
-	cout << rec;
+ 	cout << rec;
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";
@@ -141,22 +147,21 @@ void ex3_3_9(MyCircularLinkList<ElemType> & rec, char & continueYesNo)
 	cout << "*********************约瑟夫（Josephus）环出列（循环单链表的应用）*************************" << endl << endl;
 
 	cout << "当前的约瑟夫环为：" << endl;
+	cout << rec;
 
-
+	int a, b;
 	cout << "请输入起始的结点号：";
-	//cin>>
+	cin >> a;
 	cout << "\t间隔间隔结点数：";
-	//cin>>
+	cin >> b;
 
 	int i;
-	int n = 10;
-	for (i = 0; i < n; i++)
+	int n = rec.getLength();
+	for (i = 1; i <= n; i++)
 	{
 		cout << "第" << i << "次出列的结点为1，出列后的约瑟夫环为："<<endl;
-		//cout << ;
+		cout << rec;
 	}
-
-
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";

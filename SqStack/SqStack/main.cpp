@@ -17,7 +17,8 @@ using std::cin;
 
 int main()
 {
-	MySqStack<char> stack1;
+	MySqStack<int> stack1;
+	MySqStack<char> stack2;
 
 	int choose;
 	char continueYesNo = 'N';
@@ -46,10 +47,10 @@ int main()
 		displayCurrentObject(stack1);
 		cout << "///////////////////////////////////////////////////////////////////////////////" << endl << endl;
 
-		cout << "请选择你要操作的代码（1-15）号码：";
+		cout << "请选择你要操作的代码（1-11）号码：";
 		cin >> choose;
 
-		if (choose > 0 && choose < 13)
+		if (choose > 0 && choose < 12)
 		{
 			system("cls");
 			displayCurrentObject(stack1);

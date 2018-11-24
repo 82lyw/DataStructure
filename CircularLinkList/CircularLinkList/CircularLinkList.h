@@ -37,7 +37,7 @@ public:
 	bool isEmpty();
 
 	//获取循环单链表的长度
-	int getLength();
+	int getLength()const;
 
 	//把循环单链表的头指针后移至第i个结点
 	Status moveHead(int i);
@@ -57,17 +57,42 @@ public:
 //protected:
 public:
 	NodePointer head;
-	int n;
 };
 
 template <typename ElemType>
 void CircularLinkList<ElemType>::clear()
 {
-	if (head == NULL)
+	/*if (!head)
 		return;
 	
+	NodePointer p,r;
+	p = head;
+	while ( p!= head);
+	{
+		r = p;
+		delete r;
+		p = p->next;
+	}
+	r = p;
+	delete r;
+	delete head;
+	head = NULL;*/
+
+	/*NodePointer p;
+	while (head != head->next)
+	{
+		p = head->next;
+		head->next = p->next;
+		delete p;
+	}
+	delete head;
+	head = NULL;*/
+
+
+	if (!head)
+		return;
 	NodePointer p;
-	while (head != head->next);
+	while (head != head->next)
 	{
 		p = head->next;
 		head->next = p->next;
@@ -75,6 +100,18 @@ void CircularLinkList<ElemType>::clear()
 	}
 	delete head;
 	head = NULL;
+
+	//NodePointer p, r;
+	//p = head;
+	//while (p->next!= head);
+	//{
+	//	r = p;
+	//	delete r;
+	//	p = p->next;
+	//}
+	//delete p;
+	////delete head;
+	//head = NULL;
 }
 
 template <typename ElemType>
@@ -85,6 +122,9 @@ Status CircularLinkList<ElemType>::deleteElem(int i, ElemType & e)
 	NodePointer p = head;
 
 	if (!head)
+		return ERROR;
+	
+	if (i > getLength())
 		return ERROR;
 
 	while (j < i)
@@ -120,10 +160,11 @@ bool CircularLinkList<ElemType>::isEmpty()
 }
 
 template <typename ElemType>
-int CircularLinkList<ElemType>::getLength()
+int CircularLinkList<ElemType>::getLength()const
 {
 	NodePointer p = head;
 	int i = 1;
+	int n;
 	if (!head)
 	{
 		n=0;
@@ -133,7 +174,7 @@ int CircularLinkList<ElemType>::getLength()
 		while (p->next != head)
 		{
 			i++;
-			p->next;
+			p=p->next;
 		}
 		n = i;
 	}
@@ -182,10 +223,13 @@ CircularLinkList<ElemType> CircularLinkList<ElemType>::operator=(CircularLinkLis
 
 			p = s;
 			rp = rp->next;
+			/*if (rp == rightL.head)
+				break;*/
 		}
 
 		if (head)
 			p->next = head;
+
 	}
 	return *this;
 }
@@ -207,15 +251,13 @@ CircularLinkList<ElemType>::CircularLinkList(const CircularLinkList<ElemType> & 
 {
 	NodePointer p;
 	NodePointer op = otherL.head;
-
 	NodePointer s;
 	head = p = NULL;
 
 	while (op)
 	{
-		s = new LinkNode [10];
+		s = new (LinkNode);
 		assert(s != 0);
-
 		s->data = op->data;
 
 		if (!head)
@@ -226,8 +268,11 @@ CircularLinkList<ElemType>::CircularLinkList(const CircularLinkList<ElemType> & 
 		p = s;
 
 		op = op->next;
-
-		if (head)
-			p->next = head;
+		if (op == otherL.head)
+		{
+			break;
+		}
 	}
+	if (head)
+		p->next = head;
 }

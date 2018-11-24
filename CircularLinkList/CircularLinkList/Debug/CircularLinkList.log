@@ -1,3 +1,2 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\IDE\VC\VCTargets\Microsoft.CppClean.targets(76,5): warning : 对路径“c:\users\lyw\desktop\lyw\datastructure\circularlinklist\debug\circularlinklist.exe”的访问被拒绝。
-  main.cpp
-LINK : fatal error LNK1104: 无法打开文件“C:\Users\lyw\Desktop\lyw\DataStructure\CircularLinkList\Debug\CircularLinkList.exe”
+﻿  main.cpp
+  CircularLinkList.vcxproj -> C:\Users\lyw\Desktop\lyw\DataStructure\CircularLinkList\Debug\CircularLinkList.exe

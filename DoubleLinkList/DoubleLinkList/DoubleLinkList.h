@@ -231,7 +231,7 @@ template<typename ElemType>
 DoubleLinkList<ElemType> DoubleLinkList<ElemType>::operator=(DoubleLinkList<ElemType> rightL)
 {
 	NodePointer p = NULL;
-	NodePointer rp = rightL.getHead;
+	NodePointer rp = rightL.getHead();
 	NodePointer s;
 
 	if (this != &rightL)
@@ -392,26 +392,6 @@ template <typename ElemType>
 void MyDoubleLinkList<ElemType>::display(ostream& out) const
 {
 	//输出操作
-	/*typename DoubleLinkList<ElemType>::NodePointer p = this->head;
-
-
-	if (!p)
-	{
-		cout << "当前循环双链表为空" << endl << endl;
-	}
-	else
-	{
-		cout << "当前的循环双链表为：" << endl;
-		for (int i = 1; i <= this->getLength(); i++)
-			cout << "[ " << i << "] \t";
-		cout << endl;
-		while (p->next != this->head)
-		{
-			cout << " " << p->data << "->\t";
-			p = p->next;
-		}
-		cout << " " << p->data << endl;
-	}*/
 
 	out << "    ";
 	int n = DoubleLinkList<ElemType>::getLength();

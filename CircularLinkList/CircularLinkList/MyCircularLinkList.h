@@ -28,13 +28,14 @@ void MyCircularLinkList<ElemType>::read(istream& in)
 	typename CircularLinkList<ElemType>::clear();
 	int i;
 	typename CircularLinkList<ElemType>::NodePointer p, s;
-	p = this->head;
+	p = this->head=NULL;
 	//p = NULL;
 	cout << "请输入循环单链表中结点的个数：";
-	in >> this->n;
+	int n;
+	in >> n;
 	cout << "请输入循环单链表中的结点：";
 
-	for (i = 0; i < this->n;i++)
+	for (i = 0; i < n;i++)
 	{
 		s = new typename CircularLinkList<ElemType>::LinkNode;
 		assert(s != 0);
@@ -48,6 +49,9 @@ void MyCircularLinkList<ElemType>::read(istream& in)
 			p->next = NULL;
 	}
 	p->next = this->head;
+
+	cout << "\n\t已经在当前循环单链表输入了" << n << "个结点" << endl << endl;
+	cout << "输入的循环单链表如下:" << endl;
 }
 
 //功能：重载输入运算符的定义
@@ -63,6 +67,7 @@ template <typename ElemType>
 void MyCircularLinkList<ElemType>::display(ostream& out) const
 {
 	//输出操作
+	int n = CircularLinkList<ElemType>::getLength();
 	typename CircularLinkList<ElemType>::NodePointer p = this->head;
 
 	if (!p)
@@ -73,31 +78,33 @@ void MyCircularLinkList<ElemType>::display(ostream& out) const
 	else
 	{
 		cout << "当前的循环单链表为：" << endl;
-		for (int i = 1; i <= this->n; i++)
+		for (int i = 1; i <= n; i++)
 		{
-			std::cout << std::setiosflags(std::ios::left)<<std::setfill(' ') << std::setw(4)<< "[" << i << "]  " ;
+			out<< "\t[" << i << "]" ;
 		}
 		cout << endl;
-		while (p->next != this->head)
+		//while (p!= this->head)
+		while(p)
 		{
-			std::cout << std::setiosflags(std::ios::right) << std::setfill(' ') << std::setw(4)<< " " << p->data << "->" ;
+			out<<"\t" << p->data << "->" ;
 			p = p->next;
+			if (p == this->head)
+				break;
 		}
-		std::cout << std::setiosflags(std::ios::right) << std::setfill(' ') << std::setw(4)<< " " << p->data << std::endl;
-		for (int i = 0; i < this->n; i++)
+		out << endl;
+		for (int i = 0; i < n; i++)
 		{
 			if (i == 0)
 			{
-				std::cout << std::setiosflags(std::ios::right) << "     ↑____";
+				out<< "\t↑____";
 			}
-			else if (i == this->n - 1)
+			else if (i == n - 1)
 			{
-				std::cout << std::setiosflags(std::ios::right) << std::setfill('_') << std::setw(10);
-				std::cout << "|";
+				out << "______|";
 			}
 			else
 			{
-				std::cout << std::setiosflags(std::ios::left) << std::setfill('_') << std::setw(7) << "__";
+				out << "________";
 			}
 		}
 	}
@@ -115,14 +122,14 @@ template<typename ElemType>
 void MyCircularLinkList<ElemType>::Randborn()
 {
 	typename CircularLinkList<ElemType>::clear();
-	//int n, i;
 	int i;
 	typename CircularLinkList<ElemType>::NodePointer p, s;
 	p = this->head;
-	this->n = random(2, 8);
+	int n;
+	n = random(2, 8);
 	cout << "用如下随机数生成循环单链表：" << endl;
 	
-	for (i = 0; i < this->n;i++)
+	for (i = 0; i < n;i++)
 	{
 		s = new typename CircularLinkList<ElemType>::LinkNode;
 		assert(s != 0);
@@ -138,4 +145,6 @@ void MyCircularLinkList<ElemType>::Randborn()
 	}
 	p->next = this->head;
 	cout << endl;
+
+	cout << "随机生成的循环单链表如下:" << endl;
 }
