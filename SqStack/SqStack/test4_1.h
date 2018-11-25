@@ -159,9 +159,52 @@ void ex4_1_9(MySqStack<ElemType> & stack1, char & continueYesNo)
 template <typename ElemType>
 void ex4_1_10(MySqStack<ElemType> & stack1, char & continueYesNo)
 {
-	cout << "*********************表达式求解*************************" << endl << endl;
+	//cout << "*********************表达式求解*************************" << endl << endl;
 
+	int select;
+	char continueSelect = 'n';
+	while (1)
+	{
+		select = 0;
+		system("cls");
+		cout << "*********************表达式求解（顺序栈的应用）*************************" << endl << endl;
+		cout << endl;
 
+		cout << "\t 1.中缀表达式转换为后缀表达式" << endl;
+		cout << "\t 2.后缀表达式的计算" << endl;
+		cout << "\t 3.输入中缀表达式" << endl;
+
+		cout << "其他.结束" << endl << endl;
+
+		cout << "///////////////////////////////////////////////////////////////////////////////" << endl;
+		//displayCurrentObject(list_1);
+		cout << "///////////////////////////////////////////////////////////////////////////////" << endl << endl;
+
+		cout << "请选择你要操作的代码（1-3）号码：";
+
+		cin >> select;
+
+		if (select > 0 && select < 4)
+		{
+			system("cls");
+			rec.displayS();
+		}
+
+		switch (select)
+		{
+		case 1:ex4_1_10_1(rec, continueSelect);
+			break;
+		case 2:ex4_1_10_2(rec, continueSelect);
+			break;
+		case 3:ex4_1_10_3(rec, continueSelect);
+			break;
+			break;
+		default:cout << "\n 你选择了结束。" << endl << endl;
+			return;
+		}
+		if (continueSelect == 'n' || continueSelect == 'n')
+			break;
+	}
 
 
 	cout << "***********************************************************" << endl << endl;
@@ -170,11 +213,92 @@ void ex4_1_10(MySqStack<ElemType> & stack1, char & continueYesNo)
 }
 
 template <typename ElemType>
+void ex4_1_10_1(MySqStack<ElemType> & stack1, char & continueSelect)
+{
+	cout << "**********************中缀表达式转换为后缀表达式 ************************" << endl << endl;
+
+	
+
+	cout << "***********************************************************" << endl << endl;
+	cout << "还继续吗（Y.继续\tN.结束）？";
+	cin >> continueSelect;
+}
+
+template <typename ElemType>
+void ex4_1_10_2(MySqStack<ElemType> & stack1, char & continueSelect)
+{
+	cout << "**********************后缀表达式的计算************************" << endl << endl;
+
+
+
+	cout << "***********************************************************" << endl << endl;
+	cout << "还继续吗（Y.继续\tN.结束）？";
+	cin >> continueSelect;
+}
+
+template <typename ElemType>
+void ex4_1_10_3(MySqStack<ElemType> & stack1, char & continueSelect)
+{
+	cout << "**********************输入中缀表达式************************" << endl << endl;
+
+
+
+	cout << "***********************************************************" << endl << endl;
+	cout << "还继续吗（Y.继续\tN.结束）？";
+	cin >> continueSelect;
+}
+
+template <typename ElemType>
 void ex4_1_11(MySqStack<ElemType> & stack1, char & continueYesNo)
 {
-	cout << "*********************迷宫求解*************************" << endl << endl;
+	//cout << "*********************迷宫求解*************************" << endl << endl;
 
+	int select;
+	char continueSelect = 'n';
+	while (1)
+	{
+		select = 0;
+		system("cls");
+		cout << "*********************迷宫求解（顺序栈的应用）*************************" << endl << endl;
+		cout << endl;
 
+		cout << "\t 1.走迷宫" << endl;
+		cout << "\t 2.把一个迷宫赋值给另一个迷宫" << endl;
+		cout << "\t 3.随机生成迷宫" << endl;
+		cout << "\t 4.输入迷宫" << endl;
+
+		cout << "其他.结束" << endl << endl;
+
+		cout << "///////////////////////////////////////////////////////////////////////////////" << endl;
+		//displayCurrentObject(list_1);
+		cout << "///////////////////////////////////////////////////////////////////////////////" << endl << endl;
+
+		cout << "请选择你要操作的代码（1-4）号码：";
+
+		cin >> select;
+
+		if (select > 0 && select < 5)
+		{
+			system("cls");
+			rec.displayS();
+		}
+
+		switch (select)
+		{
+		case 1:ex4_1_11_1(rec, continueSelect);
+			break;
+		case 2:ex4_1_11_2(rec, continueSelect);
+			break;
+		case 3:ex4_1_11_3(rec, continueSelect);
+			break;
+		case 4:ex4_1_11_4(rec,continueSelect)
+			break;
+		default:cout << "\n 你选择了结束。" << endl << endl;
+			return;
+		}
+		if (continueSelect == 'n' || continueSelect == 'n')
+			break;
+	}
 
 
 	cout << "***********************************************************" << endl << endl;
@@ -182,4 +306,50 @@ void ex4_1_11(MySqStack<ElemType> & stack1, char & continueYesNo)
 	cin >> continueYesNo;
 }
 
+template <typename ElemType>
+void ex4_1_11_1(MySqStack<ElemType> & stack1, char & continueSelect)
+{
+	cout << "**********************走迷宫************************" << endl << endl;
 
+
+
+	cout << "***********************************************************" << endl << endl;
+	cout << "还继续吗（Y.继续\tN.结束）？";
+	cin >> continueSelect;
+}
+
+template <typename ElemType>
+void ex4_1_11_2(MySqStack<ElemType> & stack1, char & continueSelect)
+{
+	cout << "**********************把一个迷宫赋值给另一个迷宫************************" << endl << endl;
+
+
+
+	cout << "***********************************************************" << endl << endl;
+	cout << "还继续吗（Y.继续\tN.结束）？";
+	cin >> continueSelect;
+}
+
+template <typename ElemType>
+void ex4_1_11_3(MySqStack<ElemType> & stack1, char & continueSelect)
+{
+	cout << "**********************随机生成迷宫************************" << endl << endl;
+
+
+
+	cout << "***********************************************************" << endl << endl;
+	cout << "还继续吗（Y.继续\tN.结束）？";
+	cin >> continueSelect;
+}
+
+template <typename ElemType>
+void ex4_1_11_4(MySqStack<ElemType> & stack1, char & continueSelect)
+{
+	cout << "**********************输入迷宫************************" << endl << endl;
+
+
+
+	cout << "***********************************************************" << endl << endl;
+	cout << "还继续吗（Y.继续\tN.结束）？";
+	cin >> continueSelect;
+}
