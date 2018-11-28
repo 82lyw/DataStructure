@@ -6,6 +6,8 @@
 #include "C:\Users\lyw\Desktop\lyw\DataStructure\head.h"
 #endif
 
+#define random(a,b) (rand()%(b-a+1)+a);
+
 template<typename ElemType>
 class SqQueue
 {
@@ -70,8 +72,10 @@ Status SqQueue<ElemType>::deQueue(ElemType & e)
 template<typename ElemType>
 Status SqQueue<ElemType>::enQueue(ElemType e)
 {
+	/*
 	if (isFull())
 		return ERROR;
+		*/
 	base[rear] = e;
 	rear = (rear + 1) % queueSize;
 	return OK;
@@ -96,6 +100,12 @@ template<typename ElemType>
 bool SqQueue<ElemType>::isEmpty()
 {
 	return front == rear ? true : false;
+}
+
+template<typename ElemType>
+bool SqQueue<ElemType>::isFull()
+{
+	return true;
 }
 
 template<typename ElemType>
@@ -158,6 +168,7 @@ public:
 	MySqQueue(ElemType *p, int nsize, int z);
 	MySqQueue() {};
 	void display();
+	void RandQ();
 };
 
 template<typename ElemType>
@@ -280,4 +291,20 @@ void MySqQueue<ElemType>::display()
 		}
 		cout << endl;
 	}
+}
+
+template<typename ElemType>
+void MySqQueue<ElemType>::RandQ()
+{
+	int n = random(2, 8);
+	int e;
+	cout << "用如下随机数生出循环顺序队列：" << endl;
+	for (int i = 0; i < n; i++)
+	{
+		e = random(1, 99);
+		cout << e << "  ";
+		typename SqQueue<ElemType>::enQueue(e);
+	}
+	cout << endl;
+	cout << "随机生成的循环顺序队列如下：" << endl;
 }
