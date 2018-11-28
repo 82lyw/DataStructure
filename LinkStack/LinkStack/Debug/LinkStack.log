@@ -1,3 +1,2 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\IDE\VC\VCTargets\Microsoft.CppClean.targets(76,5): warning : 对路径“c:\users\lyw\desktop\project\datastructure\c++\linkstack\debug\linkstack.exe”的访问被拒绝。
-  main.cpp
-LINK : fatal error LNK1104: 无法打开文件“C:\Users\lyw\Desktop\project\DataStructure\c++\LinkStack\Debug\LinkStack.exe”
+﻿  main.cpp
+LINK : fatal error LNK1168: 无法打开 C:\Users\lyw\Desktop\lyw\DataStructure\LinkStack\Debug\LinkStack.exe 进行写入

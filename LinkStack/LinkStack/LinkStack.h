@@ -11,7 +11,7 @@
 template<typename ElemType>
 class LinkStack
 {
-private:
+public:
 	class LinkNode
 	{
 	public:
@@ -99,7 +99,7 @@ bool LinkStack<ElemType>::isEmpty()
 template<typename ElemType>
 LinkStack<ElemType> LinkStack<ElemType>::operator=(LinkStack<ElemType> rightS)
 {
-	NodePointer p;
+	NodePointer p=NULL;
 	NodePointer rp = rightS.top;
 	NodePointer s;
 
@@ -135,7 +135,7 @@ Status LinkStack<ElemType>::pop(ElemType & e)
 		return ERROR;
 	e = top->data;
 	top = top->next;
-	delete e;
+	delete s;
 	return OK;
 }
 
@@ -218,18 +218,17 @@ template <typename ElemType>
 void MyLinkStack<ElemType>::RandStack()
 {
 	cout << "依次在链栈的前面插入：" << endl;
-	int n,i;
-	n= random(2, 5);
-	int e;
-	for (i = 0; i < n; n++)
+	int n = random(2, 5);
+	ElemType *elem = new ElemType[10];
+
+	for (int i = 0; i < n; i++)
 	{
-		e = random(1, 99);
-		typename LinkStack<ElemType>::push(e);
-		cout << e << "  ";
+		elem[i] = random(1, 99);
+		cout << elem[i] << "  ";
+		typename LinkStack<ElemType>::push(elem[i]);
 	}
 	cout << endl;
 	cout << "随机生成的链栈如下：" << endl;
-
 
 }
 
@@ -248,7 +247,7 @@ void MyLinkStack<ElemType>::display(ostream & out)
 		out << "\t" << p->data << "->";
 		p = p->next;
 	}
-	out << "\t↑" << endl;
+	out << "\n\t↑" << endl;
 	out << "\t top" << endl;
 }
 
