@@ -6,10 +6,12 @@
 #include "C:\Users\lyw\Desktop\lyw\DataStructure\head.h"
 #endif
 
+#define random(a,b) (rand()%(b-a+1)+a);
+
 template<typename ElemType>
 class LinkQueue
 {
-private:
+public:
 	class LinkNode
 	{
 	public:

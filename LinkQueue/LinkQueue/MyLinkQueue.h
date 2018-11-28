@@ -2,6 +2,7 @@
 #define LinkQueue_H
 #include "LinkQueue.h"
 #endif
+
 #include <iomanip>
 #include "iostream"
 using namespace std;
@@ -12,7 +13,7 @@ class MyLinkQueue :public LinkQueue<ElemType>
 public:
 	//void read(istream& in);
 	void display(ostream& out);
-	void randLinkQ(MyLinkQueue<ElemType>& otherLinkQ);
+	void randLinkQ();
 };
 template <typename ElemType>
 istream& operator>>(istream& in, MyLinkQueue<ElemType>& iL)
@@ -23,17 +24,17 @@ istream& operator>>(istream& in, MyLinkQueue<ElemType>& iL)
 template<typename ElemType>
 void MyLinkQueue<ElemType>::display(ostream& out)
 {
-	NodePointer t = front;
-	int len = getLength();
-	if (!front)
+	typename LinkQueue<ElemType>::NodePointer t = this->front;
+	int len = typename LinkQueue<ElemType>::getLength();
+	if (!this->front)
 		return;
 	out << "\t";
-	while (t != rear)
+	while (t != this->rear)
 	{
 		out << setw(2) << t->data << "->";
 		t = t->next;
 	}
-	if (rear == t)
+	if (this->rear == t)
 		out << setw(2) << t->data;
 	out << endl;
 
@@ -50,16 +51,19 @@ ostream& operator<<(ostream& out, MyLinkQueue<ElemType>& oL)
 }
 
 template<typename ElemType>
-void MyLinkQueue<ElemType>::randLinkQ(MyLinkQueue<ElemType>& otherLinkQ)
+void MyLinkQueue<ElemType>::randLinkQ()
 {
 	int i, n;
 	ElemType e;
-	clear();
-	srand((unsigned)time(NULL));
-	n = rand() % 8 + 1;
+	typename LinkQueue<ElemType>::clear();
+	n = random(2,8);
+	cout << "有如下随机数生成非循环链队：" << endl;
 	for (i = 0; i < n; i++)
 	{
-		e = rand() % 100 + 1;
-		otherLinkQ.enQueue(e);
+		e = random(1,99);
+		cout << e<<"  ";
+		typename LinkQueue<ElemType>::enQueue(e);
 	}
+	cout << endl;
+	cout << "随机生成的非循环链队如下：" << endl;
 }

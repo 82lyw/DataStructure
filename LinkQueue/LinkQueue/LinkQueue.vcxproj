@@ -145,7 +145,7 @@
   <ItemGroup>
     <ClInclude Include="LinkQueue.h" />
     <ClInclude Include="MyLinkQueue.h" />
-    <ClInclude Include="test.h" />
+    <ClInclude Include="test5_2.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />

@@ -21,7 +21,7 @@
     <ClInclude Include="MyLinkQueue.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="test.h">
+    <ClInclude Include="test5_2.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
