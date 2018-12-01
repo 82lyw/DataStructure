@@ -146,6 +146,7 @@
     <ClInclude Include="MyExpress.h" />
     <ClInclude Include="SqStack.h" />
     <ClInclude Include="test4_1.h" />
+    <ClInclude Include="MazeSolution.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />

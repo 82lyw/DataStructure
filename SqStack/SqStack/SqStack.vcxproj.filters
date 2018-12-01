@@ -24,6 +24,9 @@
     <ClInclude Include="test4_1.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="MazeSolution.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

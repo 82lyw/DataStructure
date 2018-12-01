@@ -178,8 +178,7 @@ void ex4_1_10(MySqStack<ElemType> & stack1, char & continueYesNo)
 		cout << "其他.结束" << endl << endl;
 
 		cout << "///////////////////////////////////////////////////////////////////////////////" << endl;
-		
-		if (midS)
+		if (midS == NULL)
 		{
 			cout << "当前中缀表达式为空！" << endl;
 		}
@@ -208,12 +207,11 @@ void ex4_1_10(MySqStack<ElemType> & stack1, char & continueYesNo)
 
 		switch (select)
 		{
-		/*case 1:ex4_1_10_1(midS, continueSelect);
+		case 1:ex4_1_10_1(stack1, continueSelect,midS);
 			break;
-		case 2:ex4_1_10_2(midS, continueSelect);
+		case 2:ex4_1_10_2(stack1, continueSelect,midS);
 			break;
-		case 3:ex4_1_10_3(midS, continueSelect);*/
-			break;
+		case 3:ex4_1_10_3(stack1, continueSelect,midS);
 			break;
 		default:cout << "\n 你选择了结束。" << endl << endl;
 			return;
@@ -229,14 +227,15 @@ void ex4_1_10(MySqStack<ElemType> & stack1, char & continueYesNo)
 }
 
 template <typename ElemType>
-void ex4_1_10_1(char & midS, char & continueSelect)
+void ex4_1_10_1(MySqStack<ElemType> & stack1, char & continueSelect, char(&midS)[100])
 {
 	cout << "**********************中缀表达式转换为后缀表达式 ************************" << endl << endl;
 
-	/*char suffixS[100];
+	char suffixS[100];
 	transform(midS, suffixS);
 	cout << "当前中缀表达式对应的后缀表达式为：";
-	cout << suffixS;*/
+	cout << suffixS;
+	cout << endl;
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";
@@ -244,14 +243,16 @@ void ex4_1_10_1(char & midS, char & continueSelect)
 }
 
 template <typename ElemType>
-void ex4_1_10_2(char & midS, char & continueSelect)
+void ex4_1_10_2(MySqStack<ElemType> & stack1, char & continueSelect, char (&midS)[100])
 {
 	cout << "**********************后缀表达式的计算************************" << endl << endl;
 
-	/*char suffixS[100];
+	//cout << "请输入一个中缀表达式：";
+	//cin >> midS;
+	char suffixS[100];
 	transform(midS, suffixS);
 	double result = evaluation(suffixS);
-	cout << "当前后缀表达式"<<suffixS<<"的结果是"<<result;*/
+	cout << "当前后缀表达式" << suffixS << "的结果是" << result << endl;
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";
@@ -259,10 +260,11 @@ void ex4_1_10_2(char & midS, char & continueSelect)
 }
 
 template <typename ElemType>
-void ex4_1_10_3(char & midS, char & continueSelect)
+void ex4_1_10_3(MySqStack<ElemType> & stack1, char & continueSelect, char(&midS)[100])
 {
 	cout << "**********************输入中缀表达式************************" << endl << endl;
 
+	//char midS[100];
 	cout << "请输入一个中缀表达式：";
 	cin >> midS;
 
