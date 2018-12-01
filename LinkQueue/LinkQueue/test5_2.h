@@ -91,7 +91,7 @@ void ex5_1_6(MyLinkQueue<ElemType> & Q1, char & continueYesNo)
 	cout << "*********************把一个非循环链队赋值给另一个非循环链队*************************" << endl << endl;
 
 	cout << "另一个非循环链队赋值给当前非循环链队为：" << endl;
-	MyLinkQueue<ElemType> Q2;
+	MyLinkQueue<int> Q2;
 	Q2.randLinkQ();
 	cout << Q2;
 	Q1 = Q2;
@@ -137,10 +137,9 @@ void ex5_1_9(MyLinkQueue<ElemType> & Q1, char & continueYesNo)
 {
 	cout << "*********************用已有的非循环链队初始化另一个新非循环链队*************************" << endl << endl;
 
-	MyLinkQueue<ElemType> Q2;
+	MyLinkQueue<int> Q2(Q1);
 	cout << "当前非循环链队初始化另一个非循环链队为：" << endl;
-	Q2 = Q1;
-	cout << Q1;
+	cout << Q2;
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";

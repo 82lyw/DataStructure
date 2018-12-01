@@ -105,7 +105,7 @@ bool SqQueue<ElemType>::isEmpty()
 template<typename ElemType>
 bool SqQueue<ElemType>::isFull()
 {
-	return true;
+	return (rear + 1)%queueSize == front ? true : false;
 }
 
 template<typename ElemType>

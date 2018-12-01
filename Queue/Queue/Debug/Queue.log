@@ -1,2 +1,4 @@
-﻿  main.cpp
-  Queue.vcxproj -> C:\Users\lyw\Desktop\lyw\DataStructure\Queue\Debug\Queue.exe
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\IDE\VC\VCTargets\Microsoft.CppClean.targets(76,5): warning : 对路径“c:\users\lyw\desktop\lyw\datastructure\queue\debug\queue.exe”的访问被拒绝。
+  main.cpp
+c:\users\lyw\desktop\lyw\datastructure\queue\queue\test5_1.h(203): error C3861: “ex5_1_11_1”: 找不到标识符
+c:\users\lyw\desktop\lyw\datastructure\queue\queue\test5_1.h(205): error C3861: “ex5_1_11_2”: 找不到标识符

@@ -1,11 +1,12 @@
-﻿  main.cpp
+﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\IDE\VC\VCTargets\Microsoft.CppClean.targets(76,5): warning : 对路径“c:\users\lyw\desktop\lyw\datastructure\sqstack\x64\debug\sqstack.exe”的访问被拒绝。
+  main.cpp
 c:\users\lyw\desktop\lyw\datastructure\sqstack\sqstack\sqstack.h(123): warning C4244: “初始化”: 从“__int64”转换到“int”，可能丢失数据
   c:\users\lyw\desktop\lyw\datastructure\sqstack\sqstack\sqstack.h(122): note: 编译 类 模板 成员函数 "void SqStack<ElemType>::push(ElemType)" 时
           with
           [
               ElemType=char
           ]
-  c:\users\lyw\desktop\lyw\datastructure\sqstack\sqstack\myexpress.h(55): note: 参见对正在编译的函数 模板 实例化“void SqStack<ElemType>::push(ElemType)”的引用
+  c:\users\lyw\desktop\lyw\datastructure\sqstack\sqstack\myexpress.h(59): note: 参见对正在编译的函数 模板 实例化“void SqStack<ElemType>::push(ElemType)”的引用
           with
           [
               ElemType=char
@@ -15,7 +16,9 @@ c:\users\lyw\desktop\lyw\datastructure\sqstack\sqstack\sqstack.h(123): warning C
           [
               ElemType=char
           ]
-  c:\users\lyw\desktop\lyw\datastructure\sqstack\sqstack\myexpress.h(53): note: 参见对正在编译的 类 模板 实例化 "MySqStack<char>" 的引用
+  c:\users\lyw\desktop\lyw\datastructure\sqstack\sqstack\myexpress.h(57): note: 参见对正在编译的 类 模板 实例化 "MySqStack<char>" 的引用
+c:\users\lyw\desktop\lyw\datastructure\sqstack\sqstack\test4_1.h(220): warning C4065: switch 语句包含“default”但是未包含“case”标签
+  c:\users\lyw\desktop\lyw\datastructure\sqstack\sqstack\main.cpp(79): note: 参见对正在编译的函数 模板 实例化“void ex4_1_10<int>(MySqStack<int> &,char &)”的引用
 c:\users\lyw\desktop\lyw\datastructure\sqstack\sqstack\sqstack.h(54): warning C4244: “return”: 从“__int64”转换到“int”，可能丢失数据
   c:\users\lyw\desktop\lyw\datastructure\sqstack\sqstack\sqstack.h(53): note: 编译 类 模板 成员函数 "int SqStack<ElemType>::getLength(void)" 时
           with
@@ -43,4 +46,4 @@ c:\users\lyw\desktop\lyw\datastructure\sqstack\sqstack\sqstack.h(54): warning C4
               ElemType=int
           ]
   c:\users\lyw\desktop\lyw\datastructure\sqstack\sqstack\main.cpp(20): note: 参见对正在编译的 类 模板 实例化 "MySqStack<int>" 的引用
-  SqStack.vcxproj -> C:\Users\lyw\Desktop\lyw\DataStructure\SqStack\x64\Debug\SqStack.exe
+LINK : fatal error LNK1104: 无法打开文件“C:\Users\lyw\Desktop\lyw\DataStructure\SqStack\x64\Debug\SqStack.exe”

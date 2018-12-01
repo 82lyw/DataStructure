@@ -77,6 +77,14 @@ void ex5_1_5(MySqQueue<ElemType> & Q1, char & continueYesNo)
 {
 	cout << "*********************判断循环顺序队列是否满*************************" << endl << endl;
 
+	if (Q1.isFull())
+	{
+		cout << "当前循环顺序队列已满！" << endl;
+	}
+	else
+	{
+		cout << "当前循环顺序队列没满！" << endl;
+	}
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";
@@ -159,16 +167,73 @@ void ex5_1_10(MySqQueue<ElemType> & Q1, char & continueYesNo)
 	cin >> continueYesNo;
 }
 
-template <typename ElemType>
-void ex5_1_11(MySqQueue<ElemType> & Q1, char & continueYesNo)
+void ex5_1_11(MySports & S1, char & continueYesNo)
 {
-	cout << "*********************运动会比赛安排*************************" << endl << endl;
+	//cout << "*********************运动会比赛安排*************************" << endl << endl;
+	int select;
+	char continueSelect = 'n';
+	while (1)
+	{
+		select = 0;
+		system("cls");
+		cout << "*********************运动会比赛安排*************************" << endl << endl;
+		cout << endl;
 
+		cout << "\t 1.安排比赛" << endl;
+		cout << "\t 2.输入运动会项目及运动员参赛情况" << endl;
 
+		cout << "其他.结束" << endl << endl;
 
+		cout << "///////////////////////////////////////////////////////////////////////////////" << endl;
+		//cout << S1;
+		cout << "///////////////////////////////////////////////////////////////////////////////" << endl << endl;
+
+		cout << "请选择你要操作的代码（1-2）号码：";
+
+		cin >> select;
+
+		if (select > 0 && select < 3)
+		{
+			system("cls");
+			//cout << S1;
+		}
+
+		switch (select)
+		{
+		case 1:ex5_1_11_1(S1, continueSelect);
+			break;
+		case 2:ex5_1_11_2(S1, continueSelect);
+			break;
+		default:cout << "\n 你选择了结束。" << endl << endl;
+			return;
+		}
+		if (continueSelect == 'n' || continueSelect == 'n')
+			break;
+	}
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";
 	cin >> continueYesNo;
 }
 
+void ex5_1_11_1(MySports & S1, char & continueSelect)
+{
+	cout << "**********************安排比赛************************" << endl << endl;
+
+	S1.arrangeSports();
+
+	cout << "***********************************************************" << endl << endl;
+	cout << "还继续吗（Y.继续\tN.结束）？";
+	cin >> continueSelect;
+}
+
+void ex5_1_11_2(MySports & S1, char & continueSelect)
+{
+	cout << "**********************输入运动会项目及运动员参赛情况************************" << endl << endl;
+
+	//cin >> S1;
+
+	cout << "***********************************************************" << endl << endl;
+	cout << "还继续吗（Y.继续\tN.结束）？";
+	cin >> continueSelect;
+}

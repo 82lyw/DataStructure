@@ -239,7 +239,7 @@ void MyLinkStack<ElemType>::display(ostream & out)
 	int n = typename LinkStack<ElemType>::getLength();
 	if (!p&&!n)
 	{
-		out << "当前链栈为空！";
+		out << "当前链栈为空！"<<endl;
 		return;
 	}
 	while (p&&n)

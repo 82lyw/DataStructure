@@ -5,6 +5,7 @@
 #include "SqStack.h"
 #endif
 
+//判断是运算符、数字字符或是其它字符
 int isOpMember(char ch)
 {
 	if (ch == '0' || ch == '1' || ch == '2' || ch == '3' || ch == '4' || ch == '5' || ch == '6' || ch == '7' || ch == '8' || ch == '9'  )
@@ -15,6 +16,7 @@ int isOpMember(char ch)
 		return -1;
 }
 
+//各种运算符在运算符优先级矩阵对应的下标
 int order(char m)
 {
 	switch (m)
@@ -30,6 +32,7 @@ int order(char m)
 	}
 }
 
+//判断两运算符优先级的高低
 int pstack1ede(char op1, char op2)
 {
 	int inCmOut[7][7] = { {1,1,-1,-1,-1,1,1},
@@ -45,6 +48,7 @@ int pstack1ede(char op1, char op2)
 	return inCmOut[i][j];
 }
 
+//中缀表达式转换为后缀表达式
 void transform(char *midS,char *suffixS)
 {
 	int i = 0;
@@ -104,6 +108,7 @@ void transform(char *midS,char *suffixS)
 	suffixS[i] = '\0';
 }
 
+//指定运算符的运算
 double caculate(double a, char ch, double b)
 {
 	switch (ch)
@@ -116,6 +121,7 @@ double caculate(double a, char ch, double b)
 	}
 }
 
+//后缀表达式的计算
 double evaluation(char *suffixS)
 {
 	int i = 0;

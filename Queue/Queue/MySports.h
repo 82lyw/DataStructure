@@ -26,6 +26,7 @@ private:
 
 };
 
+//安排比赛
 void MySports::arrangeSports()
 {
 	int pre = game_num;
@@ -67,6 +68,7 @@ void MySports::arrangeSports()
 	}
 }
 
+//显示项目冲突矩阵
 void MySports::displayCollusion() const
 {
 	int i, j;
@@ -110,6 +112,7 @@ void MySports::displayCollusion() const
 	}
 }
 
+//运动会安排构造函数
 MySports::MySports(int a, int b, int c, int *d, int *e)
 {
 	game_num = a;
@@ -164,6 +167,7 @@ MySports::MySports(int a, int b, int c, int *d, int *e)
 	}
 }
 
+//输入运动会项目及运动员参赛项目
 void MySports::read(istream & in)
 {
 	int i, j, k;

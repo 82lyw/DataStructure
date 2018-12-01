@@ -1,1 +1,4 @@
-﻿LINK : fatal error LNK1168: 无法打开 C:\Users\lyw\Desktop\lyw\DataStructure\SqStack\Debug\SqStack.exe 进行写入
+﻿  main.cpp
+c:\users\lyw\desktop\lyw\datastructure\sqstack\sqstack\test4_1.h(220): warning C4065: switch 语句包含“default”但是未包含“case”标签
+  c:\users\lyw\desktop\lyw\datastructure\sqstack\sqstack\main.cpp(79): note: 参见对正在编译的函数 模板 实例化“void ex4_1_10<int>(MySqStack<int> &,char &)”的引用
+  SqStack.vcxproj -> C:\Users\lyw\Desktop\lyw\DataStructure\SqStack\Debug\SqStack.exe

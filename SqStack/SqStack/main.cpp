@@ -76,7 +76,7 @@ int main()
 			break;
 		case 9:ex4_1_9(stack1, continueYesNo);
 			break;
-		case 10:ex4_1_10(stack1, continueYesNo);
+		case 10:ex4_1_10(stack1,continueYesNo);
 			break;
 		case 11:ex4_1_11(stack1, continueYesNo);
 			break;

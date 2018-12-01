@@ -23,6 +23,8 @@ using std::cin;
 int main()
 {
 	MySqQueue<int> Q1;
+	//MySports S1;
+	MySports S1;
 
 	int choose;
 	char continueYesNo = 'N';
@@ -82,7 +84,7 @@ int main()
 			break;
 		case 10:ex5_1_10(Q1, continueYesNo);
 			break;
-		case 11:ex5_1_11(Q1, continueYesNo);
+		case 11:ex5_1_11(S1, continueYesNo);
 			break;
 		default:cout << "\n ÄãÑ¡ÔñÁË½áÊø¡£" << endl << endl;
 			return 0;

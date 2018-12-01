@@ -101,9 +101,10 @@ void ex4_1_6(MySqStack<ElemType> & stack1, char & continueYesNo)
 
 	MySqStack<ElemType> stack2;
 	stack2.randStack();
+	cout<<stack2;
 	//stack1 = stack2;
 	cout << "另一个顺序栈赋值给当前顺序栈：" << endl;
-	//stack1.display();
+	cout<<stack1;
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";
@@ -160,7 +161,7 @@ template <typename ElemType>
 void ex4_1_10(MySqStack<ElemType> & stack1, char & continueYesNo)
 {
 	//cout << "*********************表达式求解*************************" << endl << endl;
-
+	char midS[100];
 	int select;
 	char continueSelect = 'n';
 	while (1)
@@ -177,7 +178,15 @@ void ex4_1_10(MySqStack<ElemType> & stack1, char & continueYesNo)
 		cout << "其他.结束" << endl << endl;
 
 		cout << "///////////////////////////////////////////////////////////////////////////////" << endl;
-		//displayCurrentObject(list_1);
+		
+		if (midS)
+		{
+			cout << "当前中缀表达式为空！" << endl;
+		}
+		else
+		{
+			cout << "当前中缀表达式为：" << midS << endl;
+		}
 		cout << "///////////////////////////////////////////////////////////////////////////////" << endl << endl;
 
 		cout << "请选择你要操作的代码（1-3）号码：";
@@ -187,16 +196,23 @@ void ex4_1_10(MySqStack<ElemType> & stack1, char & continueYesNo)
 		if (select > 0 && select < 4)
 		{
 			system("cls");
-			rec.displayS();
+			if (midS == NULL)
+			{
+				cout << "当前中缀表达式为空！" << endl;
+			}
+			else
+			{
+				cout << "当前中缀表达式为：" << midS << endl;
+			}
 		}
 
 		switch (select)
 		{
-		case 1:ex4_1_10_1(rec, continueSelect);
+		/*case 1:ex4_1_10_1(midS, continueSelect);
 			break;
-		case 2:ex4_1_10_2(rec, continueSelect);
+		case 2:ex4_1_10_2(midS, continueSelect);
 			break;
-		case 3:ex4_1_10_3(rec, continueSelect);
+		case 3:ex4_1_10_3(midS, continueSelect);*/
 			break;
 			break;
 		default:cout << "\n 你选择了结束。" << endl << endl;
@@ -213,11 +229,14 @@ void ex4_1_10(MySqStack<ElemType> & stack1, char & continueYesNo)
 }
 
 template <typename ElemType>
-void ex4_1_10_1(MySqStack<ElemType> & stack1, char & continueSelect)
+void ex4_1_10_1(char & midS, char & continueSelect)
 {
 	cout << "**********************中缀表达式转换为后缀表达式 ************************" << endl << endl;
 
-	
+	/*char suffixS[100];
+	transform(midS, suffixS);
+	cout << "当前中缀表达式对应的后缀表达式为：";
+	cout << suffixS;*/
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";
@@ -225,11 +244,14 @@ void ex4_1_10_1(MySqStack<ElemType> & stack1, char & continueSelect)
 }
 
 template <typename ElemType>
-void ex4_1_10_2(MySqStack<ElemType> & stack1, char & continueSelect)
+void ex4_1_10_2(char & midS, char & continueSelect)
 {
 	cout << "**********************后缀表达式的计算************************" << endl << endl;
 
-
+	/*char suffixS[100];
+	transform(midS, suffixS);
+	double result = evaluation(suffixS);
+	cout << "当前后缀表达式"<<suffixS<<"的结果是"<<result;*/
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";
@@ -237,11 +259,12 @@ void ex4_1_10_2(MySqStack<ElemType> & stack1, char & continueSelect)
 }
 
 template <typename ElemType>
-void ex4_1_10_3(MySqStack<ElemType> & stack1, char & continueSelect)
+void ex4_1_10_3(char & midS, char & continueSelect)
 {
 	cout << "**********************输入中缀表达式************************" << endl << endl;
 
-
+	cout << "请输入一个中缀表达式：";
+	cin >> midS;
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";
@@ -280,18 +303,18 @@ void ex4_1_11(MySqStack<ElemType> & stack1, char & continueYesNo)
 		if (select > 0 && select < 5)
 		{
 			system("cls");
-			rec.displayS();
+			//stack1.displayS();
 		}
 
 		switch (select)
 		{
-		case 1:ex4_1_11_1(rec, continueSelect);
+		case 1:ex4_1_11_1(stack1, continueSelect);
 			break;
-		case 2:ex4_1_11_2(rec, continueSelect);
+		case 2:ex4_1_11_2(stack1, continueSelect);
 			break;
-		case 3:ex4_1_11_3(rec, continueSelect);
+		case 3:ex4_1_11_3(stack1, continueSelect);
 			break;
-		case 4:ex4_1_11_4(rec,continueSelect)
+		case 4:ex4_1_11_4(stack1, continueSelect);
 			break;
 		default:cout << "\n 你选择了结束。" << endl << endl;
 			return;
