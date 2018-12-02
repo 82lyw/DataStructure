@@ -167,7 +167,8 @@ void ex5_1_10(MySqQueue<ElemType> & Q1, char & continueYesNo)
 	cin >> continueYesNo;
 }
 
-void ex5_1_11(MySports & S1, char & continueYesNo)
+template <typename ElemType>
+void ex5_1_11(MySqQueue<ElemType> & Q1,char & continueYesNo,MySports & S1)
 {
 	//cout << "*********************运动会比赛安排*************************" << endl << endl;
 	int select;
@@ -185,7 +186,7 @@ void ex5_1_11(MySports & S1, char & continueYesNo)
 		cout << "其他.结束" << endl << endl;
 
 		cout << "///////////////////////////////////////////////////////////////////////////////" << endl;
-		//cout << S1;
+		cout << S1;
 		cout << "///////////////////////////////////////////////////////////////////////////////" << endl << endl;
 
 		cout << "请选择你要操作的代码（1-2）号码：";
@@ -195,14 +196,14 @@ void ex5_1_11(MySports & S1, char & continueYesNo)
 		if (select > 0 && select < 3)
 		{
 			system("cls");
-			//cout << S1;
+			cout << S1;
 		}
 
 		switch (select)
 		{
-		case 1:ex5_1_11_1(S1, continueSelect);
+		case 1:ex5_1_11_1(Q1, continueSelect,S1);
 			break;
-		case 2:ex5_1_11_2(S1, continueSelect);
+		case 2:ex5_1_11_2(Q1, continueSelect,S1);
 			break;
 		default:cout << "\n 你选择了结束。" << endl << endl;
 			return;
@@ -216,22 +217,25 @@ void ex5_1_11(MySports & S1, char & continueYesNo)
 	cin >> continueYesNo;
 }
 
-void ex5_1_11_1(MySports & S1, char & continueSelect)
+template <typename ElemType>
+void ex5_1_11_1(MySqQueue<ElemType> & Q1, char & continueSelect, MySports & S1)
 {
 	cout << "**********************安排比赛************************" << endl << endl;
 
 	S1.arrangeSports();
+	cout << S1;
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";
 	cin >> continueSelect;
 }
 
-void ex5_1_11_2(MySports & S1, char & continueSelect)
+template <typename ElemType>
+void ex5_1_11_2(MySqQueue<ElemType> & Q1, char & continueSelect, MySports & S1)
 {
 	cout << "**********************输入运动会项目及运动员参赛情况************************" << endl << endl;
 
-	//cin >> S1;
+	cin >> S1;
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";

@@ -73,7 +73,7 @@ void MySports::displayCollusion() const
 {
 	int i, j;
 	char no[5] = "[ i]";
-	cout << "     ";
+	cout << "\t";
 	for (i = 0; i < game_num; i++)
 	{
 		if (i < 9)
@@ -83,16 +83,18 @@ void MySports::displayCollusion() const
 			no[1] = i / 10 + '0';
 			no[2] = i % 10 + '0';
 		}
+		/*cout << "     ";
 		cout.width(4);
 		cout.fill(' ');
 		cout.setf(ios::right, ios::adjustfield);
-		cout << no;
+		cout << no;*/
+		cout << "\t" << no;
 	}
 	cout << endl;
 
 	for (i = 0; i < game_num; i++)
 	{
-		cout << "     ";
+		/*cout << "     ";*/
 		if (i < 9)
 			no[2] = i + '0';
 		else
@@ -100,13 +102,15 @@ void MySports::displayCollusion() const
 			no[1] = i / 10 + '0';
 			no[2] = i % 10 + '0';
 		}
-		cout.width(4);
+		/*cout.width(4);
 		cout.fill(' ');
 		cout.setf(ios::right, ios::adjustfield);
-		cout << no;
+		cout << no;*/
+		cout << "\t" << no;
 		for (j = 0; j < game_num; j++)
 		{
-			cout << "     " << *(collusion + i * game_num + j) << "     ";
+			//cout << "     " << *(collusion + i * game_num + j) << "     ";
+			cout << "\t  " << *(collusion + i * game_num + j) ;
 		}
 		cout << endl;
 	}
