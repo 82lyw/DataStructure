@@ -43,7 +43,7 @@ public:
 	NodePointer getHead();
 
 	//求非循环单链表结点的个数
-	int getLength();
+	int getLength()const;
 
 	//在第i个结点之前插入一个数据域为e的结点
 	Status insert(int i, ElemType e);
@@ -176,7 +176,7 @@ typename LinkList<ElemType>::NodePointer LinkList<ElemType>:: getHead()
 }
 
 template<typename ElemType>
-int LinkList<ElemType>::getLength()
+int LinkList<ElemType>::getLength()const
 {
 	int n = 0;
 	NodePointer p = head;
@@ -326,7 +326,7 @@ public:
 	void inputLinkList();
 
 	//输出
-	void display(ostream & out);
+	void display(ostream & out) const;
 
 	//随机生成
 	void RandomLink();
@@ -477,7 +477,7 @@ istream & operator >> (istream & in, MyLinkList<ElemType> & s)
 }
 
 template<typename ElemType>
-void MyLinkList<ElemType>::display(ostream & out)
+void MyLinkList<ElemType>::display(ostream & out) const
 {
 	typename LinkList<ElemType>::NodePointer p = this->head;
 	if (!p)
@@ -486,10 +486,10 @@ void MyLinkList<ElemType>::display(ostream & out)
 	}
 	else
 	{
-
+		int n = typename LinkList<ElemType>::getLength();
 		//for循环，打印链表
 		cout << "当前非循环单链表为：" << endl;
-		for (int i = 1; i <= this->getLength(); i++)
+		for (int i = 1; i <= n; i++)
 			cout << "[ " << i << "] \t";
 		cout << endl;
 		while (p->next)

@@ -183,6 +183,7 @@ void MyPolynomialLinkList<ElemType>::randomInitialFill(int display)
 				cout << s->data.coef;
 			if (s->data.expn)
 				cout << "x" << s->data.expn<<"  ";
+			//cout << s->data << "  ";
 		}
 	}
 
@@ -248,7 +249,8 @@ istream & operator>>(istream & in, MyPolynomialLinkList<ElemType> &pL)
 template <typename ElemType>
 void MyPolynomialLinkList<ElemType>::display(ostream & out) const
 {
-	typename LinkList<ElemType>::NodePointer p = this->head;
+	typename LinkList<ElemType>::NodePointer p;
+	p= this->head;
 	if (!this->head)
 	{
 		out << "该多项式为空！" << endl;
@@ -264,6 +266,7 @@ void MyPolynomialLinkList<ElemType>::display(ostream & out) const
 			out << p->data.coef;
 		if (p->data.expn)
 			out << "x" << p->data.expn;
+		//out << p->data;
 
 		p = p->next;
 	}
