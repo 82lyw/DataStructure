@@ -39,7 +39,7 @@ int main()
 		cout << "\t 7.把一个非循环链队置空" << endl;
 		cout << "\t 8.随机生成非循环链队" << endl;
 		cout << "\t 9.用已有的非循环链队初始化另一个新非循环链队" << endl;
-		cout << "\t 10.运动会比赛安排" << endl;
+		cout << "\t 10.停车场管理（栈和队列的应用）" << endl;
 
 		cout << "其他.结束" << endl << endl;
 

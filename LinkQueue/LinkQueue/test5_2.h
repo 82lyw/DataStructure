@@ -149,7 +149,7 @@ void ex5_1_9(MyLinkQueue<ElemType> & Q1, char & continueYesNo)
 template <typename ElemType>
 void ex5_1_10(MyLinkQueue<ElemType> & Q1, char & continueYesNo)
 {
-	cout << "*********************运动会比赛安排*************************" << endl << endl;
+	cout << "*********************停车场管理（栈和队列的应用）*************************" << endl << endl;
 
 
 
