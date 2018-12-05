@@ -11,16 +11,46 @@ template<typename ElemType>
 class MyLinkQueue :public LinkQueue<ElemType>
 {
 public:
-	//void read(istream& in);
+	void read(istream& in);
 	void display(ostream& out);
 	void randLinkQ();
 };
+
 template <typename ElemType>
 istream& operator>>(istream& in, MyLinkQueue<ElemType>& iL)
 {
 	iL.read(in);
 	return in;
 }
+
+template <typename ElemType>
+void MyLinkQueue<ElemType>::read(istream & in)
+{
+	typename LinkQueue<ElemType>::NodePointer p, s;
+	p = this->rear = NULL;
+	int n;
+	cout << "请输入非循环链队中的结点个数：" << endl;
+	cin >> n;
+	cout << "请输入非循环链队每个结点的数据域：" << endl;
+	for (int i = 1; i <= n; ++i)
+	{
+		s = new typename LinkQueue<ElemType>::LinkNode;
+		assert(s != 0);
+		cin >> s->data;
+		if (i == 1)
+		{
+			p = s;
+			this->front = this->rear = p;
+		}
+		else
+		{
+			p->next = s;
+			p = p->next;
+		}
+	}
+	p->next = NULL;
+}
+
 template<typename ElemType>
 void MyLinkQueue<ElemType>::display(ostream& out)
 {
@@ -54,15 +84,26 @@ template<typename ElemType>
 void MyLinkQueue<ElemType>::randLinkQ()
 {
 	int i, n;
-	ElemType e;
-	typename LinkQueue<ElemType>::clear();
+	typename LinkQueue<ElemType>::NodePointer s;
+	//typename LinkQueue<ElemType>::clear();
+	this->rear = this->front = NULL;
 	n = random(2,8);
 	cout << "有如下随机数生成非循环链队：" << endl;
 	for (i = 0; i < n; i++)
 	{
-		e = random(1,99);
-		cout << e<<"  ";
-		typename LinkQueue<ElemType>::enQueue(e);
+		s = new typename LinkQueue<ElemType>::LinkNode;
+		assert(s != 0);
+		s->data = random(1,99);
+		s->next = NULL;
+		cout << s->data<<"  ";
+		//typename LinkQueue<ElemType>::enQueue(e);
+		if (!this->front)
+			this->front = this->rear = s;
+		else
+		{
+			this->rear->next = s;
+			this->rear = s;
+		}
 	}
 	cout << endl;
 	cout << "随机生成的非循环链队如下：" << endl;

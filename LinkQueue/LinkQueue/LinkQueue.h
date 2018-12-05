@@ -21,22 +21,43 @@ public:
 	typedef LinkNode *NodePointer;
 
 public:
+	//把非循环链队置空
 	void clear();
-	Status deQueue(ElemType & e);
+
+	//出队列（删除非循环链队对头结点）
+	Status deQueue(ElemType& e);
+
+	//进队列（在非循环链队队尾插入结点）
 	void enQueue(ElemType e);
-	Status getFront(ElemType & e);
+
+	//读非循环链队队头结点的数据域
+	Status getFront(ElemType& e);
+
+	//判断非循环链队是否为空
 	bool isEmpty();
-	int getLength();
+
+	//求非循环链队中结点的个数
+	int getLength() const;
+
+	//重载赋值运算符的定义
 	LinkQueue<ElemType> operator=(LinkQueue<ElemType> rightQ);
+
+	//非循环链队构造函数
 	LinkQueue();
+
+	//非循环链队析构函数
 	~LinkQueue();
-	LinkQueue(const LinkQueue<ElemType> & otherQ);
+
+	//非循环链队拷贝初始化构造函数
+	LinkQueue(const LinkQueue<ElemType>& otherQ);
 
 protected:
+	int queueSize;
 	NodePointer rear;
 	NodePointer front;
 };
 
+//置空
 template<typename ElemType>
 void LinkQueue<ElemType>::clear()
 {
@@ -51,6 +72,7 @@ void LinkQueue<ElemType>::clear()
 	front = rear = NULL;
 }
 
+//出队列（删除非循环队列队头结点）
 template <typename ElemType>
 Status LinkQueue<ElemType>::deQueue(ElemType & e)
 {
@@ -98,11 +120,10 @@ bool LinkQueue<ElemType>::isEmpty()
 }
 
 template <typename ElemType>
-int LinkQueue<ElemType>::getLength()
+int LinkQueue<ElemType>::getLength() const
 {
 	int length = 0;
 	NodePointer p = front;
-
 	while (p)
 	{
 		++length;
@@ -117,7 +138,6 @@ LinkQueue<ElemType> LinkQueue<ElemType>::operator=(LinkQueue<ElemType> rightQ)
 {
 	NodePointer s;
 	NodePointer rp = rightQ.front;
-
 	if (this != &rightQ)
 	{
 		clear();
@@ -162,10 +182,8 @@ LinkQueue<ElemType>::LinkQueue(const LinkQueue<ElemType>& otherQ)
 	{
 		s = new(LinkNode);
 		assert(s != 0);
-
 		s->data = op->data;
 		s->next = NULL;
-
 		if (!front)
 			front = rear = s;
 		else
