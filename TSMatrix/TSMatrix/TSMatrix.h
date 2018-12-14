@@ -127,6 +127,7 @@ void TSMatrix<ElemType>::calcuate_rpos(int * rpos, int display)
 template <typename ElemType>
 void TSMatrix<ElemType>::displayTriple()
 {
+	/*
 	int k;
 	char no[] = "[ i]";
 	cout << "该" << rowNum << "*" << colNum << "稀疏矩阵共有";
@@ -160,6 +161,16 @@ void TSMatrix<ElemType>::displayTriple()
 		cout << data[k].e;
 		//换行，准备显示三元组表的下一个元素
 	}
+	*/
+	cout << "该" << rowNum << "*" << colNum << "稀疏矩阵共有"<<totalNum<<"个非零元素";
+	cout << "三元组中的元素如下："<<endl;
+	/*
+	cout << "/t [i]" << "/t [j]" << "/t e" << endl;
+	for (int k = 0; k < totalNum; k++)
+	{
+		cout << "/t" << data[k].i << "/t" << data[k].j<<"/t" << data[k].e << endl;
+	}
+	*/
 }
 
 //取稀疏矩阵的列数
@@ -575,10 +586,12 @@ void MyTSMatrix<ElemType>::read(istream & in)
 			in >> this->data[k].e;
 		}
 	}
+	else
+		data = NULL;
 }
 
 template <typename ElemType>
-istream& operator>>(istream& in, MyTSMatrix<ElemType>iT)
+istream& operator>>(istream& in, MyTSMatrix<ElemType>&iT)
 {
 	iT.read(in);
 	return in;
@@ -591,7 +604,7 @@ void MyTSMatrix<ElemType>::display(ostream & out)
 }
 
 template <typename ElemType>
-ostream& operator<<(ostream& out, MyTSMatrix<ElemType>iT)
+ostream& operator<<(ostream& out, MyTSMatrix<ElemType>&iT)
 {
 	iT.display(out);
 	return out;
@@ -602,26 +615,6 @@ void MyTSMatrix<ElemType>::RandT()
 {
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
