@@ -162,6 +162,7 @@ void ex4_1_10(MySqStack<ElemType> & stack1, char & continueYesNo)
 {
 	//cout << "*********************表达式求解*************************" << endl << endl;
 	char midS[100];
+	midS[0] = NULL;
 	int select;
 	char continueSelect = 'n';
 	while (1)
@@ -178,7 +179,7 @@ void ex4_1_10(MySqStack<ElemType> & stack1, char & continueYesNo)
 		cout << "其他.结束" << endl << endl;
 
 		cout << "///////////////////////////////////////////////////////////////////////////////" << endl;
-		if (midS == NULL)
+		if (midS[0] == NULL)
 		{
 			cout << "当前中缀表达式为空！" << endl;
 		}
@@ -195,7 +196,7 @@ void ex4_1_10(MySqStack<ElemType> & stack1, char & continueYesNo)
 		if (select > 0 && select < 4)
 		{
 			system("cls");
-			if (midS == NULL)
+			if (midS[0] == NULL)
 			{
 				cout << "当前中缀表达式为空！" << endl;
 			}

@@ -61,12 +61,14 @@ void transform(char *midS,char *suffixS)
 	{
 		if (!isOpMember(ch))
 		{
-			if (i > 0 && isOpMember(suffixS[i - 12]) == 1)
+			//当前数字字符
+			if (i > 0 && isOpMember(suffixS[i - 1]) == 1)
 				suffixS[i++] = ' ';
 			suffixS[i++] = ch;
 		}
 		else
 		{
+			//当前运算符
 			if (i > 0 && suffixS[i - 1] != ' ')
 				suffixS[i++] = ' ';
 			switch (ch)
