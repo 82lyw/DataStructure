@@ -278,14 +278,14 @@ template <typename ElemType>
 void ex4_1_11(MySqStack<ElemType> & stack1, char & continueYesNo)
 {
 	//cout << "*********************迷宫求解*************************" << endl << endl;
-
+	Maze M1;
 	int select;
 	char continueSelect = 'n';
 	while (1)
 	{
 		select = 0;
 		system("cls");
-		cout << "*********************迷宫求解（顺序栈的应用）*************************" << endl << endl;
+		cout << "\n\n*********************迷宫求解（顺序栈的应用）*************************" << endl << endl;
 		cout << endl;
 
 		cout << "\t 1.走迷宫" << endl;
@@ -296,7 +296,7 @@ void ex4_1_11(MySqStack<ElemType> & stack1, char & continueYesNo)
 		cout << "其他.结束" << endl << endl;
 
 		cout << "///////////////////////////////////////////////////////////////////////////////" << endl;
-		//displayCurrentObject(list_1);
+		M1.displayM();
 		cout << "///////////////////////////////////////////////////////////////////////////////" << endl << endl;
 
 		cout << "请选择你要操作的代码（1-4）号码：";
@@ -306,18 +306,18 @@ void ex4_1_11(MySqStack<ElemType> & stack1, char & continueYesNo)
 		if (select > 0 && select < 5)
 		{
 			system("cls");
-			//stack1.displayS();
+			M1.displayM();
 		}
 
 		switch (select)
 		{
-		case 1:ex4_1_11_1(stack1, continueSelect);
+		case 1:ex4_1_11_1(stack1, continueSelect,M1);
 			break;
-		case 2:ex4_1_11_2(stack1, continueSelect);
+		case 2:ex4_1_11_2(stack1, continueSelect, M1);
 			break;
-		case 3:ex4_1_11_3(stack1, continueSelect);
+		case 3:ex4_1_11_3(stack1, continueSelect, M1);
 			break;
-		case 4:ex4_1_11_4(stack1, continueSelect);
+		case 4:ex4_1_11_4(stack1, continueSelect, M1);
 			break;
 		default:cout << "\n 你选择了结束。" << endl << endl;
 			return;
@@ -333,11 +333,12 @@ void ex4_1_11(MySqStack<ElemType> & stack1, char & continueYesNo)
 }
 
 template <typename ElemType>
-void ex4_1_11_1(MySqStack<ElemType> & stack1, char & continueSelect)
+void ex4_1_11_1(MySqStack<ElemType> & stack1, char & continueSelect,Maze & M1)
 {
 	cout << "**********************走迷宫************************" << endl << endl;
 
-
+	M1.inputPoint();
+	M1.MazePath();
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";
@@ -345,11 +346,15 @@ void ex4_1_11_1(MySqStack<ElemType> & stack1, char & continueSelect)
 }
 
 template <typename ElemType>
-void ex4_1_11_2(MySqStack<ElemType> & stack1, char & continueSelect)
+void ex4_1_11_2(MySqStack<ElemType> & stack1, char & continueSelect, Maze & M1)
 {
 	cout << "**********************把一个迷宫赋值给另一个迷宫************************" << endl << endl;
 
-
+	Maze M2;
+	M2.randM();
+	M2.displayM();
+	M1 = M2;
+	M1.displayM();
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";
@@ -357,11 +362,13 @@ void ex4_1_11_2(MySqStack<ElemType> & stack1, char & continueSelect)
 }
 
 template <typename ElemType>
-void ex4_1_11_3(MySqStack<ElemType> & stack1, char & continueSelect)
+void ex4_1_11_3(MySqStack<ElemType> & stack1, char & continueSelect, Maze & M1)
 {
 	cout << "**********************随机生成迷宫************************" << endl << endl;
 
-
+	M1.randM();
+	cout << "矫正后的迷宫数据为：" << endl;
+	M1.displayM();
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";
@@ -369,11 +376,13 @@ void ex4_1_11_3(MySqStack<ElemType> & stack1, char & continueSelect)
 }
 
 template <typename ElemType>
-void ex4_1_11_4(MySqStack<ElemType> & stack1, char & continueSelect)
+void ex4_1_11_4(MySqStack<ElemType> & stack1, char & continueSelect, Maze & M1)
 {
 	cout << "**********************输入迷宫************************" << endl << endl;
 
-
+	M1.read();
+	cout << "矫正后的迷宫数据为：" << endl;
+	M1.displayM();
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";

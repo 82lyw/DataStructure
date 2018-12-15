@@ -4,10 +4,18 @@ using std::cout;
 using std::endl;
 using std::cin;
 
+//后缀表达式求解
 #ifndef MYEXPRESS_H
 #define MYEXPRESS_H
 #include "MyExpress.h"
 #endif
+
+//迷宫求解
+#ifndef MAZESOLUTION_H
+#define MAZESOLUTION_H
+#include "MazeSolution.h"
+#endif // !MAZESOLUTION_H
+
 
 //测试需要的一些操作
 #ifndef TEST_H

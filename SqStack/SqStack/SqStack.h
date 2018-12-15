@@ -260,26 +260,3 @@ void MySqStack<ElemType>::randStack()
 	cout << endl;
 	cout << "随机生成的顺序栈（采用顺序存储）如下：" << endl;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
