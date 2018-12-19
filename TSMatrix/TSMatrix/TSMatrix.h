@@ -6,6 +6,8 @@
 #include "C:\Users\lyw\Desktop\lyw\DataStructure\head.h"
 #endif
 
+#define random(a,b) (rand()%(b-a+1)+a)
+
 template <typename ElemType>
 class TSMatrix
 {
@@ -64,6 +66,16 @@ public:
 
 	//求稀疏矩阵的转置矩阵
 	void transposeMatrix(TSMatrix<ElemType> & s);
+
+	//输入稀疏矩阵
+	void read(istream & in);
+
+	//输出稀疏矩阵
+	void display(ostream & out);
+
+	//随机生成稀疏矩阵
+	//void RandTS();
+	void suiji();
 
 	TSMatrix();
 
@@ -164,13 +176,12 @@ void TSMatrix<ElemType>::displayTriple()
 	*/
 	cout << "该" << rowNum << "*" << colNum << "稀疏矩阵共有"<<totalNum<<"个非零元素";
 	cout << "三元组中的元素如下："<<endl;
-	/*
-	cout << "/t [i]" << "/t [j]" << "/t e" << endl;
+	cout << "\t [i]" << "\t [j]" << "\t e" << endl;
 	for (int k = 0; k < totalNum; k++)
 	{
-		cout << "/t" << data[k].i << "/t" << data[k].j<<"/t" << data[k].e << endl;
+		cout << "\t  " << data[k].i << "\t  " << data[k].j<<"\t" << data[k].e << endl;
 	}
-	*/
+	
 }
 
 //取稀疏矩阵的列数
@@ -549,41 +560,29 @@ TSMatrix<ElemType>::TSMatrix(const TSMatrix<ElemType> & otherS)
 }
 
 template <typename ElemType>
-class MyTSMatrix :public TSMatrix<ElemType>
-{
-public:
-	//输入稀疏矩阵
-	void read(istream & in);
-
-	//输出稀疏矩阵
-	void display(ostream & out);
-
-	//随机生成稀疏矩阵
-	void RandT();
-};
-
-template <typename ElemType>
-void MyTSMatrix<ElemType>::read(istream & in)
+void TSMatrix<ElemType>::read(istream & in)
 {
 	cout << "请输入行数：";
-	in >> this->rowNum;
+	in >> rowNum;
 	cout << "请输入列数：";
-	in >> this->colNum;
+	in >> colNum;
 	cout << "请输入非零元素的个数：";
-	in >> this->totalNum;
-	if (this->totalNum)
+	in >> totalNum;
+
+
+	if (totalNum > 0)
 	{
-		this->data = new typename TSMatrix<ElemType>::Triple[this->totalNum];
+		data = new typename TSMatrix<ElemType>::Triple[totalNum];
 		assert(data != 0);
-		for (int k = 0; k < this->totalNum; k++)
+		for (int k = 0; k < totalNum; k++)
 		{
 			cout << endl;
 			cout << "请输入行号：";
-			in >> this->data[k].i;
+			in >> data[k].i;
 			cout << "请输入列号：";
-			in >> this->data[k].j;
+			in >> data[k].j;
 			cout << "请输入元素的数据值：";
-			in >> this->data[k].e;
+			in >> data[k].e;
 		}
 	}
 	else
@@ -591,32 +590,76 @@ void MyTSMatrix<ElemType>::read(istream & in)
 }
 
 template <typename ElemType>
-istream& operator>>(istream& in, MyTSMatrix<ElemType>&iT)
+istream& operator>>(istream& in, TSMatrix<ElemType>&iT)
 {
 	iT.read(in);
 	return in;
 }
 
 template <typename ElemType>
-void MyTSMatrix<ElemType>::display(ostream & out)
+void TSMatrix<ElemType>::display(ostream & out)
 {
-
+	int index = 0;
+	cout << "\t";
+	for (int i = 0; i < colNum; i++)
+		cout << "\t [" << i << "]";
+	cout << endl;
+	for (int i = 0; i < rowNum; i++)
+	{
+		cout << "\t [" << i << "]";
+		for (int j = 0; j < colNum; j++)
+		{
+			if (index < totalNum && (data[index].i == i) && (data[index].j == j))
+			{
+				cout << "\t" << data[index++].e;
+			}
+			else
+			{
+				cout << "\t 0";
+			}
+		}
+		cout << endl;
+	}
 }
 
 template <typename ElemType>
-ostream& operator<<(ostream& out, MyTSMatrix<ElemType>&iT)
+ostream& operator<<(ostream& out, TSMatrix<ElemType>&iT)
 {
 	iT.display(out);
 	return out;
 }
 
+/*
 template <typename ElemType>
-void MyTSMatrix<ElemType>::RandT()
+void TSMatrix<ElemType>::RandTS()
 {
-
+	rowNum = random(2, 6);
+	colNum = random(2, 6);
+	totalNum = random(2, 8);
+	data = new typename TSMatrix<ElemType>::Triple[totalNum];
+	assert(data != 0);
+	for (int i = 0; i < totalNum; i++)
+	{
+		data[i].i = random(0, rowNum - 1);
+		data[i].j = random(0, colNum - 1);
+		data[i].e = random(0, 99);
+	}
 }
-
-
-
-
-
+*/
+template <typename ElemType>
+void TSMatrix<ElemType>::suiji()
+{
+	cout << "..." << endl;
+	rowNum = random(2, 6);
+	colNum = random(2, 6);
+	totalNum = random(2, 8);
+	data = new typename TSMatrix<ElemType>::Triple[totalNum];
+	assert(data != 0);
+	for (int i = 0; i < totalNum; i++)
+	{
+		data[i].i = random(0, rowNum - 1);
+		data[i].j = random(0, colNum - 1);
+		data[i].e = random(0, 99);
+	}
+	cout << "生成一个包含" << totalNum << "个非零元素的" << rowNum << "*" << colNum << "的稀疏矩阵" << endl;
+}

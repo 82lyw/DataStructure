@@ -18,7 +18,7 @@ using std::cin;
 
 int main()
 {
-	MyTSMatrix<int> T1;
+	TSMatrix<int> T1;
 
 	int choose;
 	char continueYesNo = 'N';
@@ -46,7 +46,7 @@ int main()
 		displayCurrentObject(T1);
 		cout << "///////////////////////////////////////////////////////////////////////////////" << endl << endl;
 
-		cout << "请选择你要操作的代码（1-11）号码：";
+		cout << "请选择你要操作的代码（1-10）号码：";
 		cin >> choose;
 
 		if (choose > 0 && choose < 12)
