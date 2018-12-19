@@ -1,250 +1,203 @@
-#define MazeSize 30
-#define random(a,b) (rand()%(b-a+1)+a)
-
-class Maze
+class MazePoint
 {
 public:
-	class MazeType
-	{
-	public:
-		int i;  //横坐标
-		int j;  //纵坐标
-		int di;  //下一步可走分方位
-	};
-public:
-	//置空
-	void clear();
-
-	//输入起始点和终点
-	void inputPoint();
-
-	//求迷宫路径
-	//bool MazePath(int xi, int yi, int xe, int ye);
-	bool MazePath();
-
-	//随机生成迷宫
-	void randM();
-
-	//输入迷宫
-	void read();
-
-	//输出迷宫
-	void displayM();
-
-	//重载赋值运算符的定义
-	Maze operator=(Maze rightM);
-
-	Maze();
-
-	~Maze();
-
-
-public:
-	//起始点坐标
-	int xi;
-	int yi;
-	//终点坐标
-	int xe;
-	int ye;
-	
-	int row_colNum;
-	int** mg;
+	int x;
+	int y;
+	int dir;  //0:无效,1:东,2:南,3:西,4:北
 };
 
-void Maze::inputPoint()
+int moveDir[4][2] = { {0,1},{1,0},{0,-1},{-1,0} };//定义当前位置移动的4个方向
+
+//输出路径
+void PrintPath(SqStack<MazePoint> p,int** maze)
+{
+	cout << "迷宫的路径为\n";
+	cout << "括号内的内容分别表示为(行坐标,列坐标,数字化方向,方向)"<<endl;
+	SqStack<MazePoint> t;
+	int a, b;
+	MazePoint data;
+	MazePoint temp;
+	p.pop(temp);
+	t.push(temp);
+	while (!p.isEmpty())  //如果栈p非空，则反复转移
+	{
+		p.pop(temp);
+		MazePoint tp;
+		t.getTop(tp);
+		a = tp.x - temp.x;//行坐标方向
+		b = tp.y - temp.y;//列坐标方向
+		if (a == 1)
+			temp.dir = 1;//方向向下，用1表示
+		else if (b == 1)
+			temp.dir = 2;//方向向右，用2表示
+		else if (a == -1)
+			temp.dir = 3;//方向向上，用3表示
+		else if (b == -1)
+			temp.dir = 4;//方向向左，用4表示
+		t.push(temp);//把新位置入栈
+	}
+
+	while (!t.isEmpty())
+	{
+		t.pop(data);
+		cout << '(' << data.x << ',' << data.y << ',' << data.dir << ",";//输出行坐标，列坐标
+		//maze[data.x][data.y] = 2;
+		switch (data.dir)//输出相应的方向
+		{
+		case 1:cout << "↓)\n"; break;
+		case 2:cout << "→)\n"; break;
+		case 3:cout << "↑)\n"; break;
+		case 4:cout << "←)\n"; break;
+		case 0:cout << ")\n"; break;
+		}
+	}
+}
+
+void RestoreM(int **maze, int m)
+{
+	int i, j;
+	for(i=0;i<m;i++)
+		for (j = 0; j < m; j++)
+		{
+			if (maze[i][j] == -1)
+				maze[i][j] = 0;
+		}
+}
+
+int** RandMaze(int &m)
+{
+	int** maze;
+	int i = 0, j = 0;
+	m = random(5, 10);
+	maze = new int *[m];//获取长度等于行数加2的二级指针
+	for (i = 0; i < m; i++)//每个二维指针的空间
+	{
+		maze[i] = new int[m];
+	}
+	for (i = 1; i <= m-2; i++)//输入迷宫的内容，0代表可通，1代表不通
+		for (j = 1; j <= m-2; j++)
+			maze[i][j]= rand() % 2;
+	for (i = 0; i < m ; i++)
+		maze[i][0] = maze[i][m - 1] = 1;
+	for (i = 0; i < m ; i++)
+		maze[0][i] = maze[m - 1][i] = 1;
+	return maze;
+}
+
+int** GetMaze(int &m)
+{
+	int** maze;
+	int i = 0, j = 0;
+	cout << "请输入迷宫的行列数：";
+	cin >> m;
+	maze = new int *[m];//获取长度等于行数加2的二级指针
+	for (i = 0; i < m; i++)//每个二维指针的空间
+	{
+		maze[i] = new int[m];
+	}
+	for (i = 0; i < m; i++)//输入迷宫的内容，0代表可通，1代表不通
+		for (j = 0; j < m; j++)
+			cin >> maze[i][j];
+	
+	return maze;//返回存贮迷宫的二维指针maze
+}
+
+bool MazePath(int** maze,int m,MazePoint start,MazePoint end)  //寻找迷宫maze中从（0，0）到（m,n）的路径
+{
+	SqStack<MazePoint> q, p;
+	MazePoint temp1, temp2,temp3;
+	temp1.x = start.x;
+	temp1.y = start.y;
+	int x, y, loop;
+	q.push(temp1);//将入口位置入栈
+	p.push(temp1);
+	maze[temp1.x][temp1.y] = -1;//标志入口位置已到达过
+	int ab = 0;
+	while (!q.isEmpty())
+	{
+		ab++;
+		q.getTop(temp2);
+		p.getTop(temp3);
+		//不相等入栈
+		if (!((temp3.x) == (temp2.x)) && ((temp3.y) == (temp2.y)))
+			p.push(temp2);
+		for (loop = 0; loop < 4; loop++)//探索当前位置的4个相邻位置
+		{
+			x = temp2.x + moveDir[loop][0];//计算出新位置x位置值
+			y = temp2.y + moveDir[loop][1];//计算出新位置y位置值
+			if (maze[x][y] == 0)//判断新位置是否可达
+			{
+				temp1.x = x;
+				temp1.y = y;
+				maze[x][y] = -1;
+				q.push(temp1);
+			}
+			if ((x == (end.x)) && (y == (end.y)))
+			{
+				temp1.x = end.x;
+				temp1.y = end.y;
+				temp1.dir = 0;
+				p.push(temp1);
+				PrintPath(p,maze);
+				RestoreM(maze, m);
+				return OK;
+			}
+		}
+		q.getTop(temp2);
+		p.getTop(temp3);
+		if (temp3.x==temp2.x&&temp3.y==temp2.y)
+		{
+			MazePoint temp4;
+			p.pop(temp4);
+			q.pop(temp4);
+		}
+	}
+	return ERROR;
+}
+
+void inputPoint(MazePoint &start,MazePoint &end,int m,int **maze)
 {
 loop:
 	cout << "请输入起始点的坐标：" << endl;
 	cout << "x:";
-	cin >> xi;
+	cin >> start.x;
 	cout << "y:";
-	cin >> yi;
+	cin >> start.y;
 
 	cout << "请输入终点的坐标：" << endl;
 	cout << "x:";
-	cin >> xe;
+	cin >> end.x;
 	cout << "y:";
-	cin >> ye;
+	cin >> end.y;
 
-	while (xi>= row_colNum ||yi>= row_colNum || xe >= row_colNum || ye >= row_colNum)
+	if (start.x >= m || start.y >= m || start.x >= m || start.x >= m)
 	{
 		cout << "找不到该点！" << endl;
 		goto loop;
 	}
+
+	if (maze[start.x][start.y]==1|| maze[end.x][end.y]==1)
+	{
+		cout << "起始点或终点不可走" << endl;
+		goto loop;
+	}
+
 }
 
-//bool Maze::MazePath(int xi, int yi, int xe, int ye)
-bool Maze::MazePath()
+void displayM(int m,int** maze)
 {
-	int i, j, k, di, find;
-	static int s_top = -1;
-	SqStack<MazeType> St;
-	MazeType temp;
-	MazeType m;
-	MazeType data[MazeSize];
-	s_top++;
-	m.i = xi;
-	m.j = yi;
-	m.di = -1;
-	data[s_top] = m;
-	St.push(m);
-	mg[xi][yi] = -1;
-
-	while (!St.isEmpty())
-	{
-		St.getTop(temp);
-		i = temp.i;
-		j = temp.j;
-		di = temp.di;
-
-		//找到路口则输出路径
-		if (i == xe && j == ye)
+	int i, j;
+		cout << "\t";
+		for (i = 0; i < m; i++)
+			cout << "\t[" << i << "]";
+		cout << endl;
+		for (i = 0; i < m; i++)
 		{
-			cout << "迷宫路径如下："<<endl;
-			for (k = 0; k <= s_top; k++)
+			cout << "\t[" << i << "]";
+			for (j = 0; j < m; j++)
 			{
-				cout << "\t (" << data[k].i << "," << data[k].j << ")";
-				if ((k + 1) % 5 == 0)
-					cout << endl;
+				cout << "\t" << maze[i][j]; 
 			}
 			cout << endl;
-			return true;
 		}
-		find = 0;
-		while (di < 4 && find == 0)
-		{
-			di++;
-			switch(di)
-			{
-			case 0:i = data[s_top].i - 1; j = data[s_top].j;
-				break;
-			case 1:i = data[s_top].i; j = data[s_top].j + 1;
-				break;
-			case 2:i = data[s_top].i + 1; j = data[s_top].j;
-				break;
-			case 3:i = data[s_top].i; j = data[s_top].j - 1;
-				break;
-			}
-			if (mg[i][j] == 0) find = 1;
-		}
-		if (find == 1)
-		{
-			data[s_top].di = di;
-			s_top++;
-			data[s_top].i = i;
-			data[s_top].j = j;
-			data[s_top].di = -1;
-			mg[i][j] = -1;
-		}
-		else
-		{
-			mg[data[s_top].i][data[s_top].j] = 0;
-			s_top--;
-		}
-
-	}
-	return false;
-}
-
-void Maze::randM()
-{
-	clear(); 
-	row_colNum=random(4,8);
-	mg = new int*[row_colNum];
-	for (int i = 0; i < row_colNum; i++)
-	{
-		mg[i] = new int[row_colNum];
-	}
-	assert(mg != 0);
-	for (int i = 0; i < row_colNum; i++)
-	{
-		for (int j = 0; j < row_colNum; j++)
-			mg[i][j] = rand() % 2;
-	}
-}
-
-void Maze::read()
-{
-	clear();
-	cout << "请输入迷宫的行列数：";
-	cin >> row_colNum;
-	mg = new int*[row_colNum];
-	assert(mg != 0);
-	for (int i = 0; i < row_colNum; i++)
-	{
-		mg[i] = new int[row_colNum];
-	}
-	cout << "请输入迷宫的数据："<<endl;
-	for (int i = 0; i < row_colNum; i++)
-	{
-		for (int j = 0; j < row_colNum; j++)
-			cin >> mg[i][j];
-	}
-
-
-}
-
-void Maze::displayM()
-{
-	cout << "\t";
-	for (int i = 0; i < row_colNum; i++)
-		cout << "\t[" << i << "]";
-	cout << endl;
-	for (int i = 0; i < row_colNum; i++)
-	{
-		cout << "\t[" << i << "]";
-		for (int j = 0; j < row_colNum; j++)
-		{
-			cout << "\t" << mg[i][j];
-		}
-		cout << endl;
-	}
-}
-
-Maze Maze::operator=(Maze rightM)
-{
-	clear();
-	row_colNum = rightM.row_colNum;
-	mg = new int*[row_colNum];
-	for (int i = 0; i < row_colNum; i++)
-	{
-		mg[i] = new int[row_colNum];
-	}
-	assert(mg != 0);
-	if (this != &rightM)
-	{
-		for (int i = 0; i < row_colNum; i++)
-		{
-			for (int j = 0; j < row_colNum; j++)
-			{
-				mg[i][j] = rightM.mg[i][j];
-			}
-		}
-	}
-	return *this;
-}
-
-
-void Maze::clear()
-{
-	xi=NULL;
-	yi=NULL;
-	xe=NULL;
-	ye=NULL;
-	row_colNum=NULL;
-	for (int i = 0; i < row_colNum; i++) {
-		delete[] mg[i];
-	}
-	//delete[] mg;
-	//mg = NULL;
-}
-
-Maze::Maze()
-{
-
-}
-
-Maze::~Maze()
-{
-	clear();
 }

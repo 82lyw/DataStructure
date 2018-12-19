@@ -1,0 +1,20 @@
+﻿  main.cpp
+c:\users\lyw\desktop\lyw\datastructure\linkq\linkq\parking.h(102): warning C4101: “p”: 未引用的局部变量
+c:\users\lyw\desktop\lyw\datastructure\sqstack\sqstack\sqstack.h(55): warning C4244: “return”: 从“__int64”转换到“int”，可能丢失数据
+  c:\users\lyw\desktop\lyw\datastructure\sqstack\sqstack\sqstack.h(54): note: 编译 类 模板 成员函数 "int SqStack<CarNode>::getLength(void)" 时
+  c:\users\lyw\desktop\lyw\datastructure\linkq\linkq\parking.h(38): note: 参见对正在编译的函数 模板 实例化“int SqStack<CarNode>::getLength(void)”的引用
+  c:\users\lyw\desktop\lyw\datastructure\linkq\linkq\parking.h(38): note: 参见对正在编译的 类 模板 实例化 "SqStack<CarNode>" 的引用
+c:\users\lyw\desktop\lyw\datastructure\sqstack\sqstack\sqstack.h(124): warning C4244: “初始化”: 从“__int64”转换到“int”，可能丢失数据
+  c:\users\lyw\desktop\lyw\datastructure\sqstack\sqstack\sqstack.h(123): note: 编译 类 模板 成员函数 "void SqStack<CarNode>::push(ElemType)" 时
+          with
+          [
+              ElemType=CarNode
+          ]
+  c:\users\lyw\desktop\lyw\datastructure\linkq\linkq\parking.h(50): note: 参见对正在编译的函数 模板 实例化“void SqStack<CarNode>::push(ElemType)”的引用
+          with
+          [
+              ElemType=CarNode
+          ]
+c:\users\lyw\desktop\lyw\datastructure\linkq\linkq\test.h(158): warning C4101: “parking_num”: 未引用的局部变量
+  c:\users\lyw\desktop\lyw\datastructure\linkq\linkq\main.cpp(90): note: 参见对正在编译的函数 模板 实例化“void ex5_1_10<int>(MyLinkQueue<int> &,char &)”的引用
+  LinkQ.vcxproj -> C:\Users\lyw\Desktop\lyw\DataStructure\LinkQ\x64\Debug\LinkQ.exe

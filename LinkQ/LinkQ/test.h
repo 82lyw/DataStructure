@@ -153,6 +153,13 @@ void ex5_1_10(MyLinkQueue<ElemType> & Q1, char & continueYesNo)
 
 	int select;
 	char continueSelect = 'n';
+
+	int parking_max=10;  //停车场最大可停车辆数目
+	int parking_num;  //停车场已有停车辆数目
+	int price=1; //单位时间收费值
+	SqStack<CarNode> S, Temp;
+	LinkQueue<CarNode> Q;
+
 	while (1)
 	{
 		select = 0;
@@ -168,7 +175,7 @@ void ex5_1_10(MyLinkQueue<ElemType> & Q1, char & continueYesNo)
 		cout << "其他.结束" << endl << endl;
 
 		cout << "///////////////////////////////////////////////////////////////////////////////" << endl;
-		//displayCurrentObject(list_1);
+		displayStack(S);
 		cout << "///////////////////////////////////////////////////////////////////////////////" << endl << endl;
 
 		cout << "请选择你要操作的代码（1-4）号码：";
@@ -178,16 +185,16 @@ void ex5_1_10(MyLinkQueue<ElemType> & Q1, char & continueYesNo)
 		if (select > 0 && select < 5)
 		{
 			system("cls");
-			//stack1.displayS();
+			displayStack(S);
 		}
 
 		switch (select)
 		{
-		case 1:ex5_2_10_1(Q1, continueSelect);
+		case 1:ex5_2_10_1(Q1, continueSelect,S,Temp,Q,parking_max,price);
 			break;
-		case 2:ex5_2_10_2(Q1, continueSelect);
+		case 2:ex5_2_10_2(Q1, continueSelect,parking_max);
 			break;
-		case 3:ex5_2_10_3(Q1, continueSelect);
+		case 3:ex5_2_10_3(Q1, continueSelect,price);
 			break;
 		case 4:ex5_2_10_4(Q1, continueSelect);
 			break;
@@ -204,11 +211,52 @@ void ex5_1_10(MyLinkQueue<ElemType> & Q1, char & continueYesNo)
 }
 
 template <typename ElemType>
-void ex5_2_10_1(MyLinkQueue<ElemType> & Q1, char & continueSelect)
+void ex5_2_10_1(MyLinkQueue<ElemType> & Q1, char & continueSelect,SqStack<CarNode> & S, SqStack<CarNode> & Temp,LinkQueue<CarNode> & Q,int & parking_max,int & price)
 {
 	cout << "**********************模拟车辆调度************************" << endl << endl;
+	cout << endl << "请选择调度方式：（1.离开 \t(2.进入 \t(3.结束 \t:";
+	
+	
+	/*
+	int parking_max=10;  //停车场最大可停车辆数目
+	int parking_num;  //停车场已有停车辆数目
+	int price=2; //单位时间收费值
+	
+	
+	SqStack<CarNode> S,Temp;
+	LinkQueue<CarNode> Q;
+	*/
+	
+	char M;
+	while (1)
+	{
+		cin >> M;
+		getchar();
+		cout << endl;
+		switch (M)
+		{
+		case '1': 
+			cout << parking_max << "," << price;
+			OutCar(S,Temp,Q,parking_max,price);
+			cout << "此次调度后，停车场内外信息如下：" << endl<<endl;
+			displayStack(S);
+			displayQueue(Q);
+			cout <<endl<< endl << "请选择调度方式：（1.离开 \t(2.进入 \t(3.结束 \t:";
+			break;
+		
+		case '2': 
+			InCar(S, Q, parking_max); 
+			cout << "此次调度后，停车场内外信息如下：" << endl << endl;
+			displayStack(S);
+			displayQueue(Q);
+			cout << endl << endl << "请选择调度方式：（1.离开 \t(2.进入 \t(3.结束 \t:";
+			break;
 
-	//
+		default: cout << "你的选择有误，此管理系统没有此项功能！" << endl << endl;
+			return;
+		}
+	}
+	system("pause");
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";
@@ -216,11 +264,11 @@ void ex5_2_10_1(MyLinkQueue<ElemType> & Q1, char & continueSelect)
 }
 
 template <typename ElemType>
-void ex5_2_10_2(MyLinkQueue<ElemType> & Q1, char & continueSelect)
+void ex5_2_10_2(MyLinkQueue<ElemType> & Q1, char & continueSelect,int & parking_max)
 {
 	cout << "**********************设置停车场可停车辆的最大数目************************" << endl << endl;
 
-	//
+	setNum(parking_max);
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";
@@ -228,11 +276,11 @@ void ex5_2_10_2(MyLinkQueue<ElemType> & Q1, char & continueSelect)
 }
 
 template <typename ElemType>
-void ex5_2_10_3(MyLinkQueue<ElemType> & Q1, char & continueSelect)
+void ex5_2_10_3(MyLinkQueue<ElemType> & Q1, char & continueSelect,int & price)
 {
 	cout << "**********************设置单位时间的收费值************************" << endl << endl;
 
-	//
+	setPrice(price);
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";

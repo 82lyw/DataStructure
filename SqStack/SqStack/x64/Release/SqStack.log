@@ -1,9 +1,6 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\IDE\VC\VCTargets\Microsoft.CppClean.targets(76,5): warning : 对路径“c:\users\lyw\desktop\lyw\datastructure\sqstack\x64\release\sqstack.exe”的访问被拒绝。
-  main.cpp
-c:\users\lyw\desktop\lyw\datastructure\sqstack\sqstack\mazesolution.h(2): warning C4005: “random”: 宏重定义
-  c:\users\lyw\desktop\lyw\datastructure\sqstack\sqstack\sqstack.h(11): note: 参见“random”的前一个定义
-c:\users\lyw\desktop\lyw\datastructure\sqstack\sqstack\sqstack.h(123): warning C4244: “初始化”: 从“__int64”转换到“int”，可能丢失数据
-  c:\users\lyw\desktop\lyw\datastructure\sqstack\sqstack\sqstack.h(122): note: 编译 类 模板 成员函数 "void SqStack<ElemType>::push(ElemType)" 时
+﻿  main.cpp
+c:\users\lyw\desktop\lyw\datastructure\sqstack\sqstack\sqstack.h(124): warning C4244: “初始化”: 从“__int64”转换到“int”，可能丢失数据
+  c:\users\lyw\desktop\lyw\datastructure\sqstack\sqstack\sqstack.h(123): note: 编译 类 模板 成员函数 "void SqStack<ElemType>::push(ElemType)" 时
           with
           [
               ElemType=char
@@ -13,37 +10,23 @@ c:\users\lyw\desktop\lyw\datastructure\sqstack\sqstack\sqstack.h(123): warning C
           [
               ElemType=char
           ]
-  c:\users\lyw\desktop\lyw\datastructure\sqstack\sqstack\sqstack.h(180): note: 参见对正在编译的 类 模板 实例化 "SqStack<ElemType>" 的引用
+  c:\users\lyw\desktop\lyw\datastructure\sqstack\sqstack\sqstack.h(181): note: 参见对正在编译的 类 模板 实例化 "SqStack<ElemType>" 的引用
           with
           [
               ElemType=char
           ]
   c:\users\lyw\desktop\lyw\datastructure\sqstack\sqstack\myexpress.h(57): note: 参见对正在编译的 类 模板 实例化 "MySqStack<char>" 的引用
-c:\users\lyw\desktop\lyw\datastructure\sqstack\sqstack\sqstack.h(54): warning C4244: “return”: 从“__int64”转换到“int”，可能丢失数据
-  c:\users\lyw\desktop\lyw\datastructure\sqstack\sqstack\sqstack.h(53): note: 编译 类 模板 成员函数 "int SqStack<ElemType>::getLength(void)" 时
+c:\users\lyw\desktop\lyw\datastructure\sqstack\sqstack\sqstack.h(55): warning C4244: “return”: 从“__int64”转换到“int”，可能丢失数据
+  c:\users\lyw\desktop\lyw\datastructure\sqstack\sqstack\sqstack.h(54): note: 编译 类 模板 成员函数 "int SqStack<MazePoint>::getLength(void)" 时
+  c:\users\lyw\desktop\lyw\datastructure\sqstack\sqstack\sqstack.h(166): note: 参见对正在编译的函数 模板 实例化“int SqStack<MazePoint>::getLength(void)”的引用
+  c:\users\lyw\desktop\lyw\datastructure\sqstack\sqstack\sqstack.h(66): note: 编译 类 模板 成员函数 "Status SqStack<MazePoint>::getTop(ElemType &)" 时
           with
           [
-              ElemType=int
+              ElemType=MazePoint
           ]
-  c:\users\lyw\desktop\lyw\datastructure\sqstack\sqstack\test4_1.h(89): note: 参见对正在编译的函数 模板 实例化“int SqStack<ElemType>::getLength(void)”的引用
+  c:\users\lyw\desktop\lyw\datastructure\sqstack\sqstack\mazesolution.h(280): note: 参见对正在编译的函数 模板 实例化“Status SqStack<MazePoint>::getTop(ElemType &)”的引用
           with
           [
-              ElemType=int
+              ElemType=MazePoint
           ]
-  c:\users\lyw\desktop\lyw\datastructure\sqstack\sqstack\sqstack.h(145): note: 编译 类 模板 成员函数 "SqStack<ElemType>::SqStack(void)" 时
-          with
-          [
-              ElemType=int
-          ]
-  c:\users\lyw\desktop\lyw\datastructure\sqstack\sqstack\sqstack.h(183): note: 参见对正在编译的函数 模板 实例化“SqStack<ElemType>::SqStack(void)”的引用
-          with
-          [
-              ElemType=int
-          ]
-  c:\users\lyw\desktop\lyw\datastructure\sqstack\sqstack\sqstack.h(180): note: 参见对正在编译的 类 模板 实例化 "SqStack<ElemType>" 的引用
-          with
-          [
-              ElemType=int
-          ]
-  c:\users\lyw\desktop\lyw\datastructure\sqstack\sqstack\main.cpp(28): note: 参见对正在编译的 类 模板 实例化 "MySqStack<int>" 的引用
 LINK : fatal error LNK1104: 无法打开文件“C:\Users\lyw\Desktop\lyw\DataStructure\SqStack\x64\Release\SqStack.exe”

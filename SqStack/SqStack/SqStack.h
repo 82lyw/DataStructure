@@ -36,7 +36,8 @@ public:
 
 	SqStack(SqStack<ElemType> & otherS);
 
-protected:
+//protected:
+public:
 	ElemType *base;
 	ElemType *top;
 	int StackSize;

@@ -277,8 +277,26 @@ void ex4_1_10_3(MySqStack<ElemType> & stack1, char & continueSelect, char(&midS)
 template <typename ElemType>
 void ex4_1_11(MySqStack<ElemType> & stack1, char & continueYesNo)
 {
-	//cout << "*********************迷宫求解*************************" << endl << endl;
-	Maze M1;
+	system("cls");
+	cout << "*********************迷宫求解（顺序栈的应用）*************************" << endl << endl;
+	
+	int **maze;//定义二维指针存取迷宫
+	maze = NULL;
+	int m=0;//行列数
+	MazePoint start, end;
+	maze = GetMaze(m);
+	cout << "矫正后的迷宫数据为：" << endl;
+	displayM(m, maze);
+	inputPoint(start, end, m, maze);
+	if (MazePath(maze,m, start, end))
+	{
+		cout << "迷宫路径探索成功!" << endl;
+		//displayM(m, maze);
+	}
+	else
+		cout << "路径不存在!" << endl;
+
+	/*
 	int select;
 	char continueSelect = 'n';
 	while (1)
@@ -296,7 +314,7 @@ void ex4_1_11(MySqStack<ElemType> & stack1, char & continueYesNo)
 		cout << "其他.结束" << endl << endl;
 
 		cout << "///////////////////////////////////////////////////////////////////////////////" << endl;
-		M1.displayM();
+		displayM(m,maze);
 		cout << "///////////////////////////////////////////////////////////////////////////////" << endl << endl;
 
 		cout << "请选择你要操作的代码（1-4）号码：";
@@ -306,18 +324,18 @@ void ex4_1_11(MySqStack<ElemType> & stack1, char & continueYesNo)
 		if (select > 0 && select < 5)
 		{
 			system("cls");
-			M1.displayM();
+			displayM(m, maze);
 		}
 
 		switch (select)
 		{
-		case 1:ex4_1_11_1(stack1, continueSelect,M1);
+		case 1:ex4_1_11_1(stack1, continueSelect,maze,m,start,end);
 			break;
-		case 2:ex4_1_11_2(stack1, continueSelect, M1);
+		case 2:ex4_1_11_2(stack1, continueSelect, maze, m, start, end);
 			break;
-		case 3:ex4_1_11_3(stack1, continueSelect, M1);
+		case 3:ex4_1_11_3(stack1, continueSelect, maze, m, start, end);
 			break;
-		case 4:ex4_1_11_4(stack1, continueSelect, M1);
+		case 4:ex4_1_11_4(stack1, continueSelect, maze, m, start, end);
 			break;
 		default:cout << "\n 你选择了结束。" << endl << endl;
 			return;
@@ -325,20 +343,30 @@ void ex4_1_11(MySqStack<ElemType> & stack1, char & continueYesNo)
 		if (continueSelect == 'n' || continueSelect == 'n')
 			break;
 	}
-
+	*/
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";
 	cin >> continueYesNo;
 }
 
+/*
 template <typename ElemType>
-void ex4_1_11_1(MySqStack<ElemType> & stack1, char & continueSelect,Maze & M1)
+void ex4_1_11_1(MySqStack<ElemType> & stack1, char & continueSelect,int **maze,int &m,MazePoint &start,MazePoint & end)
 {
 	cout << "**********************走迷宫************************" << endl << endl;
 
-	M1.inputPoint();
-	M1.MazePath();
+	maze = GetMaze(m);
+	cout << "矫正后的迷宫数据为：" << endl;
+	displayM(m, maze);
+	inputPoint(start, end, m, maze);
+	if (MazePath(maze,start,end))
+	{
+		cout << "迷宫路径探索成功!" << endl;
+		displayM(m, maze);
+	}
+	else
+		cout << "路径不存在!"<<endl;
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";
@@ -346,15 +374,26 @@ void ex4_1_11_1(MySqStack<ElemType> & stack1, char & continueSelect,Maze & M1)
 }
 
 template <typename ElemType>
-void ex4_1_11_2(MySqStack<ElemType> & stack1, char & continueSelect, Maze & M1)
+void ex4_1_11_2(MySqStack<ElemType> & stack1, char & continueSelect, int **maze, int &m, MazePoint &start, MazePoint & end)
 {
 	cout << "**********************把一个迷宫赋值给另一个迷宫************************" << endl << endl;
 
-	Maze M2;
-	M2.randM();
-	M2.displayM();
-	M1 = M2;
-	M1.displayM();
+	int **maze2;//定义二维指针存取迷宫
+	maze2 = NULL;
+	int m2;//行列数
+	maze2= RandMaze(m2);
+	displayM(m2,maze2);
+
+	m = m2;
+	maze = new int *[m];//获取长度等于行数加2的二级指针
+	for (int i = 0; i < m; i++)//每个二维指针的空间
+	{
+		maze[i] = new int[m];
+	}
+	for (int i = 0; i < m; i++)
+		for (int j = 0; j < m; j++)
+			maze[i][j]=maze2[i][j];
+	displayM(m, maze);
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";
@@ -362,13 +401,13 @@ void ex4_1_11_2(MySqStack<ElemType> & stack1, char & continueSelect, Maze & M1)
 }
 
 template <typename ElemType>
-void ex4_1_11_3(MySqStack<ElemType> & stack1, char & continueSelect, Maze & M1)
+void ex4_1_11_3(MySqStack<ElemType> & stack1, char & continueSelect, int **maze, int &m, MazePoint &start, MazePoint & end)
 {
 	cout << "**********************随机生成迷宫************************" << endl << endl;
 
-	M1.randM();
+	maze = RandMaze(m);
 	cout << "矫正后的迷宫数据为：" << endl;
-	M1.displayM();
+	displayM(m, maze);
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";
@@ -376,15 +415,16 @@ void ex4_1_11_3(MySqStack<ElemType> & stack1, char & continueSelect, Maze & M1)
 }
 
 template <typename ElemType>
-void ex4_1_11_4(MySqStack<ElemType> & stack1, char & continueSelect, Maze & M1)
+void ex4_1_11_4(MySqStack<ElemType> & stack1, char & continueSelect, int **maze, int &m, MazePoint &start, MazePoint & end)
 {
 	cout << "**********************输入迷宫************************" << endl << endl;
 
-	M1.read();
+	maze = GetMaze(m);
 	cout << "矫正后的迷宫数据为：" << endl;
-	M1.displayM();
+	displayM(m,maze);
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";
 	cin >> continueSelect;
 }
+*/

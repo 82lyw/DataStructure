@@ -11,6 +11,11 @@ using std::cin;
 #include "linkqueue.h"
 #endif
 
+#ifndef SQSTACK_H
+#define SQSTACK_H
+#include "C:\Users\lyw\Desktop\lyw\DataStructure\SqStack\SqStack\SqStack.h"
+#endif
+
 #ifndef PARKING_H
 #define PARKING_H
 #include "parking.h"

@@ -48,7 +48,8 @@ public:
 	//非循环链队拷贝初始化构造函数
 	LinkQueue(const LinkQueue<ElemType>& otherQ);
 
-protected:
+//protected:
+public:
 	int queueSize;
 	NodePointer rear;//队尾指针
 	NodePointer front;//队头指针
