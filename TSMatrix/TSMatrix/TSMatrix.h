@@ -347,14 +347,16 @@ TSMatrix<ElemType> TSMatrix<ElemType>::operator+(TSMatrix<ElemType> rightS)
 					S.data[k3].i = data[k1].i;
 					S.data[k3].j = data[k1].j;
 					S.data[k3].e = data[k1].e + rightS.data[k2].e;
+					++k3;
 				}
-				++k1, ++k2;
+				++k1;
+				++k2;
 			}
 			else
 			{
-				S.data[k3].i = data[k2].i;
-				S.data[k3].j = data[k2].j;
-				S.data[k3].e = data[k2].e;
+				S.data[k3].i = rightS.data[k2].i;
+				S.data[k3].j = rightS.data[k2].j;
+				S.data[k3].e = rightS.data[k2].e;
 				++k3;
 				++k2;
 			}
@@ -362,25 +364,25 @@ TSMatrix<ElemType> TSMatrix<ElemType>::operator+(TSMatrix<ElemType> rightS)
 		
 		while (k1 < totalNum)
 		{
-			S.data[k3].i = data[k2].i;
-			S.data[k3].j = data[k2].j;
-			S.data[k3].e = data[k2].e;
+			S.data[k3].i = data[k1].i;
+			S.data[k3].j = data[k1].j;
+			S.data[k3].e = data[k1].e;
 			++k3;
-			++k2;
+			++k1;
 		}
 
-		while (k2 < totalNum)
+		while (k2 < rightS.totalNum)
 		{
-			S.data[k3].i = data[k2].i;
-			S.data[k3].j = data[k2].j;
-			S.data[k3].e = data[k2].e;
+			S.data[k3].i = rightS.data[k2].i;
+			S.data[k3].j = rightS.data[k2].j;
+			S.data[k3].e = rightS.data[k2].e;
 			++k3;
 			++k2;
 		}
 		T.totalNum = k3;
 		T.data = new Triple[T.totalNum];
 		assert(T.data != 0);
-		for (int k3 = 0; k3 < T.totalNum; k3++)
+		for (int k3 = 0; k3 < T.totalNum; ++k3)
 		{
 			T.data[k3].i = S.data[k3].i;
 			T.data[k3].j = S.data[k3].j;
@@ -406,13 +408,13 @@ TSMatrix<ElemType> TSMatrix<ElemType>::operator*(TSMatrix<ElemType> rightS)
 	TSMatrix T;
 	if(colNum!=rightS.rowNum)
 	{
-		cout<<"两稀疏矩阵行列不等，无法相加！";
+		cout<<"两稀疏矩阵行列不等，无法相乘！";
 		exit(1);
 	}
 	T.rowNum=S.rowNum=rowNum;
-	T.colNum=colNum=rightS.colNum;
+	T.colNum=S.colNum=rightS.colNum;
 	T.totalNum=0;
-	if(totalNum*rightS.Num)
+	if(totalNum*rightS.totalNum)
 	{
 		//申请存放左边稀疏矩阵各行第一个非零元素在三元组表中下标的存储空间
 		rpos1=new int[rowNum];
@@ -461,7 +463,7 @@ TSMatrix<ElemType> TSMatrix<ElemType>::operator*(TSMatrix<ElemType> rightS)
 			//把过渡稀疏矩阵当前行的非零数据复制到其三元组表的存储空间
 			for(cur_j=0;cur_j<S.colNum;cur_j++)
 			{
-				if(ctemp[cur_j!=0])
+				if(ctemp[cur_j]!=0)
 				{
 					S.data[T.totalNum].i=cur_i;
 					S.data[T.totalNum].j=cur_j;
@@ -629,23 +631,6 @@ ostream& operator<<(ostream& out, TSMatrix<ElemType>&iT)
 	return out;
 }
 
-/*
-template <typename ElemType>
-void TSMatrix<ElemType>::RandTS()
-{
-	rowNum = random(2, 6);
-	colNum = random(2, 6);
-	totalNum = random(2, 8);
-	data = new typename TSMatrix<ElemType>::Triple[totalNum];
-	assert(data != 0);
-	for (int i = 0; i < totalNum; i++)
-	{
-		data[i].i = random(0, rowNum - 1);
-		data[i].j = random(0, colNum - 1);
-		data[i].e = random(0, 99);
-	}
-}
-*/
 template <typename ElemType>
 void TSMatrix<ElemType>::suiji()
 {
