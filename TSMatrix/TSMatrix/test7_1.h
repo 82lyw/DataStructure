@@ -42,9 +42,9 @@ void ex7_1_3(TSMatrix<ElemType> & T1, char & continueYesNo)
 {
 	cout << "*********************计算稀疏矩阵各行第一个非零元素在三元组表中的下标*************************" << endl << endl;
 
-	int* rops;
-	rops = new int[T1.getRowNum()];
-	assert(rops != 0);
+	int n=T1.getRowNum();
+	int *rops;
+	rops = new int[n];
 	T1.calcuate_rpos(rops, 0);
 
 	cout << "***********************************************************" << endl << endl;
