@@ -1,23 +1,5 @@
 ﻿  main.cpp
 c:\users\lyw\desktop\lyw\datastructure\sqstring\sqstring\sqstring.h(9): warning C4005: “random”: 宏重定义
   c:\users\lyw\desktop\lyw\datastructure\queue\queue\sqqueue.h(9): note: 参见“random”的前一个定义
-c:\users\lyw\desktop\project\datastructure\c++\glist\glist\glist.h(150): error C2678: 二进制“==”: 没有找到接受“SqString”类型的左操作数的运算符(或没有可接受的转换)
-  c:\users\lyw\desktop\lyw\datastructure\sqstring\sqstring\sqstring.h(328): note: 可能是“int SqString::operator ==(SqString)”
-  c:\users\lyw\desktop\lyw\datastructure\sqstring\sqstring\sqstring.h(315): note: 或    “int SqString::operator ==(char *)”
-  c:\program files (x86)\microsoft visual studio\2017\professional\vc\tools\msvc\14.15.26726\include\system_error(284): note: 或    “bool std::operator ==(const std::error_condition &,const std::error_condition &) noexcept”
-  c:\program files (x86)\microsoft visual studio\2017\professional\vc\tools\msvc\14.15.26726\include\system_error(278): note: 或    “bool std::operator ==(const std::error_condition &,const std::error_code &) noexcept”
-  c:\program files (x86)\microsoft visual studio\2017\professional\vc\tools\msvc\14.15.26726\include\system_error(272): note: 或    “bool std::operator ==(const std::error_code &,const std::error_condition &) noexcept”
-  c:\program files (x86)\microsoft visual studio\2017\professional\vc\tools\msvc\14.15.26726\include\system_error(266): note: 或    “bool std::operator ==(const std::error_code &,const std::error_code &) noexcept”
-  c:\program files (x86)\microsoft visual studio\2017\professional\vc\tools\msvc\14.15.26726\include\exception(331): note: 或    “bool std::operator ==(const std::exception_ptr &,std::nullptr_t) noexcept”
-  c:\program files (x86)\microsoft visual studio\2017\professional\vc\tools\msvc\14.15.26726\include\exception(326): note: 或    “bool std::operator ==(std::nullptr_t,const std::exception_ptr &) noexcept”
-  c:\program files (x86)\microsoft visual studio\2017\professional\vc\tools\msvc\14.15.26726\include\exception(321): note: 或    “bool std::operator ==(const std::exception_ptr &,const std::exception_ptr &) noexcept”
-  c:\users\lyw\desktop\project\datastructure\c++\glist\glist\glist.h(150): note: 或    “内置 C++ operator==(const char [3], const char [3])”
-  c:\users\lyw\desktop\project\datastructure\c++\glist\glist\glist.h(150): note: 尝试匹配参数列表“(SqString, const char [3])”时
-c:\users\lyw\desktop\project\datastructure\c++\glist\glist\glist.h(379): error C2664: “Status SqString::insert(int,SqString)”: 无法将参数 2 从“const char [2]”转换为“SqString”
-  c:\users\lyw\desktop\project\datastructure\c++\glist\glist\glist.h(379): note: 无构造函数可以接受源类型，或构造函数重载决策不明确
-c:\users\lyw\desktop\project\datastructure\c++\glist\glist\glist.h(380): error C2664: “Status SqString::insert(int,SqString)”: 无法将参数 2 从“const char [2]”转换为“SqString”
-  c:\users\lyw\desktop\project\datastructure\c++\glist\glist\glist.h(380): note: 无构造函数可以接受源类型，或构造函数重载决策不明确
-c:\users\lyw\desktop\project\datastructure\c++\glist\glist\glist.h(385): error C2679: 二进制“=”: 没有找到接受“const char [3]”类型的右操作数的运算符(或没有可接受的转换)
-  c:\users\lyw\desktop\lyw\datastructure\sqstring\sqstring\sqstring.h(276): note: 可能是“SqString SqString::operator =(const SqString)”
-  c:\users\lyw\desktop\lyw\datastructure\sqstring\sqstring\sqstring.h(269): note: 或    “SqString SqString::operator =(char *)”
-  c:\users\lyw\desktop\project\datastructure\c++\glist\glist\glist.h(385): note: 尝试匹配参数列表“(SqString, const char [3])”时
+c:\users\lyw\desktop\lyw\datastructure\sqstring\sqstring\sqstring.h(314): warning C4715: “SqString::operator<”: 不是所有的控件路径都返回值
+  GList.vcxproj -> C:\Users\lyw\Desktop\lyw\DataStructure\GList\Debug\GList.exe

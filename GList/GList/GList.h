@@ -146,8 +146,9 @@ void GList::createGList(SqString S)
 void GList::createGList_aux(GListNodePointer & L, SqString S)
 {
 	char c;
+	char x[3] = "()";
 	SqString hS;
-	if (!(S == "()"))
+	if (!(S == x))
 	{
 		L = NULL;
 		return;
@@ -353,9 +354,38 @@ GList::GList(const GList & otherS)
 	}
 }
 
-void separate(SqString & S, SqString & hS)
+void GList::read(istream& in)
+{
+	SqString S;
+	cout << "以字符串形式输入一个广义表：" << endl;
+	in >> S;
+	createGList(S);
+}
+
+istream& operator>>(istream& in,GList& GL1)
+{
+	GL1.read(in);
+	return in;
+}
+
+void GList::display(ostream& out)
+{
+
+}
+
+ostream& operator<< (ostream& out, GList& GL1)
+{
+	GL1.display(out);
+	return out;
+}
+
+
+void separate(SqString& S, SqString& hS)
 {
 	char c;
+	char x[2] = "(";
+	char y[2] = ")";
+	char z[3] = "()";
 	int k = 0;
 	int i = 1;
 	int n = S.getLength() - 2;
@@ -376,12 +406,13 @@ void separate(SqString & S, SqString & hS)
 	{
 		tS.subString(hS, 1, i - 1);
 		tS.subString(S, i + 1, n - i);
-		S.insert(1, "(");
-		S.insert(S.getLength() + 1, ")");
+		S.insert(1, x);
+		S.insert(S.getLength() + 1, y);
 	}
 	else
 	{
 		hS = tS;
-		S = "()";
+		S = z;
 	}
 }
+

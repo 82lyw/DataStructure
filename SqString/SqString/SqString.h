@@ -305,10 +305,12 @@ SqString SqString::operator +(SqString rightS)
 Status SqString::operator<(SqString rightS)
 {
 	for (int i = 0; i < length&&i < rightS.length; ++i)
+	{
 		if (ch[i] < rightS.ch[i])
 			return true;
 		else
 			return false;
+	}
 }
 
 //功能：重载是否相等运算符的定义SqString顺序串==C++String顺序串
