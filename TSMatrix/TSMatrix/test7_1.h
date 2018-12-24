@@ -58,10 +58,9 @@ void ex7_1_4(TSMatrix<ElemType> & T1, char & continueYesNo)
 	cout << "*********************稀疏矩阵的赋值运算*************************" << endl << endl;
 
 	TSMatrix<ElemType> T2;
-	T2.suiji();
-	T1 = T2;
-	cout << "另一个稀疏矩阵赋值给当前稀疏矩阵为：" << endl;
-	cout << T1;
+	T2 = T1;
+	cout << "赋值后的稀疏矩阵为：" << endl;
+	cout << T2;
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";

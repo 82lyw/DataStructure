@@ -72,6 +72,7 @@ public:
 
 	//Êä³öÏ¡Êè¾ØÕó
 	void display(ostream & out);
+	int display_aux(int i, int j);
 
 	//Ëæ»úÉú³ÉÏ¡Êè¾ØÕó
 	//void RandTS();
@@ -599,6 +600,18 @@ istream& operator>>(istream& in, TSMatrix<ElemType>&iT)
 }
 
 template <typename ElemType>
+int TSMatrix<ElemType>::display_aux(int i, int j)
+{
+	for (int index = 0; index < totalNum; index++)
+	{
+		if ((data[index].i == i) && (data[index].j == j))
+			return index;
+	}
+	return 1000;
+}
+
+
+template <typename ElemType>
 void TSMatrix<ElemType>::display(ostream & out)
 {
 	int index = 0;
@@ -611,9 +624,14 @@ void TSMatrix<ElemType>::display(ostream & out)
 		cout << "\t [" << i << "]";
 		for (int j = 0; j < colNum; j++)
 		{
+			/*
 			if (index < totalNum && (data[index].i == i) && (data[index].j == j))
 			{
 				cout << "\t" << data[index++].e;
+			}*/
+			if (display_aux(i, j) != 1000)
+			{
+				out << "\t" << data[display_aux(i, j)].e;
 			}
 			else
 			{

@@ -1,5 +1,2 @@
 ﻿  main.cpp
-  正在生成代码
-  All 47 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
-  已完成代码的生成
-  TSMatrix.vcxproj -> C:\Users\lyw\Desktop\lyw\DataStructure\TSMatrix\Release\TSMatrix.exe
+LINK : fatal error LNK1104: 无法打开文件“C:\Users\lyw\Desktop\lyw\DataStructure\TSMatrix\Release\TSMatrix.exe”
