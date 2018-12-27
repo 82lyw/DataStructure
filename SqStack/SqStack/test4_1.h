@@ -279,24 +279,8 @@ void ex4_1_11(MySqStack<ElemType> & stack1, char & continueYesNo)
 {
 	system("cls");
 	cout << "*********************迷宫求解（顺序栈的应用）*************************" << endl << endl;
+	Maze<int> m1;
 	
-	int **maze;//定义二维指针存取迷宫
-	maze = NULL;
-	int m=0;//行列数
-	MazePoint start, end;
-	maze = GetMaze(m);
-	cout << "矫正后的迷宫数据为：" << endl;
-	displayM(m, maze);
-	inputPoint(start, end, m, maze);
-	if (MazePath(maze,m, start, end))
-	{
-		cout << "迷宫路径探索成功!" << endl;
-		//displayM(m, maze);
-	}
-	else
-		cout << "路径不存在!" << endl;
-
-	/*
 	int select;
 	char continueSelect = 'n';
 	while (1)
@@ -307,35 +291,36 @@ void ex4_1_11(MySqStack<ElemType> & stack1, char & continueYesNo)
 		cout << endl;
 
 		cout << "\t 1.走迷宫" << endl;
-		cout << "\t 2.把一个迷宫赋值给另一个迷宫" << endl;
-		cout << "\t 3.随机生成迷宫" << endl;
-		cout << "\t 4.输入迷宫" << endl;
+		cout << "\t 2.随机生成迷宫" << endl;
+		cout << "\t 3.输入迷宫" << endl;
 
 		cout << "其他.结束" << endl << endl;
 
 		cout << "///////////////////////////////////////////////////////////////////////////////" << endl;
-		displayM(m,maze);
+		cout << "当前的迷宫为：" << endl;
+		cout << m1;
+		cout << endl << endl;
 		cout << "///////////////////////////////////////////////////////////////////////////////" << endl << endl;
 
-		cout << "请选择你要操作的代码（1-4）号码：";
+		cout << "请选择你要操作的代码（1-3）号码：";
 
 		cin >> select;
 
-		if (select > 0 && select < 5)
+		if (select > 0 && select < 4)
 		{
 			system("cls");
-			displayM(m, maze);
+			cout << "当前的迷宫为：" << endl;
+			cout << m1;
+			cout << endl << endl;
 		}
 
 		switch (select)
 		{
-		case 1:ex4_1_11_1(stack1, continueSelect,maze,m,start,end);
+		case 1:ex4_1_11_1(m1, continueSelect);
 			break;
-		case 2:ex4_1_11_2(stack1, continueSelect, maze, m, start, end);
+		case 2:ex4_1_11_2(m1, continueSelect);
 			break;
-		case 3:ex4_1_11_3(stack1, continueSelect, maze, m, start, end);
-			break;
-		case 4:ex4_1_11_4(stack1, continueSelect, maze, m, start, end);
+		case 3:ex4_1_11_3(m1, continueSelect);
 			break;
 		default:cout << "\n 你选择了结束。" << endl << endl;
 			return;
@@ -343,11 +328,65 @@ void ex4_1_11(MySqStack<ElemType> & stack1, char & continueYesNo)
 		if (continueSelect == 'n' || continueSelect == 'n')
 			break;
 	}
-	*/
 
 	cout << "***********************************************************" << endl << endl;
 	cout << "还继续吗（Y.继续\tN.结束）？";
 	cin >> continueYesNo;
+}
+
+void ex4_1_11_1(Maze<int> &m1, char & continueSelect)
+{
+	cout << "**********************走迷宫************************" << endl << endl;
+
+	int i, j, k, l;
+	cout << " 请输入起始点的坐标：" << endl;
+	cout << "\t x："; cin >> i;
+	cout << "\t y："; cin >> j;
+	cout << " 请输入终点的坐标：" << endl;
+	cout << "\t x："; cin >> k;
+	cout << "\t y："; cin >> l; 
+	cout << endl;
+	if (m1.maze(i, j, k, l))
+	{
+		cout<<"已走完迷宫"<<endl;
+	}
+	else
+	{
+		cout << "无通路！" << endl;
+	}
+
+
+	cout << "***********************************************************" << endl << endl;
+	cout << "还继续吗（Y.继续\tN.结束）？";
+	cin >> continueSelect;
+}
+
+void ex4_1_11_2(Maze<int> &m1, char & continueSelect)
+{
+	cout << "**********************随机生成迷宫************************" << endl << endl;
+
+	cout << " 随机生成的迷宫为： " << endl;
+	m1.randCreate();
+	cout << m1;
+	cout << endl;
+
+	cout << "***********************************************************" << endl << endl;
+	cout << "还继续吗（Y.继续\tN.结束）？";
+	cin >> continueSelect;
+}
+
+void ex4_1_11_3(Maze<int> &m1, char & continueSelect)
+{
+	cout << "**********************输入迷宫************************" << endl << endl;
+
+	cin >> m1;
+	cout << " 矫正后的迷宫为：" << endl;
+	cout << m1;
+	cout << endl;
+
+	cout << "***********************************************************" << endl << endl;
+	cout << "还继续吗（Y.继续\tN.结束）？";
+	cin >> continueSelect;
 }
 
 /*

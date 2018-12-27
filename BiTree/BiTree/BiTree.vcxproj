@@ -144,8 +144,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="BiTree.h" />
-    <ClInclude Include="MyBiTree.h" />
-    <ClInclude Include="SeqTree.h" />
     <ClInclude Include="test9.h" />
   </ItemGroup>
   <ItemGroup>

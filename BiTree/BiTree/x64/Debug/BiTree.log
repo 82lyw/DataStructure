@@ -1,0 +1,44 @@
+﻿  main.cpp
+c:\users\lyw\desktop\lyw\datastructure\sqstack\sqstack\sqstack.h(124): warning C4244: “初始化”: 从“__int64”转换到“int”，可能丢失数据
+  c:\users\lyw\desktop\lyw\datastructure\sqstack\sqstack\sqstack.h(123): note: 编译 类 模板 成员函数 "void SqStack<BiTree<ElemType>::Node *>::push(BiTree<ElemType>::Node*)" 时
+          with
+          [
+              ElemType=char
+          ]
+  c:\users\lyw\desktop\lyw\datastructure\bitree\bitree\bitree.h(360): note: 参见对正在编译的函数 模板 实例化“void SqStack<BiTree<ElemType>::Node *>::push(BiTree<ElemType>::Node*)”的引用
+          with
+          [
+              ElemType=char
+          ]
+  c:\users\lyw\desktop\lyw\datastructure\bitree\bitree\bitree.h(355): note: 参见对正在编译的 类 模板 实例化 "SqStack<BiTree<ElemType>::Node *>" 的引用
+          with
+          [
+              ElemType=char
+          ]
+  c:\users\lyw\desktop\lyw\datastructure\bitree\bitree\bitree.h(353): note: 编译 类 模板 成员函数 "void BiTree<ElemType>::noRecursionInOrderTraverse(void)" 时
+          with
+          [
+              ElemType=char
+          ]
+  c:\users\lyw\desktop\lyw\datastructure\bitree\bitree\test9.h(106): note: 参见对正在编译的函数 模板 实例化“void BiTree<ElemType>::noRecursionInOrderTraverse(void)”的引用
+          with
+          [
+              ElemType=char
+          ]
+  c:\users\lyw\desktop\lyw\datastructure\bitree\bitree\bitree.h(452): note: 编译 类 模板 成员函数 "BiTree<ElemType>::BiTree(void)" 时
+          with
+          [
+              ElemType=char
+          ]
+  c:\users\lyw\desktop\lyw\datastructure\bitree\bitree\main.cpp(112): note: 参见对正在编译的函数 模板 实例化“BiTree<ElemType>::BiTree(void)”的引用
+          with
+          [
+              ElemType=char
+          ]
+  c:\users\lyw\desktop\lyw\datastructure\bitree\bitree\bitree.h(534): note: 参见对正在编译的 类 模板 实例化 "BiTree<ElemType>" 的引用
+          with
+          [
+              ElemType=char
+          ]
+  c:\users\lyw\desktop\lyw\datastructure\bitree\bitree\main.cpp(22): note: 参见对正在编译的 类 模板 实例化 "MyBiTree<char>" 的引用
+LINK : fatal error LNK1168: 无法打开 C:\Users\lyw\Desktop\lyw\DataStructure\BiTree\x64\Debug\BiTree.exe 进行写入

@@ -1,6 +1,2 @@
 ﻿  main.cpp
-  正在生成代码
-c:\users\lyw\desktop\project\datastructure\c++\crosslistmatrix\crosslistmatrix\crosslistmatrix.h(562): error C4703: 使用了可能未初始化的本地指针变量“rq1”
-c:\users\lyw\desktop\project\datastructure\c++\crosslistmatrix\crosslistmatrix\crosslistmatrix.h(293): error C4703: 使用了可能未初始化的本地指针变量“p3”
-  All 34 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
-LINK : fatal error LNK1257: 代码生成失败
+LINK : fatal error LNK1104: 无法打开文件“C:\Users\lyw\Desktop\lyw\DataStructure\CrossListMatrix\x64\Release\CrossListMatrix.exe”

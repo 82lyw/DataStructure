@@ -8,7 +8,7 @@ using std::cin;
 
 #ifndef MYBITREE_H
 #define MYBITREE_H
-#include "MyBiTree.h"
+#include "BiTree.h"
 #endif
 
 //测试需要的一些操作
@@ -19,7 +19,7 @@ using std::cin;
 
 int main()
 {
-	MyLinkQueue<int> Q1;
+	MyBiTree<char> BT1;
 
 	int choose;
 	char continueYesNo = 'N';
@@ -44,54 +44,64 @@ int main()
 		cout << "\t 12.二叉树的顺序存储转换为二叉链表存储结构" << endl;
 		cout << "\t 13.随机生成二叉树" << endl;
 		cout << "\t 14.输入二叉树" << endl<<endl;
+
+		/*
 		cout << "\t 15.中序遍历中序穿线二叉树" << endl;
 		cout << "\t 16.中序穿线二叉树顺序存储转换为二叉链表存储" << endl;
 		cout << "\t 17.中序穿线二叉树中找指定结点中序的前驱与后继" << endl;
 		cout << "\t 18.随机生成中序穿线二叉树" << endl;
 		cout << "\t 19.输入中序穿线二叉树" << endl;
 		cout << "\t 20.哈夫曼树（二叉树的应用）" << endl;
+		*/
 
 		cout << "其他.结束" << endl << endl;
 
 		cout << "///////////////////////////////////////////////////////////////////////////////" << endl;
-		//displayCurrentObject(Q1);
+		displayCurrentObject(BT1);
 		cout << "///////////////////////////////////////////////////////////////////////////////" << endl << endl;
 
 		cout << "请选择你要操作的代码（1-20）号码：";
 		cin >> choose;
 
-		if (choose > 0 && choose < 21)
+		if (choose > 0 && choose < 15)
 		{
 			system("cls");
-			//displayCurrentObject(Q1);
+			displayCurrentObject(BT1);
 		}
 
 		switch (choose)
 		{
-		case 1:ex9_1(Q1, continueYesNo);
+		case 1:ex9_2_1(BT1, continueYesNo);
 			break;
-			/*
-		case 2:ex9_2(Q1, continueYesNo);
+			
+		case 2:ex9_2_2(BT1, continueYesNo);
 			break;
-		case 3:ex9_3(Q1, continueYesNo);
+		case 3:ex9_2_3(BT1, continueYesNo);
 			break;
-		case 4:ex9_4(Q1, continueYesNo);
+		case 4:ex9_2_4(BT1, continueYesNo);
 			break;
-		case 5:ex9_5(Q1, continueYesNo);
+		case 5:ex9_2_5(BT1, continueYesNo);
 			break;
-		case 6:ex9_6(Q1, continueYesNo);
+		case 6:ex9_2_6(BT1, continueYesNo);
 			break;
-		case 7:ex9_7(Q1, continueYesNo);
+		case 7:ex9_2_7(BT1, continueYesNo);
 			break;
-		case 8:ex9_8(Q1, continueYesNo);
+		case 8:ex9_2_8(BT1, continueYesNo);
 			break;
-		case 9:ex9_9(Q1, continueYesNo);
+		case 9:ex9_2_9(BT1, continueYesNo);
 			break;
-		case 10:ex9_10(Q1, continueYesNo);
+		case 10:ex9_2_10(BT1, continueYesNo);
+			break;
+		case 11:ex9_2_11(BT1, continueYesNo);
+			break;
+		case 12:ex9_2_12(BT1, continueYesNo);
+			break;
+		case 13:ex9_2_13(BT1, continueYesNo);
+			break;
+		case 14:ex9_2_14(BT1, continueYesNo);
 			break;
 		default:cout << "\n 你选择了结束。" << endl << endl;
 			return 0;
-			*/
 		}
 
 		if (continueYesNo == 'N' || continueYesNo == 'n')

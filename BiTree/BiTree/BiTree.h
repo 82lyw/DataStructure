@@ -9,7 +9,7 @@
 //MySeqTree.h 树（采用顺序存储）（派生类）
 #ifndef MYSEQTREE_H
 #define MYSEQTREE_H
-#include "SeqTree.h"
+#include "C:\Users\lyw\Desktop\lyw\DataStructure\SeqTree\SeqTree\SeqTree.h"
 #endif // !MYSEQTREE_H
 
 //SqStack.h
@@ -38,7 +38,6 @@ public:
 	public:
 		//构造函数：初始化列表（执行快）
 		Node() :lchild(NULL), rchild(NULL) {};
-
 		ElemType data;
 		class Node *lchild, *rchild;
 	};
@@ -64,7 +63,7 @@ public:
 	void exchangeLRchild();
 
 	//取根指针
-	NodePointer getRoot();
+	NodePointer getroot();
 
 	//中序递归遍历二叉树
 	void inOrderTraverse();
@@ -86,9 +85,6 @@ public:
 
 	//前序递归遍历二叉树
 	void preOrderTraverse();
-
-	//随机生成一棵二叉树
-	void randomCreate();
 
 	//二叉树的顺序存储转换为二叉链表存储结构
 	void sequentialToLink(MySeqTree<ElemType> T);
@@ -131,6 +127,7 @@ public:
 	BiTree();
 	~BiTree();
 	BiTree(const BiTree<ElemType>& otherT);
+	void randomCreate();
 	void read(istream& in);
 	void display(ostream& out);
 
@@ -159,7 +156,7 @@ int BiTree<ElemType>::countLeaf()
 template <typename ElemType>
 int BiTree<ElemType>::countLeaf_aux(NodePointer p)
 {
-	int num;
+	int num=0;
 	static int i = 0;
 	if (p)
 	{
@@ -187,7 +184,7 @@ int BiTree<ElemType>::countNode()
 template <typename ElemType>
 int BiTree<ElemType>::countNode_aux(NodePointer p)
 {
-	int num;
+	int num=0;
 	static int i = 0;
 	if (p)
 	{
@@ -241,7 +238,7 @@ int BiTree<ElemType>::depth_aux(NodePointer p)
 template <typename ElemType>
 void BiTree<ElemType>::displaySeqTree()
 {
-	seqT.sequentialDisplay();
+	seqT.sequentialdisplay();
 }
 
 //交换二叉树中所有结点的左右子s树
@@ -269,7 +266,7 @@ void BiTree<ElemType>::exchangeLRchild_aux(NodePointer p)
 
 //取根指针
 template <typename ElemType>
-BiTree<ElemType>::NodePointer BiTree<ElemType>::getRoot()
+typename BiTree<ElemType>::NodePointer BiTree<ElemType>::getroot()
 {
 	return root;
 }
@@ -323,7 +320,7 @@ void BiTree<ElemType>::layOrderTraverse()
 template <typename ElemType>
 void BiTree<ElemType>::linkToSeqquential()
 {
-	int max_tital;
+	int max_total;
 	MySeqTree<ElemType> tempT;
 	if (!root)
 	{
@@ -414,7 +411,7 @@ void BiTree<ElemType>::preOrderTraverse_aux(NodePointer p)
 template <typename ElemType>
 void BiTree<ElemType>::randomCreate()
 {
-	seqT.randomCreateSeq_tree(1);
+	seqT.randCreate();
 	sequentialToLink_aux(0, root);
 }
 
@@ -428,7 +425,7 @@ void BiTree<ElemType>::sequentialToLink(MySeqTree<ElemType> T)
 
 //二叉树的顺序存储转换为二叉链表存储结构的辅助函数
 template <typename ElemType>
-void BiTree<ElemType>::sequentialToLink_aux(int i, NodePointer& subroot)
+void BiTree<ElemType>::sequentialToLink_aux(int i, NodePointer& p)
 {
 	int n = seqT.getFinalIndex();
 	if (n == -1)
@@ -439,8 +436,12 @@ void BiTree<ElemType>::sequentialToLink_aux(int i, NodePointer& subroot)
 	p = new BiTree<ElemType>::Node;
 	assert(p != 0);
 	p->data = seqT.getNode(i);
-	if (2 * i + 1 > n || seqT.getNode(2 * i + 1) == ' ')
+	if (2 * i + 1 > n || seqT.getNode(2 * i + 1) == '0')
 		p->lchild = NULL;
+	else
+		sequentialToLink_aux(2 * i + 1, p->lchild);
+	if (2 * i + 2 > n || seqT.getNode(2 * i + 2) == '0')
+		p->rchild = NULL;
 	else
 		sequentialToLink_aux(2 * i + 2, p->rchild);
 }
@@ -470,7 +471,7 @@ BiTree<ElemType>::BiTree(const BiTree<ElemType>& otherT)
 	else
 	{
 		BiTree_aux(root, otherT.root);
-		linkToSeqquential()
+		linkToSeqquential();
 	}
 }
 
@@ -521,8 +522,15 @@ void BiTree<ElemType>::display(ostream& out)
 
 //功能：重载输出运算符的定义
 template <typename ElemType>
-ostream& operator>>(ostream& in, BiTree<ElemType>& bT)
+ostream& operator<<(ostream& out, BiTree<ElemType>& bT)
 {
 	bT.display(out);
 	return out;
 }
+
+//MyBiTree.h 二叉树（二叉链表存储） 派生类
+template <typename ElemType>
+class MyBiTree :public BiTree<ElemType>
+{
+public:
+};

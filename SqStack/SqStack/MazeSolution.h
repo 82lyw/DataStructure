@@ -1,11 +1,248 @@
-class MazePoint
+static int number;
+
+template <typename ElemType>
+class Maze :public SqStack<ElemType>
 {
 public:
-	int x;
-	int y;
-	int dir;  //0:无效,1:东,2:南,3:西,4:北
+	class MazePoint
+	{
+	public:
+		int x;
+		int y;
+		int dir;  //0:无效,1:东,2:南,3:西,4:北
+	};
+
+public:
+	void randCreate();
+	Status maze_aux(MazePoint start, MazePoint end);
+	Status maze(int s_x, int q_y, int z_x, int z_y);
+	bool mazePath(MazePoint i);
+	void read(istream& in);
+	void display(ostream& out) const;
+
+protected:
+	ElemType **map;
 };
 
+template <typename ElemType>
+void Maze<ElemType>::read(istream& in)
+{
+	int i, j, l, length = 0;
+	delete[] this->base;
+	this->base = new ElemType[STACK_MAX_SIZE];
+	assert(this->base != 0);
+	this->StackSize = STACK_MAX_SIZE;
+	cout << "请输入迷宫的行列数：";
+	in >> number;
+	cout << endl;
+	cout << "请输入迷宫的数据：" << endl;
+	for (i = 0; i < number; i++)
+	{
+		for (j = 0; j < number; j++)
+		{
+			in >> l;
+			this->base[i*number + j] = l;
+			length++;
+		}
+	}
+	this->top = this->base + length;
+}
+
+template <typename ElemType>
+istream& operator>>(istream& in, Maze<ElemType>& iS)
+{
+	iS.read(in);
+	return in;
+}
+
+template <typename ElemType>
+void Maze<ElemType>::display(ostream& out) const
+{
+	int length = this->top - this->base;
+	if (length)
+	{
+		for (int i = 0; i < sqrt(length); i++)
+			out << "\t" << "[" << i << "]";
+		out << endl;
+	}
+	for (int i = 0; i < sqrt(length); i++)
+	{
+		out << setw(3) << "[" << i << "]";
+		for (int j = 0; j < sqrt(length); j++)
+		{
+			out << "\t" << " " << this->base[i*(int)sqrt(length) + j] << setw(3);
+		}
+		out << endl;
+	}
+}
+
+template <typename ElemType>
+ostream& operator<<(ostream& out, Maze<ElemType>& oS)
+{
+	oS.display(out);
+	return out;
+}
+
+template <typename ElemType>
+void Maze<ElemType>::randCreate()
+{
+	int i, j, k, length = 0;
+	delete[] this->base;
+	this->base = new ElemType[STACK_MAX_SIZE];
+	this->StackSize = STACK_MAX_SIZE;
+	srand((unsigned)time(NULL));
+	k = rand() % 6 + 3;
+	for (i = 0; i < k; i++)
+	{
+		for (j = 0; j < k; j++)
+		{
+			if (i == 0 || j == 0 || i == k - 1 || j == k - 1)
+			{
+				this->base[i*k + j] = 1;
+				length++;
+			}
+			else
+			{
+				this->base[i*k + j] = rand() % 2;
+				length++;
+			}
+		}
+	}
+	this->top = this->base + length;
+}
+
+template <typename ElemType>
+Status Maze<ElemType>::maze(int q_x, int q_y, int z_x, int z_y)
+{
+	int length = this->top - this->base;
+	int k = (int)sqrt(length);
+	map = new int*[k];
+	for (int i = 0; i < k; i++)
+	{
+		map[i] = new int[k];
+	}
+	for (int i = 0; i < k; i++)
+	{
+		for (int j = 0; j < k; j++)
+		{
+			map[i][j] = this->base[i*k + j];
+		}
+	}
+
+	MazePoint start, end;
+	start.x = q_x;
+	start.y = q_y;
+	end.x = z_x;
+	end.y = z_y;
+	if (maze_aux(start, end))
+	{
+		cout << "从起点(" << q_x << "," << q_y << ")" << "到终点" << "(" << z_x << "," << z_y << ")" << "有通路，现用2标注如下:" << endl;
+		if (length)
+		{
+			for (int t = 0; t < sqrt(length); t++)
+				cout << "\t" << "[" << t << "]";
+			cout << endl;
+		}
+		for (int i = 0; i < sqrt(length); i++)
+		{
+			cout << setw(3) << "[" << i << "]";
+			for (int j = 0; j < sqrt(length); j++)
+			{
+				cout << "\t" << " " << map[i][j] << setw(3);
+			}
+			cout << endl;
+		}
+		return OK;
+	}
+	else
+	{
+		return ERROR;
+	}
+}
+
+template <typename ElemType>
+bool Maze<ElemType>::mazePath(MazePoint i)
+{
+	return (map[i.x][i.y] == 0 ? true : false);
+}
+
+template <typename ElemType>
+Status Maze<ElemType>::maze_aux(MazePoint start,MazePoint end)
+{
+	MySqStack<MazePoint> s;
+	MazePoint cur_S;
+	int c_x=0, c_y=0;
+	if (mazePath(start))
+	{
+		s.push(start);
+	}
+	else
+		cout << " 起点为墙壁，所以迷宫";
+
+	while (!s.isEmpty())
+	{
+		s.pop(cur_S);
+		if (mazePath(cur_S))      //当前位置可通过，即是未曾走到过的坐标
+		{
+			map[cur_S.x][cur_S.y] = 2;//留下足迹
+			cur_S.dir = 1;
+			if (cur_S.x == end.x && cur_S.y == end.y)   //到达终点
+				return OK;
+			c_x = cur_S.x;   c_y = cur_S.y;
+			s.push(cur_S);                     //加入路径
+			cur_S.x = c_x;   cur_S.y = c_y + 1;     //右移
+			s.push(cur_S);                     //加入路径
+			continue;
+		}
+		else    // 当前位置不能通过
+		{
+			if (!s.isEmpty())
+			{
+				s.pop(cur_S);
+				while (cur_S.dir == 4 && !s.isEmpty())
+				{
+					map[cur_S.x][cur_S.y] = 0;
+					s.pop(cur_S);    // 不能通过则把 2 改回 0，并退回一步
+					continue;
+				}
+				if (cur_S.dir == 1)
+				{
+					cur_S.dir++;
+					c_x = cur_S.x;   c_y = cur_S.y;        // 记录位置
+					s.push(cur_S);                     //加入路径
+					cur_S.x = c_x + 1;   cur_S.y = c_y;    //下移
+					s.push(cur_S);                     //加入路径
+					continue;
+				}
+				if (cur_S.dir == 2)
+				{
+					cur_S.dir++;
+					c_x = cur_S.x;   c_y = cur_S.y;        // 记录位置
+					s.push(cur_S);                     //加入路径
+					cur_S.x = c_x;   cur_S.y = c_y - 1;    //左移
+					s.push(cur_S);                     //加入路径
+					continue;
+				}
+				if (cur_S.dir == 3)
+				{
+					cur_S.dir++;
+					c_x = cur_S.x;   c_y = cur_S.y;        // 记录位置
+					s.push(cur_S);                     //加入路径
+					cur_S.x = c_x - 1;   cur_S.y = c_y;    //上移
+					s.push(cur_S);                     //加入路径
+					continue;
+					cout << "keyi" << endl;
+				}
+			}
+		}
+	}
+	return ERROR;
+}
+
+
+
+
+/*
 int moveDir[4][2] = { {0,1},{1,0},{0,-1},{-1,0} };//定义当前位置移动的4个方向
 
 //输出路径
@@ -201,3 +438,4 @@ void displayM(int m,int** maze)
 			cout << endl;
 		}
 }
+*/

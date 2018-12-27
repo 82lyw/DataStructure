@@ -18,12 +18,6 @@
     <ClInclude Include="BiTree.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="SeqTree.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="MyBiTree.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="test9.h">
       <Filter>头文件</Filter>
     </ClInclude>

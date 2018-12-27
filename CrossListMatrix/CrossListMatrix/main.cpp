@@ -18,7 +18,7 @@ using std::cin;
 
 int main()
 {
-	CrossListMatrix<int> T1;
+	MyCrossListMatrix<int> T1;
 
 	int choose;
 	char continueYesNo = 'N';

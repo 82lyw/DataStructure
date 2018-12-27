@@ -1,8 +1,6 @@
 #include <iostream>
 #include <string>
-using std::cout;
-using std::endl;
-using std::cin;
+#include <iomanip>
 
 //后缀表达式求解
 #ifndef MYEXPRESS_H
