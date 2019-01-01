@@ -146,7 +146,6 @@ void SeqTree<ElemType>::setSizeEmptyTree(int size)
 	}
 }
 
-
 //MySeqTree.h Ê÷£¨Ë³Ğò´æ´¢£© ÅÉÉúÀà
 template <typename ElemType>
 class MySeqTree :public SeqTree<ElemType>
@@ -154,11 +153,9 @@ class MySeqTree :public SeqTree<ElemType>
 public:
 	//ÊäÈëË³ĞòÕ»
 	void read(istream& in);
-
 	//Êä³öË³ĞòÕ»
 	void sequentialdisplay();
 	void display(ostream& out) const;
-
 	//Ëæ»úÉú³ÉË³ĞòÕ»
 	void randCreate();
 };

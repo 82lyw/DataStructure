@@ -1,6 +1,5 @@
-﻿C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\IDE\VC\VCTargets\Microsoft.CppClean.targets(76,5): warning : 对路径“c:\users\lyw\desktop\lyw\datastructure\linkq\debug\linkq.exe”的访问被拒绝。
-  main.cpp
-c:\users\lyw\desktop\lyw\datastructure\linkq\linkq\parking.h(102): warning C4101: “p”: 未引用的局部变量
+﻿  main.cpp
+c:\users\lyw\desktop\lyw\datastructure\linkq\linkq\parking.h(87): warning C4101: “p”: 未引用的局部变量
 c:\users\lyw\desktop\lyw\datastructure\linkq\linkq\test.h(158): warning C4101: “parking_num”: 未引用的局部变量
   c:\users\lyw\desktop\lyw\datastructure\linkq\linkq\main.cpp(90): note: 参见对正在编译的函数 模板 实例化“void ex5_1_10<int>(MyLinkQueue<int> &,char &)”的引用
-LINK : fatal error LNK1104: 无法打开文件“C:\Users\lyw\Desktop\lyw\DataStructure\LinkQ\Debug\LinkQ.exe”
+LINK : fatal error LNK1168: 无法打开 C:\Users\lyw\Desktop\lyw\DataStructure\LinkQ\Debug\LinkQ.exe 进行写入

@@ -1,2 +1,7 @@
 ﻿  main.cpp
-LINK : fatal error LNK1104: 无法打开文件“C:\Users\lyw\source\repos\LinkList\Release\LinkList.exe”
+c:\users\lyw\desktop\lyw\datastructure\linklist\linklist\mypolynomiallinklist.h(138): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+  c:\users\lyw\desktop\lyw\datastructure\linklist\linklist\mypolynomiallinklist.h(122): note: 编译 类 模板 成员函数 "void MyPolynomialLinkList<MyTerm>::randomInitialFill(int)" 时
+  c:\users\lyw\desktop\lyw\datastructure\linklist\linklist\test3_2_1.h(375): note: 参见对正在编译的函数 模板 实例化“void MyPolynomialLinkList<MyTerm>::randomInitialFill(int)”的引用
+  c:\users\lyw\desktop\lyw\datastructure\linklist\linklist\test3_2_1.h(291): note: 参见对正在编译的 类 模板 实例化 "MyPolynomialLinkList<MyTerm>" 的引用
+c:\users\lyw\desktop\lyw\datastructure\linklist\linklist\mypolynomiallinklist.h(140): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+LINK : fatal error LNK1104: 无法打开文件“C:\Users\lyw\Desktop\lyw\DataStructure\LinkList\Release\LinkList.exe”

@@ -6,7 +6,6 @@ public:
 	int hour;
 	int min;
 };
-
 class CarNode
 {
 public:
@@ -14,18 +13,6 @@ public:
 	Time reach;
 	Time leave;
 };
-
-//模拟车辆调度
-
-//设置停车场可停车辆的最大数目
-void setNum(int & parking_max);
-
-//设置单位时间的收费值
-void setPrice(int & price);
-
-//随机生成停车场的车辆
-void randCar();
-
 void enQCar(LinkQueue<CarNode>&Q, CarNode p)
 {
 	cout << endl << "停车场车位已满，请该汽车在停车场外停靠等待！" << endl;
@@ -81,10 +68,6 @@ loop:
 		cout << "你的输入时间范围有误，请重新输入!" << endl;
 		goto loop;
 	}
-	/*
-	cout << "离开汽车的车牌号为：";
-	cout << p.num << endl;
-	*/
 	cout << "该汽车到达的时间为：";
 	cout << p.reach.hour << ":" << p.reach.min << endl;
 	cout << "该汽车离开的时间为：";
@@ -151,7 +134,7 @@ void displayStack(SqStack<CarNode> S)
 		cout << "停车场没有车！" << endl;
 	else
 	{
-		cout << "\t \t 车牌号 \t 进入时间" << endl;
+		cout << "\t\t\t 车牌号    进入时间" << endl;
 		int i;
 		int length = S.getLength();
 		for (i = 0; i < length; i++)
@@ -163,7 +146,7 @@ void displayStack(SqStack<CarNode> S)
 			else
 				cout << "\t";
 			cout << i;
-			cout << "\t" << (*(S.base + i)).num << "\t" << (*(S.base + i)).reach.hour << ":" << (*(S.base + i)).reach.min << endl;
+			cout << "\t" << (*(S.base + i)).num << "\t   " << (*(S.base + i)).reach.hour << ":" << (*(S.base + i)).reach.min << endl;
 		}
 		cout << endl;
 	}
@@ -220,9 +203,4 @@ void setPrice(int & price)
 	{
 		cout << "已经设置停车场单位时间的收费值为："<<price << endl;
 	}
-}
-
-void randCar()
-{
-
 }

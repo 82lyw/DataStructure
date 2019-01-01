@@ -1,1 +1,8 @@
-﻿LINK : fatal error LNK1168: 无法打开 C:\Users\lyw\Desktop\lyw\DataStructure\LinkList\Debug\LinkList.exe 进行写入
+﻿  main.cpp
+c:\users\lyw\desktop\lyw\datastructure\linklist\linklist\mypolynomiallinklist.h(138): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+  c:\users\lyw\desktop\lyw\datastructure\linklist\linklist\mypolynomiallinklist.h(122): note: 编译 类 模板 成员函数 "void MyPolynomialLinkList<MyTerm>::randomInitialFill(int)" 时
+  c:\users\lyw\desktop\lyw\datastructure\linklist\linklist\test3_2_1.h(375): note: 参见对正在编译的函数 模板 实例化“void MyPolynomialLinkList<MyTerm>::randomInitialFill(int)”的引用
+  c:\users\lyw\desktop\lyw\datastructure\linklist\linklist\test3_2_1.h(291): note: 参见对正在编译的 类 模板 实例化 "MyPolynomialLinkList<MyTerm>" 的引用
+c:\users\lyw\desktop\lyw\datastructure\linklist\linklist\mypolynomiallinklist.h(140): warning C4244: “=”: 从“int”转换到“float”，可能丢失数据
+c:\users\lyw\desktop\lyw\datastructure\linklist\linklist\mypolynomiallinklist.h(104): warning C4715: “MyPolynomialLinkList<MyTerm>::operator+”: 不是所有的控件路径都返回值
+LINK : fatal error LNK1168: 无法打开 C:\Users\lyw\Desktop\lyw\DataStructure\LinkList\Debug\LinkList.exe 进行写入

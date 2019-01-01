@@ -22,12 +22,14 @@ public:
 template <typename ElemType>
 void MySqList<ElemType>::read(istream& in)
 {
-	//输入操作 （数组）
-	/*cout << "请输入第" << this->myNo.no << "个顺序表对象" << endl;
-	cout << "顺序表的长";
-	in >> this->length;
-	cout << "顺序表的宽";
-	in >> this->width;*/
+	int j;
+	cout << "请输入顺序表中元素的个数：";
+	cin >> j;
+	this->n = j;
+	for (int i = 0; i < this->n; i++)
+	{
+		cin >> this->elem[i];
+	}
 
 }
 
@@ -43,9 +45,13 @@ istream& operator>>(istream& in, MySqList<ElemType>& iD)
 template <typename ElemType>
 void MySqList<ElemType>::display(ostream& out) const
 {
+	if (this->n <= 0)
+	{
+		cout << "该顺序表为空！" << endl << endl;
+		return;
+	}
 	//输出操作 （数组）
 	cout << "当前顺序表有" << this->n << "个元素，分别为：" << endl;
-	//for (int i = 1; i <= this->n; i++)
 	for (int i = 1; i <= this->n; i++)
 	{
 		cout << "[" << i << "]\t";

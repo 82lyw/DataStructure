@@ -45,6 +45,7 @@ protected:
 template <typename ElemType>
 void SqListSort<ElemType>::binaryInsertSort()
 {
+	int n = this->n;
 	int low;
 	int mid;
 	int high;
@@ -52,20 +53,20 @@ void SqListSort<ElemType>::binaryInsertSort()
 	ElemType key;
 	for (int i = 1; i < n; i++)
 	{
-		key = elem[i];
+		key = this->elem[i];
 		low = 0;
 		high = i - 1;
 		while (low <= high)
 		{
 			mid = (low + high) / 2;
-			if (key < elem[mid])
+			if (key < this->elem[mid])
 				high = mid - 1;
 			else
 				low = mid + 1;
 		}
 		for (int j = i - 1; j >= high + 1; j--)
-			elem[j + 1] = elem[j];
-		elem[high + 1] = key;
+			this->elem[j + 1] = this->elem[j];
+		this->elem[high + 1] = key;
 	}
 }
 
@@ -75,17 +76,17 @@ void SqListSort<ElemType>::bubbleSort()
 {
 	bool flag = true;
 	ElemType t;
-	for (int i = 1; i < n&&flag; j++)
+	for (int i = 1; i < this->n&&flag; i++)
 	{
 		flag = false;
-		for (int j = 0; j < n - 1;j++)
+		for (int j = 0; j < this->n - 1;j++)
 		{
-			if (elem[j + 1] < elem[j])
+			if (this->elem[j + 1] < this->elem[j])
 			{
 				flag = true;
-				t = elem[j + 1];
-				elem[j + 1] = elem[j];
-				elem[j] = t;
+				t = this->elem[j + 1];
+				this->elem[j + 1] = this->elem[j];
+				this->elem[j] = t;
 			}
 		}
 	}
@@ -95,7 +96,7 @@ void SqListSort<ElemType>::bubbleSort()
 template <typename ElemType>
 int SqListSort<ElemType>::getIndex(int i)
 {
-	if (i<1 || i>n)
+	if (i<1 || i>this->n)
 		return -1;
 	return index[i - 1];
 }
@@ -106,13 +107,13 @@ void SqListSort<ElemType>::heapSort()
 {
 	int i, j = 1;
 	ElemType t;
-	for (i = n / 2 - 1; i > -1; i--)
-		heapSortAdjust_aux(i, n - 1);
-	for (i = n - 1; i >= 1; i--)
+	for (i = this->n / 2 - 1; i > -1; i--)
+		heapSortAdjust_aux(i, this->n - 1);
+	for (i = this->n - 1; i >= 1; i--)
 	{
-		t = elem[i];
-		elem[i] = elem[0];
-		elem[0] = t;
+		t = this->elem[i];
+		this->elem[i] = this->elem[0];
+		this->elem[0] = t;
 		heapSortAdjust_aux(0, i - 1);
 	}
 }
@@ -120,18 +121,18 @@ void SqListSort<ElemType>::heapSort()
 template <typename ElemType>
 void SqListSort<ElemType>::heapSortAdjust_aux(int low, int high)
 {
-	ElemType t = elem[low];
+	ElemType t = this->elem[low];
 	for (int max = 2 * low + 1; max <= high;)
 	{
-		if (max + 1 <= high && elem[max] < elem[max + 1])
+		if (max + 1 <= high && this->elem[max] < this->elem[max + 1])
 			max++;
-		if (t >= elem[max])
+		if (t >= this->elem[max])
 			break;
-		elem[low] = elem[max];
+		this->elem[low] = this->elem[max];
 		low = max;
 		max = 2 * low + 1;
 	}
-	elem[low] = t;
+	this->elem[low] = t;
 }
 
 //直接插入排序
@@ -140,20 +141,22 @@ void SqListSort<ElemType>::insertSort()
 {
 	ElemType key;
 	int temp_index;
-	for (int i = 0; i < n; i++)
+	int i;
+	for (i = 0; i < this->n; i++)
 	{
 		index[i] = i;
 	}
-	for (i = 1; i < n; i++)
+	for (i = 1; i < this->n; i++)
 	{
-		key = elem[i];
+		int j;
+		key = this->elem[i];
 		temp_index = index[i];
-		for (int j = i - 1; j >= 0 && key < elem[j]; j--)
+		for (j = i - 1; j >= 0 && key < this->elem[j]; j--)
 		{
-			elem[j + 1] = elem[j];
+			this->elem[j + 1] = this->elem[j];
 			index[j + 1] = index[j];
 		}
-		elem[j + 1] = key;
+		this->elem[j + 1] = key;
 		index[j + 1] = temp_index;
 	}
 }
@@ -162,7 +165,7 @@ void SqListSort<ElemType>::insertSort()
 template <typename ElemType>
 void SqListSort<ElemType>::mergeSort()
 {
-	mergeSort_aux(0, n - 1);
+	mergeSort_aux(0, this->n - 1);
 }
 
 template <typename ElemType>
@@ -184,32 +187,33 @@ void SqListSort<ElemType>::mergeSortOne_aux(int low, int mid, int high)
 	ElemType temp[LIST_MAX_SIZE];
 	int k;
 	static int time = 1;
-	for (int i = k = low, j = mid + 1; i <= mid && j <= high;)
+	int i, j;
+	for (i = k = low,j = mid + 1; i <= mid && j <= high;)
 	{
-		if (elem[i] <= elem[j])
-			temp[K++] = elem[i++];
+		if (this->elem[i] <= this->elem[j])
+			temp[k++] = this->elem[i++];
 		else
-			temp[k++] = elem[j++];
+			temp[k++] = this->elem[j++];
 	}
 	if (i <= mid)
 	{
 		for (; i <= mid;)
-			temp[k++] = elem[i++];
+			temp[k++] = this->elem[i++];
 	}
 	if (j <= high)
 	{
 		for (; j <= high;)
-			temp[k++] = elem[j++];
+			temp[k++] = this->elem[j++];
 	}
 	for (k = low; k <= high; k++)
-		elem[k] = temp[k];
+		this->elem[k] = temp[k];
 }
 
 //快速排序
 template <typename ElemType>
 void SqListSort<ElemType>::quickSort()
 {
-	quickSort_aux(0, n - 1);
+	quickSort_aux(0, this->n - 1);
 }
 
 template <typename ElemType>
@@ -229,17 +233,17 @@ int SqListSort<ElemType>::quickSortPartition_aux(int low, int high)
 {
 	int i = low, j = high;
 	ElemType t;
-	t = elem[i];
+	t = this->elem[i];
 	while (i < j)
 	{
-		while (i < j&&elem[j] >= t)
+		while (i < j&&this->elem[j] >= t)
 			j--;
-		elem[i] = elem[j];
-		while (i < j&&elem[i] <= t)
+		this->elem[i] = this->elem[j];
+		while (i < j&&this->elem[i] <= t)
 			i++;
-		elem[j] = elem[i];
+		this->elem[j] = this->elem[i];
 	}
-	elem[i] = t;
+	this->elem[i] = t;
 	return i;
 }
 
@@ -248,7 +252,8 @@ template <typename ElemType>
 void SqListSort<ElemType>::ShellSort()
 {
 	int dlta[LIST_MAX_SIZE];
-	for (int d = n / 2, k = 0; d >= 1; d = d / 2)
+	int k,d;
+	for (d = this->n / 2, k = 0; d >= 1; d = d / 2)
 		dlta[k++] = d;
 	for (int i = 0; i < k; i++)
 		ShellSort_aux(dlta[i]);
@@ -260,15 +265,15 @@ void SqListSort<ElemType>::ShellSort_aux(int dk)
 	int j;
 	static int time = 1;
 	ElemType key;
-	for (int i = dk; i < n; i++)
+	for (int i = dk; i < this->n; i++)
 	{
 		j = i - dk;
-		if (elem[i] < elem[j])
+		if (this->elem[i] < this->elem[j])
 		{
-			key = elem[i];
-			for (; j >= 0 && key < elem[j]; j -= dk)
-				elem[j + dk] = elem[j];
-			elem[j + dk] = key;
+			key = this->elem[i];
+			for (; j >= 0 && key < this->elem[j]; j -= dk)
+				this->elem[j + dk] = this->elem[j];
+			this->elem[j + dk] = key;
 		}
 	}
 }
@@ -279,17 +284,17 @@ void SqListSort<ElemType>::selectSort()
 {
 	int min;
 	ElemType t;
-	for (int i = 1; i < n; i++)
+	for (int i = 1; i < this->n; i++)
 	{
 		min = i - 1;
-		for (int j = i; j < n; j++)
-			if (elem[j] < elem[min])
+		for (int j = i; j < this->n; j++)
+			if (this->elem[j] < this->elem[min])
 				min = j;
 		if (min != i - 1)
 		{
-			t = elem[min];
-			elem[min] = elem[i - 1];
-			elem[i - 1] = t;
+			t = this->elem[min];
+			this->elem[min] = this->elem[i - 1];
+			this->elem[i - 1] = t;
 		}
 	}
 }
@@ -304,27 +309,27 @@ SqListSort<ElemType>::SqListSort()
 template <typename ElemType>
 SqListSort<ElemType>::~SqListSort()
 {
-	clear();
-	delete[]index;
+	typename SqList<ElemType>::clear();
+	delete[] index;
 }
 
 template <typename ElemType>
 SqListSort<ElemType>::SqListSort(const SqListSort& otherS)
 {
-	index = new int[listSize];
+	index = new int[this->listSize];
 	assert(index != 0);
-	listSize = otherS.listSize;
-	n = otherS.n;
-	for (int i = 0; i < n; i++)
+	this->listSize = otherS.listSize;
+	this->n = otherS.n;
+	for (int i = 0; i < this->n; i++)
 	{
-		elem[i] = otherS.elem[i];
+		this->elem[i] = otherS.elem[i];
 		index[i] = otherS.index[i];
 	}
 }
 
 
 template <typename ElemType>
-class MySqListSort :public SqLsitSort<ElemType>
+class MySqListSort :public SqListSort<ElemType>
 {
 public:
 	void randS();
@@ -342,7 +347,7 @@ void MySqListSort<ElemType>::read(istream& in)
 	cout << "请输入元素个数：";
 	in >> this->n;
 	cout << "请输入元素：";
-	for (int i = 0; i < n; i++)
+	for (int i = 0; i < this->n; i++)
 		in >> this->elem[i];
 }
 

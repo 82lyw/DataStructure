@@ -11,7 +11,6 @@ public:
 		int y;
 		int dir;  //0:无效,1:东,2:南,3:西,4:北
 	};
-
 public:
 	void randCreate();
 	Status maze_aux(MazePoint start, MazePoint end);
@@ -19,9 +18,8 @@ public:
 	bool mazePath(MazePoint i);
 	void read(istream& in);
 	void display(ostream& out) const;
-
 protected:
-	ElemType **map;
+	ElemType **map;	//迷宫矩阵
 };
 
 template <typename ElemType>
@@ -177,7 +175,7 @@ Status Maze<ElemType>::maze_aux(MazePoint start,MazePoint end)
 		s.push(start);
 	}
 	else
-		cout << " 起点为墙壁，所以迷宫";
+		cout << " 起点为墙，所以迷宫";
 
 	while (!s.isEmpty())
 	{

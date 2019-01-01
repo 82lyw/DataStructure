@@ -25,7 +25,6 @@ using std::cin;
 int main()
 {
 	MySqList<int> list_1;
-	MyStudent<int> list2;
 
 	int choose;
 	char continueYesNo = 'N';
@@ -61,7 +60,7 @@ int main()
 		cout << "请选择你要操作的代码（1-15）号码：";
 		cin >> choose;
 
-		if (choose > 0 && choose < 13)
+		if (choose > 0 && choose < 14)
 		{
 			system("cls");
 			displayCurrentObject(list_1);
@@ -97,7 +96,7 @@ int main()
 			break;
 		case 14:ex3_1_14(list_1, continueYesNo);
 			break;
-		case 15:ex3_1_15(list2, continueYesNo);
+		case 15:ex3_1_15(list_1, continueYesNo);
 			break;
 		default:cout << "\n 你选择了结束。" << endl << endl;
 			return 0;

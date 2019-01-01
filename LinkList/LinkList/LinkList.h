@@ -20,10 +20,6 @@ public:
 	};
 	typedef LinkNode * NodePointer;
 
-	//void inputLinkList();
-
-	//void RandomLink();
-
 	//非循环单链表的逆置
 	void adverse();
 
@@ -321,75 +317,18 @@ template<typename ElemType>
 class MyLinkList :public LinkList<ElemType>
 {
 public:
-	//输入
 	void read(istream & in);
-	void inputLinkList();
-
-	//输出
 	void display(ostream & out) const;
-
-	//随机生成
 	void RandomLink();
-
-	//重载赋值运算符
 	MyLinkList<ElemType> operator = (MyLinkList<ElemType> rightL);
 };
 
 template<typename ElemType>
 void MyLinkList<ElemType>::read(istream & in)
 {
-	/*int n, i;
-	ElemType *elem;
-	typename LinkList<ElemType>::NodePointer p = this->head;
-	typename LinkList<ElemType>::NodePointer s;
-	cout << "请输入非循环单链表中结点的个数：";
-	cin >> n;
-	cout << "各结点的数据域为：";
-	for (i = 0; i < n; i++)
-	{
-		cin >> elem[i];
-	}
-	cout << "新输入的非循环单链表为：" << endl;
-	for (i = 1; i <= n + 1; i++)
-		cout << "[ " << i << "] \t";
-	cout << endl;
-	for (i = 0; i < n; i++)
-	{
-		s = new typename LinkList<ElemType>::LinkNode;
-		assert(s != 0);
-		s->data = elem[i];
-		if (!this->head)
-			this->head = s;
-		else
-			p->next = s;
-		p = s;
-		if (p)
-			p->next = NULL;
-	}
-	p = this->head;
-	while (p)
-	{
-		while (p->next != NULL)
-		{
-			cout << " " << p->data << "->";
-			break;
-		}
-		while (p->next == NULL)
-		{
-			cout << " " << p->data << "∧";
-			break;
-		}
-		p = p->next;
-	}*/
-	cout << endl;
-}
-
-template<typename ElemType>
-void MyLinkList<ElemType>::inputLinkList()
-{
 	typename LinkList<ElemType>::clear();
 	int n, i;
-	ElemType *elem=new ElemType[100];
+	ElemType *elem = new ElemType[100];
 	typename LinkList<ElemType>::NodePointer p = this->head;
 	typename LinkList<ElemType>::NodePointer s;
 	cout << "请输入非循环单链表中结点的个数：";
@@ -400,7 +339,7 @@ void MyLinkList<ElemType>::inputLinkList()
 		cin >> elem[i];
 	}
 	cout << "新输入的非循环单链表为：" << endl;
-	for (i = 1; i <= n ; i++)
+	for (i = 1; i <= n; i++)
 		cout << "[ " << i << "] \t";
 	cout << endl;
 	for (i = 0; i < n; i++)
@@ -434,7 +373,7 @@ void MyLinkList<ElemType>::RandomLink()
 	ElemType *elem = new ElemType[100];
 	typename LinkList<ElemType>::NodePointer p = this->head;
 	typename LinkList<ElemType>::NodePointer s;
-	n = random(4, 10);
+	n = random(3, 6);
 	cout << "用如下随机数生成非循环单链表:" << endl;
 	for (i = 0; i < n; i++)
 	{

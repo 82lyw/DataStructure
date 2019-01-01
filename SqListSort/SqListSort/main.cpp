@@ -21,7 +21,8 @@
 
 int main()
 {
-	SqListSort<int> S1;
+	MySqListSort<int> S1;
+	MyStatic<node> S2;
 
 	int choose;
 	char continueYesNo = 'N';
@@ -46,21 +47,27 @@ int main()
 		cout << "\t 11.随机生成顺序表" << endl;
 		cout << "\t 12.随机生成静态链表" << endl;
 		cout << "\t 13.输入顺序表" << endl;
-		cout << "\t 14.学生信息排序（排序应用）" << endl;
 
 		cout << "其他.结束" << endl << endl;
 
 		cout << "///////////////////////////////////////////////////////////////////////////////" << endl;
-		displayCurrentObject(S1);
+		displayCurrentObject(S1,S2);
 		cout << "///////////////////////////////////////////////////////////////////////////////" << endl << endl;
 
-		cout << "请选择你要操作的代码（1-10）号码：";
+		cout << "请选择你要操作的代码（1-14）号码：";
 		cin >> choose;
 
-		if (choose > 0 && choose < 12)
+		if (choose==1||choose==2||(choose>3&&choose<10)||choose==11||choose==13)
 		{
 			system("cls");
-			displayCurrentObject(S1);
+			cout << endl;
+			cout << S1; cout << endl;
+		}
+		if (choose == 3 || choose == 10 || choose == 12)
+		{
+			system("cls");
+			cout << endl;
+			cout << S2; cout << endl;
 		}
 
 		switch (choose)
@@ -69,7 +76,7 @@ int main()
 			break;
 		case 2:ex11_2(S1, continueYesNo);
 			break;
-		case 3:ex11_3(S1, continueYesNo);
+		case 3:ex11_3(S2, continueYesNo);
 			break;
 		case 4:ex11_4(S1, continueYesNo);
 			break;
@@ -83,8 +90,15 @@ int main()
 			break;
 		case 9:ex11_9(S1, continueYesNo);
 			break;
-		case 10:ex11_10(S1, continueYesNo);
+		case 10:ex11_10(S2, continueYesNo);
 			break;
+		case 11:ex11_11(S1, continueYesNo);
+			break;
+		case 12:ex11_12(S2, continueYesNo);
+			break;
+		case 13:ex11_13(S1, continueYesNo);
+			break;
+		case 14:ex11_14(S1, continueYesNo);
 		default:cout << "\n 你选择了结束。" << endl << endl;
 			return 0;
 		}

@@ -3,11 +3,8 @@
 class MyTerm
 {
 public:
-
 	void read(istream & in);
-
 	void display(ostream & out);
-
 public:
 	float coef;
 	int expn;
@@ -35,4 +32,10 @@ void MyTerm::display(ostream & out)
 		out << coef;
 	if (expn)
 		out << "x" << expn;
+}
+
+ostream & operator<<(ostream & out, MyTerm & s)
+{
+	s.display(out);
+	return out;
 }

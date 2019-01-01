@@ -155,4 +155,3 @@ double evaluation(char *suffixS)
 	S.pop(x);
 	return x;
 }
-

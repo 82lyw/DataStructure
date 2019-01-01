@@ -14,12 +14,12 @@ public:
 	void radixSortCollect_aux(int front[], int end[], int time);
 	void radixSortDistribute_aux(int i, int front[], int end[]);
 	void staticListSort();
-
 };
 
 template <typename ElemType>
 void MyStatic<ElemType>::display(ostream& out) const
 {
+	int n = this->n;
 	int i;
 	if (n)
 	{
@@ -49,7 +49,7 @@ void MyStatic<ElemType>::randN()
 	this->n = random(1, 8);
 	this->elem[0].data = NULL;
 	this->elem[0].next = 0;
-	for (int i = 1; i < n; i++)
+	for (int i = 1; i < this->n; i++)
 	{
 		this->elem[i].data = random(1,99);
 		this->elem[i].next = 0;
@@ -60,10 +60,10 @@ void MyStatic<ElemType>::randN()
 template <typename ElemType>
 void MyStatic<ElemType>::radixSort()
 {
-	int front[RADIX], end[RADIX];
-	for (int i = 0; i < n; i++)
-		elem[i].next = i + 1;
-	elem[n - 1].next = 0;
+	int front[RADIX], end[RADIX],i;
+	for (i = 0; i < this->n; i++)
+		this->elem[i].next = i + 1;
+	this->elem[this->n - 1].next = 0;
 	for (i = 1; i <= KEYNUM; i++)
 	{
 		radixSortDistribute_aux(i, front, end);
@@ -75,8 +75,9 @@ template <typename ElemType>
 void MyStatic<ElemType>::radixSortCollect_aux(int front[], int end[], int time)
 {
 	int rear;
-	for (int j = 0; !front[j]; j++);
-	elem[0].next = front[j];
+	int j;
+	for (j = 0; !front[j]; j++);
+	this->elem[0].next = front[j];
 	rear = end[j];
 	while (j < RADIX)
 	{
@@ -84,11 +85,11 @@ void MyStatic<ElemType>::radixSortCollect_aux(int front[], int end[], int time)
 		for (; j < RADIX - 1 && !front[j]; j++);
 		if (j < RADIX&&front[j])
 		{
-			elem[rear].next = front[j];
+			this->elem[rear].next = front[j];
 			rear = end[j];
 		}
 	}
-	elem[rear].next = 0;
+	this->elem[rear].next = 0;
 }
 
 template <typename ElemType>
@@ -97,11 +98,12 @@ void MyStatic<ElemType>::radixSortDistribute_aux(int i, int front[], int end[])
 	int p;
 	int pos;
 	int t;
-	for (int j = 0; j < RADIX; j++)
+	int j;
+	for (j = 0; j < RADIX; j++)
 		front[j] = 0;
-	for (p = elem[0].next; p; p = elem[p].next)
+	for (p = this->elem[0].next; p; p = this->elem[p].next)
 	{
-		t = elem[p].data;
+		t = this->elem[p].data;
 		pos = i;
 		while (pos > 1)
 		{
@@ -112,7 +114,7 @@ void MyStatic<ElemType>::radixSortDistribute_aux(int i, int front[], int end[])
 		if (!front[j])
 			front[j] = p;
 		else
-			elem[end[j]].next = p;
+			this->elem[end[j]].next = p;
 		end[j] = p;
 	}
 }
@@ -123,17 +125,17 @@ void MyStatic<ElemType>::staticListSort()
 {
 	int q;
 	int p;
-	elem[0].next = 1;
-	for (int i = 2; i < n; i++)
+	this->elem[0].next = 1;
+	for (int i = 2; i < this->n; i++)
 	{
 		q = 0;
-		p = elem[0].next;
-		while (p&&elem[p].data <= elem[i].data)
+		p = this->elem[0].next;
+		while (p&&this->elem[p].data <= this->elem[i].data)
 		{
 			q = p;
-			p = elem[p].next;
+			p = this->elem[p].next;
 		}
-		elem[i].next = p;
-		elem[q].next = i;
+		this->elem[i].next = p;
+		this->elem[q].next = i;
 	}
 }

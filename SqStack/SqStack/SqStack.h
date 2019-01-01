@@ -15,28 +15,16 @@ class SqStack
 {
 public:
 	void clear();
-
 	int getLength();
-
 	int getStackSize();
-
 	Status getTop(ElemType & e);
-
 	bool isEmpty();
-
 	SqStack<ElemType> operator =(SqStack<ElemType> rightS);
-
 	Status pop(ElemType & e);
-
 	void push(ElemType e);
-
 	SqStack();
-
 	~SqStack();
-
 	SqStack(SqStack<ElemType> & otherS);
-
-//protected:
 public:
 	ElemType *base;
 	ElemType *top;
@@ -65,13 +53,9 @@ template<typename ElemType>
 int SqStack<ElemType>::getTop(ElemType& e)
 {
 	if (isEmpty())
-	{
 		return ERROR;
-	}
 	else
-	{
 		e = *(top - 1);
-	}
 	return OK;
 }
 
@@ -94,11 +78,8 @@ SqStack<ElemType> SqStack<ElemType>::operator=(SqStack rightS)
 			assert(base != 0);
 			StackSize = rightS.StackSize;
 		}
-
 		for (int i = 0; i < length; i++)
-		{
 			*(base + i) = *(rightS.base + i);
-		}
 		top = base + length();
 	}
 	return *this;
@@ -108,13 +89,9 @@ template<typename ElemType>
 Status SqStack<ElemType>::pop(ElemType & e)
 {
 	if (isEmpty())
-	{
 		return ERROR;
-	}
 	else
-	{
 		e = *--top;
-	}
 	return OK;
 }
 
@@ -128,11 +105,8 @@ void SqStack<ElemType>::push(ElemType e)
 		newbase = new ElemType[StackSize + STACKINCREMENT];
 		assert(newbase != 0);
 		for (int j = 0; j < length; j++)
-		{
 			*(newbase + j) = *(base + j);
-		}
 		delete[]base;
-
 		StackSize += STACKINCREMENT;
 		base = newbase;
 		top = base + length;
@@ -168,9 +142,7 @@ SqStack<ElemType>::SqStack( SqStack & otherS)
 	assert(base != 0);
 	StackSize = otherS.StackSize;
 	for (int i = 0; i < length; i++)
-	{
 		*(base + i) = *(otherS.base + i);
-	}
 	top = base + length;
 }
 
@@ -183,7 +155,6 @@ public:
 	MySqStack(ElemType *p, int nsize);
 	MySqStack() {}
 	void display(ostream & out);
-	//void read();
 	void randStack();
 };
 	                                                                             

@@ -26,7 +26,6 @@ using namespace std;
 int main()
 {
 	MyLinkList<int> list1;
-	MyPolynomialLinkList<MyTerm> list2;
 
 	int choose;
 	char continueYesNo = 'N';
@@ -36,7 +35,6 @@ int main()
 		system("cls");
 		cout << endl;
 		cout << "*********************测试非循环单链表的操作*************************" << endl << endl;
-
 		cout << "\t 1.取非循环单链表的第i个结点" << endl;
 		cout << "\t 2.在第i个结点之前插入一个数据域为e的结点" << endl;
 		cout << "\t 3.判断非循环单链表是否为空" << endl;
@@ -53,22 +51,17 @@ int main()
 		cout << "\t 14.用已有的非循环单链表初始化另一个非循环单链表" << endl;
 		cout << "\t 15.输入非循环单链表" << endl;
 		cout << "\t16.多项式的运算（非循环单链表的应用）" << endl;
-
 		cout << "其他.结束" << endl << endl;
-
 		cout << "///////////////////////////////////////////////////////////////////////////////" << endl;
 		displayCurrentObject(list1);
 		cout << "///////////////////////////////////////////////////////////////////////////////" << endl << endl;
-
 		cout << "请选择你要操作的代码（1-16）号码：";
 		cin >> choose;
-
 		if (choose > 0 && choose < 16)
 		{
 			system("cls");
 			displayCurrentObject(list1);
 		}
-
 		switch (choose)
 		{
 		case 1:ex3_2_1(list1, continueYesNo);
@@ -101,7 +94,7 @@ int main()
 			break;
 		case 15:ex3_2_15(list1, continueYesNo);
 			break;
-		case 16:ex3_2_16(list2, continueYesNo);
+		case 16:ex3_2_16(list1, continueYesNo);
 			break;
 		default:cout << "\n 你选择了结束。" << endl << endl;
 			return 0;

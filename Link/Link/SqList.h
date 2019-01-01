@@ -19,9 +19,6 @@ public:
 	//随机生成顺序表（0-99之间的整数）
 	void RandomBorn();
 
-	//输入
-	void inputList();
-
 	//有序顺序表折半查找
 	int bin_Search(ElemType key);
 
@@ -73,25 +70,8 @@ protected:
 };
 
 template <typename ElemType>
-void SqList<ElemType>::inputList()
-{
-	int j;
-	cout << "请输入顺序表中元素的个数：";
-	cin >> j;
-	n = j;
-	for (int i = 0; i < n; i++)
-	{
-		cin >> elem[i];
-	}
-}
-
-template <typename ElemType>
 void SqList<ElemType>::RandomBorn()
 {
-	/*delete[] elem;
-	listsize = 10;
-	elem = new elemtype[listsize];
-	assert(elem != 0);*/
 	int i;
 	n = 10;
 	cout << "用以下随机数作为当前顺序表的元素：" << endl;
